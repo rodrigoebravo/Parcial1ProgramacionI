@@ -16,7 +16,9 @@ typedef struct{
     int tipo;
     char nombre[100];
     char direccion[100];
+    float precio;
     int isEmpty;
+
 }Pantalla;
 
 #define TIPO_LED 0
@@ -28,5 +30,7 @@ typedef struct{
 #define FALSO 0
 #define VERDADERO 1
 int pan_inicializarLista(Pantalla* pan, int len);
+int pan_Alta(Pantalla* pan, int len, int index);
+
 
 #endif // PANTALLA_H_INCLUDED

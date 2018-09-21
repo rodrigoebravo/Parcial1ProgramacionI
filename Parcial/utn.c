@@ -71,7 +71,8 @@ int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, cha
             {
                 printf(mensajeError);
             }
-            fflush(stdin);
+            //fflush(stdin);
+            __fpurge(stdin);
             intentos--;
         }while(intentos>0);
     }
