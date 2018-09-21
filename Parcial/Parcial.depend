@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1537483955 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/contrataciones.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	<string.h>
+
+1537404302 /home/alumno/Escritorio/Bravo/Parcial/Parcial/utn.h
+
+1537483955 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+	<string.h>
+
+1537484835 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"pantalla.h"
+
+1537484239 /home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.h
+
