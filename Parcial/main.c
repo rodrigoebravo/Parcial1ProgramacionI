@@ -1,4 +1,5 @@
 #include "utn.h"
+#include "pantalla.h"
 #define CANTIDAD_PANTALLAS 100
 #define CANTIDAD_CONTRATACIONES 1000
 void limpiarScreen(void);
@@ -7,36 +8,53 @@ void printMenu(void);
 
 int main()
 {
-//    char opcionIngresada[2];
-//    int opcionIngresadaEntero;
-//    int rta;
-//    do{
-//            if(mostrarMenu(opcionIngresada, 2, &opcionIngresadaEntero)==0)
-//            {
-//                rta=0;
-//            }
-//            else
-//            {
-//                rta=-1;
-//            }
-//
-//    }while(rta==-1);
-    char a[10];
-    printf("respuesta de utn_getDecimal(): %d \n", utn_getDecimal(a,3,100,0,"ingrese decimal\n","error\n"));
+    char opcionIngresada[2];
+    int opcionIngresadaEntero=-1;
+    Pantalla pantallas[CANTIDAD_PANTALLAS];
+    do{
+        if(mostrarMenu(opcionIngresada, 2, &opcionIngresadaEntero)==TODOOK)
+        {
+            switch(opcionIngresadaEntero)
+            {
+                case 1:
+                    pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+
+            }
+        }
+    }while(opcionIngresadaEntero==-1);
+
+
+
     return 0;
 }
 
 int mostrarMenu(char* respuesta, int len, int* respuestaEntero)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     printMenu();
 
-    if(utn_getEntero(respuesta, 3, 10, 0, "Ingrese:\n", "Error!\n")==0)
+    if(utn_getEntero(respuesta, 3, 10, 0, "Ingrese: ", "Error!\n")==TODOOK)
     {
         *respuestaEntero=atoi(respuesta);
-        retorno=0;
+        retorno=TODOOK;
     }
-
     return retorno;
 }
 
@@ -48,4 +66,10 @@ void printMenu(void)
 void limpiarScreen(void)
 {
     system("cls");
+}
+
+
+void printPantalla(Pantalla pantalla, len, posicion)
+{
+    pantalla
 }

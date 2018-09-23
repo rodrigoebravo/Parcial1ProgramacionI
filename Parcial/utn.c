@@ -46,12 +46,11 @@ int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, cha
 {
     int retorno=ERROR;
     float decimal;
-    //printf("---------1- retorno:%d---------\n", retorno);
     if(numeroBuffer!=NULL && intentos>0 && maximo >= minimo && mensaje != NULL && mensajeError != NULL)
     {
         do{
             printf(mensaje);
-            retorno=getString(numeroBuffer, sizeof(numeroBuffer));
+            getString(numeroBuffer, sizeof(numeroBuffer));
             if(esDecimal(numeroBuffer)==VERDADERO)
             {
                 decimal=atof(numeroBuffer);
@@ -76,7 +75,6 @@ int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, cha
     }
     return retorno;
 }
-
 static int getString(char* pBuffer, int limite)
 {
     char bufferString[4096];
@@ -107,7 +105,8 @@ int utn_getCadena(char* cadenaBuffer, int intentos, char* mensaje, char* mensaje
     if(cadenaBuffer!=NULL && intentos>0 && mensaje!=NULL && mensajeError!=NULL)
     {
         do{
-            if(getString(cadenaBuffer, sizeof(cadenaBuffer)))
+            printf(mensaje);
+            if(getString(cadenaBuffer, sizeof(cadenaBuffer))==TODOOK)
             {
                 retorno=TODOOK;
                 break;
@@ -153,12 +152,17 @@ static int esDecimal(char* pCadena)
         {
             ultimoValor=pCadena[i];
         }
+        if(pCadena[i]==44)
+        {
+            pCadena[i]=46;
+        }
 
-        if(pCadena[i]==44 || pCadena[i]==46)
+        if(pCadena[i]==46)
         {
             contadorSimbolos++;
         }
-        if((pCadena[i]>47 && pCadena[i]<58) || pCadena[i]==44 || pCadena[i]==46)
+
+        if((pCadena[i]>47 && pCadena[i]<58) || pCadena[i]==46)
         {
             retorno=VERDADERO;
         }
@@ -170,15 +174,24 @@ static int esDecimal(char* pCadena)
         i++;
     }
 
-    if(contadorSimbolos!=1)
-    {
-        retorno=FALSO;
-    }
-    if(primerValor==44 || ultimoValor==44 || primerValor==46 || ultimoValor==46)
+    if(contadorSimbolos>1)
     {
         retorno=FALSO;
     }
 
-    printf("lo que devuelve esDecimal es: %d", retorno);
+    if(primerValor==46 || ultimoValor==46)
+    {
+        retorno=FALSO;
+    }
+
     return retorno;
 }
+
+
+//utn_getPrecio
+//utn_getMail
+//utn_getContrasenia
+//utn_getUsuario
+//utn_getDireccion
+
+//
