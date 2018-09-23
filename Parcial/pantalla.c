@@ -7,14 +7,14 @@ static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* i
 int pan_inicializarLista(Pantalla* pan, int len)
 {
     int i;
-    int retorno=-1;
+    int retorno=ERROR;
     if(pan !=NULL && len>0)
     {
         for(i=0;i<len;i++)
         {
             pan[i].isEmpty=VERDADERO;
         }
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
@@ -22,7 +22,7 @@ int pan_inicializarLista(Pantalla* pan, int len)
 static int pan_getIdVacio(Pantalla* pan, int len)
 {
     int i=0;
-    int retorno=-1;
+    int retorno=ERROR;
     if(pan !=NULL && len>0)
     {
         for(i=0;i<len;i++)
@@ -51,10 +51,11 @@ int pan_Alta(Pantalla* pan, int len, int index)
     char nombreAux[100];
     char direccionAux[100];
     char precioAux[10];
-
     char pedidoTipo[]="Ingrese tipo de pantalla( 0-LED 1-LCD): \n";
+
     if(pan!=NULL && len > 0 && index>=0 && index<len)
     {
+
         if(utn_getEntero(tipoAux, 3, 2, -1, pedidoTipo, "Error al ingresar tipo\n")==TODOOK)
         {
             if(utn_getCadena(nombreAux, 3,"Ingrese nombre:\n","Error en nombre!\n")==TODOOK)
@@ -98,15 +99,18 @@ static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* i
 
 int pan_darAltaPantalla(Pantalla* pantallas, int len)
 {
-    int id;
+    int id=0;
     int retorno=ERROR;
     int indexRetorno;
-    id=pan_getIdVacio(pantallas, len);
+
     pan_inicializarLista(pantallas,len);
+    id=pan_getIdVacio(pantallas, len);
     pan_Alta(pantallas, len, id);
+
     if(pan_obtenerPosicionPorID(pantallas, len, id, &indexRetorno)==TODOOK)
     {
         retorno=indexRetorno;
     }
     return retorno;
 }
+//

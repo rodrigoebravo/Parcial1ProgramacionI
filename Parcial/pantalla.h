@@ -31,7 +31,7 @@ typedef struct{
 #define VERDADERO 1
 int pan_inicializarLista(Pantalla* pan, int len);
 int pan_Alta(Pantalla* pan, int len, int index);
-void pan_darAltaPantalla(Pantalla* pantallas, int len);
+int pan_darAltaPantalla(Pantalla* pantallas, int len);
 
 
 #endif // PANTALLA_H_INCLUDED

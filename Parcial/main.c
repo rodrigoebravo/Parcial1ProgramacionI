@@ -5,11 +5,13 @@
 void limpiarScreen(void);
 int mostrarMenu(char* respuesta, int len, int* respuestaEntero);
 void printMenu(void);
+void printPantalla(Pantalla* pantalla, int len, int posicion);
 
 int main()
 {
     char opcionIngresada[2];
-    int opcionIngresadaEntero=-1;
+    int opcionIngresadaEntero=ERROR;
+    int id;
     Pantalla pantallas[CANTIDAD_PANTALLAS];
     do{
         if(mostrarMenu(opcionIngresada, 2, &opcionIngresadaEntero)==TODOOK)
@@ -17,7 +19,8 @@ int main()
             switch(opcionIngresadaEntero)
             {
                 case 1:
-                    pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
+                    id=pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
+                    printPantalla(pantallas, CANTIDAD_PANTALLAS, id);
                     break;
                 case 2:
                     break;
@@ -38,7 +41,7 @@ int main()
 
             }
         }
-    }while(opcionIngresadaEntero==-1);
+    }while(opcionIngresadaEntero==ERROR);
 
 
 
@@ -68,8 +71,13 @@ void limpiarScreen(void)
     system("cls");
 }
 
-
-void printPantalla(Pantalla pantalla, len, posicion)
+void printPantalla(Pantalla* pantalla, int len, int posicion)
 {
-    pantalla
+ printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\nEsta vacio?\t%d\nBella Chao!",
+        pantalla[posicion].id,
+        pantalla[posicion].tipo,
+        pantalla[posicion].nombre,
+        pantalla[posicion].direccion,
+        pantalla[posicion].precio,
+        pantalla[posicion].isEmpty);
 }

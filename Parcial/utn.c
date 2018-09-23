@@ -133,7 +133,6 @@ static int esNumero(char* pCadena)
     }
     return retorno;
 }
-
 static int esDecimal(char* pCadena)
 {
     int retorno=FALSO;
@@ -188,10 +187,10 @@ static int esDecimal(char* pCadena)
 }
 
 
-//utn_getPrecio
-//utn_getMail
-//utn_getContrasenia
-//utn_getUsuario
-//utn_getDireccion
-
+//utn_getPrecio (acepta simbolos de moneda, redondea en 2 decimales)
+//utn_getMail   (no acepta espacios, obliga a poner @ y ., minimo de 3 digitos antes del arroba, minimo de 5 entre el arroba y punto, despues del punto no más de 6)
+//utn_getContrasenia (no acepta espacios, obliga a poner numeros, simbolos solo el punto, y numeros, minimo de 6)
+//utn_getUsuario (sin espacios)
+//utn_getDireccion (obliga a poner numeros, espacio y letras)
+//utn_getNombreApellido (obliga a poner 1 espacio)
 //
