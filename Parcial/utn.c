@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <string.h>
 #include "utn.h"
 
 static int esNumero(char* pCadena);
@@ -11,7 +7,7 @@ static int getString(char* pBuffer, int limite);
 int utn_getEntero(char* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
 
-    int retorno=-1;
+    int retorno=ERROR;
     int numero;
     if(numeroBuffer!=NULL && intentos>0 && maximo >= minimo && mensaje != NULL && mensajeError != NULL)
     {
@@ -19,25 +15,27 @@ int utn_getEntero(char* numeroBuffer, int intentos, int maximo, int minimo, char
             printf(mensaje);
             getString(numeroBuffer, sizeof(numeroBuffer));
 
-            if(esNumero(numeroBuffer)==0)
+            if(esNumero(numeroBuffer)==VERDADERO)
             {
                 numero=atoi(numeroBuffer);
                 if(numero<maximo && numero>minimo)
                 {
-                    retorno=0;
+                    retorno=TODOOK;
                     break;
                 }
                 else
                 {
+                    system("cls");
                     printf(mensajeError);
                 }
             }
             else
             {
+                system("cls");
                 printf(mensajeError);
             }
-            //fflush(stdin);
-            __fpurge(stdin);
+            fflush(stdin);
+            //__fpurge(stdin);
             intentos--;
         }while(intentos>0);
     }
@@ -46,20 +44,20 @@ int utn_getEntero(char* numeroBuffer, int intentos, int maximo, int minimo, char
 
 int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
-    int retorno=-1;
-    int decimal;
+    int retorno=ERROR;
+    float decimal;
+    //printf("---------1- retorno:%d---------\n", retorno);
     if(numeroBuffer!=NULL && intentos>0 && maximo >= minimo && mensaje != NULL && mensajeError != NULL)
     {
         do{
             printf(mensaje);
             retorno=getString(numeroBuffer, sizeof(numeroBuffer));
-
-            if(esDecimal(numeroBuffer)==0)
+            if(esDecimal(numeroBuffer)==VERDADERO)
             {
                 decimal=atof(numeroBuffer);
                 if(decimal<maximo && decimal>minimo)
                 {
-                    retorno=0;
+                    retorno=TODOOK;
                     break;
                 }
                 else
@@ -71,8 +69,8 @@ int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, cha
             {
                 printf(mensajeError);
             }
-            //fflush(stdin);
-            __fpurge(stdin);
+            fflush(stdin);
+            //__fpurge(stdin);
             intentos--;
         }while(intentos>0);
     }
@@ -82,14 +80,13 @@ int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, cha
 static int getString(char* pBuffer, int limite)
 {
     char bufferString[4096];
-    int retorno=-1;
+    int retorno=ERROR;
 
     if(pBuffer!=NULL && limite>0)
     {
-        __fpurge(stdin);
-        //fflush(stdin);
+        //__fpurge(stdin);
+        fflush(stdin);
         fgets(bufferString, sizeof(bufferString), stdin);
-
         if(bufferString[strlen(bufferString)-1]=='\n')
         {
             bufferString[strlen(bufferString)-1]='\0';
@@ -98,39 +95,39 @@ static int getString(char* pBuffer, int limite)
         if(strlen(bufferString)<=limite)
         {
             strncpy(pBuffer, bufferString, limite);
-            retorno=0;
+            retorno=TODOOK;
         }
     }
     return retorno;
 
 }
-
-int utn_getCadena(char* cadenaBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
+int utn_getCadena(char* cadenaBuffer, int intentos, char* mensaje, char* mensajeError)
 {
-    int retorno=0;
-
-    if(cadenaBuffer!=NULL && intentos>0 && maximo>minimo && mensaje!=NULL&&mensajeError!=NULL)
+    int retorno=ERROR;
+    if(cadenaBuffer!=NULL && intentos>0 && mensaje!=NULL && mensajeError!=NULL)
     {
-        if(getString(cadenaBuffer, sizeof(cadenaBuffer)))
-        {
-            retorno=1;
-        }
+        do{
+            if(getString(cadenaBuffer, sizeof(cadenaBuffer)))
+            {
+                retorno=TODOOK;
+                break;
+            }
+            intentos--;
+        }while(intentos>0);
     }
     return retorno;
 }
-
 
 static int esNumero(char* pCadena)
 {
-    int retorno=0;
+    int retorno=VERDADERO;
     int i=0;
-    //printf(pCadena);
 
     while(pCadena[i]!=0 && pCadena[i]!=10)
     {
         if(pCadena[i]<48 || pCadena[i]>57)
         {
-            retorno=-1;
+            retorno=FALSO;
             break;
         }
          i++;
@@ -140,7 +137,7 @@ static int esNumero(char* pCadena)
 
 static int esDecimal(char* pCadena)
 {
-    int retorno=-1;
+    int retorno=FALSO;
     int i=0;
     int contadorSimbolos=0;
     char primerValor;
@@ -156,36 +153,32 @@ static int esDecimal(char* pCadena)
         {
             ultimoValor=pCadena[i];
         }
+
         if(pCadena[i]==44 || pCadena[i]==46)
         {
             contadorSimbolos++;
-            if(contadorSimbolos==1)
-            {
-                retorno=0;
-            }
-            else
-            {
-                retorno=-1;
-            }
         }
         if((pCadena[i]>47 && pCadena[i]<58) || pCadena[i]==44 || pCadena[i]==46)
         {
-            retorno=0;
+            retorno=VERDADERO;
         }
         else
         {
-            retorno=-1;
+            retorno=FALSO;
+            break;
         }
         i++;
     }
+
     if(contadorSimbolos!=1)
     {
-        retorno=-1;
+        retorno=FALSO;
     }
     if(primerValor==44 || ultimoValor==44 || primerValor==46 || ultimoValor==46)
     {
-        retorno=-1;
+        retorno=FALSO;
     }
-    printf("%d",retorno);
+
+    printf("lo que devuelve esDecimal es: %d", retorno);
     return retorno;
 }
