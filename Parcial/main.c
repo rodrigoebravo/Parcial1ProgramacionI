@@ -12,6 +12,7 @@ int main()
     char opcionIngresada[2];
     int opcionIngresadaEntero=ERROR;
     int id;
+    char prueba[10];
     Pantalla pantallas[CANTIDAD_PANTALLAS];
     do{
         if(mostrarMenu(opcionIngresada, 2, &opcionIngresadaEntero)==TODOOK)
@@ -23,6 +24,10 @@ int main()
                     printPantalla(pantallas, CANTIDAD_PANTALLAS, id);
                     break;
                 case 2:
+                    utn_getCadena(prueba, 10, 100, "ingrese carajo:\t", "No\n");
+                    printf("%s\n", prueba);
+                    utn_toUpperCadena(prueba,sizeof(prueba));
+                    printf("%s\n", prueba);
                     break;
                 case 3:
                     break;

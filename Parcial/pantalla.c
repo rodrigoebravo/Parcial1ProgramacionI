@@ -58,9 +58,9 @@ int pan_Alta(Pantalla* pan, int len, int index)
 
         if(utn_getEntero(tipoAux, 3, 2, -1, pedidoTipo, "Error al ingresar tipo\n")==TODOOK)
         {
-            if(utn_getCadena(nombreAux, 3,"Ingrese nombre:\n","Error en nombre!\n")==TODOOK)
+            if(utn_getCadena(nombreAux, 100, 3,"Ingrese nombre:\n","Error en nombre!\n")==TODOOK)
             {
-                if(utn_getCadena(direccionAux, 3, "Ingrese direccion\n","Error al ingresar\n" )==TODOOK)
+                if(utn_getCadena(direccionAux, 100, 3, "Ingrese direccion\n","Error al ingresar\n" )==TODOOK)
                 {
                     if(utn_getDecimal(precioAux,3,3000,0,"Ingrese precio: \n", "Error al ingresar precio\n")==TODOOK)
                     {
@@ -106,6 +106,7 @@ int pan_darAltaPantalla(Pantalla* pantallas, int len)
     pan_inicializarLista(pantallas,len);
     id=pan_getIdVacio(pantallas, len);
     pan_Alta(pantallas, len, id);
+    printf("asd");
 
     if(pan_obtenerPosicionPorID(pantallas, len, id, &indexRetorno)==TODOOK)
     {

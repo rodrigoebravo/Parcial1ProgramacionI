@@ -75,48 +75,27 @@ int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, cha
     }
     return retorno;
 }
-static int getString(char* pBuffer, int limite)
-{
-    char bufferString[4096];
-    int retorno=ERROR;
-
-    if(pBuffer!=NULL && limite>0)
-    {
-        //__fpurge(stdin);
-        fflush(stdin);
-        fgets(bufferString, sizeof(bufferString), stdin);
-        if(bufferString[strlen(bufferString)-1]=='\n')
-        {
-            bufferString[strlen(bufferString)-1]='\0';
-        }
-
-        if(strlen(bufferString)<=limite)
-        {
-            strncpy(pBuffer, bufferString, limite);
-            retorno=TODOOK;
-        }
-    }
-    return retorno;
-
-}
-int utn_getCadena(char* cadenaBuffer, int intentos, char* mensaje, char* mensajeError)
+int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char* mensajeError)
 {
     int retorno=ERROR;
     if(cadenaBuffer!=NULL && intentos>0 && mensaje!=NULL && mensajeError!=NULL)
     {
         do{
             printf(mensaje);
-            if(getString(cadenaBuffer, sizeof(cadenaBuffer))==TODOOK)
+            if(getString(cadenaBuffer, len)==TODOOK)
             {
                 retorno=TODOOK;
                 break;
+            }
+            else
+            {
+                printf(mensajeError);
             }
             intentos--;
         }while(intentos>0);
     }
     return retorno;
 }
-
 static int esNumero(char* pCadena)
 {
     int retorno=VERDADERO;
@@ -186,7 +165,31 @@ static int esDecimal(char* pCadena)
     return retorno;
 }
 
+static int getString(char* pBuffer, int limite)
+{
+    char bufferString[4096];
+    int retorno=ERROR;
 
+    if(pBuffer!=NULL && limite>0)
+    {
+        //__fpurge(stdin);
+        fflush(stdin);
+        fgets(bufferString, sizeof(bufferString), stdin);
+
+        if(bufferString[strlen(bufferString)-1]=='\n')
+        {
+            bufferString[strlen(bufferString)-1]='\0';
+        }
+
+        if(strlen(bufferString)<=limite)
+        {
+            strncpy(pBuffer, bufferString, limite);
+            retorno=TODOOK;
+        }
+    }
+    return retorno;
+
+}
 //utn_getPrecio (acepta simbolos de moneda, redondea en 2 decimales)
 //utn_getMail   (no acepta espacios, obliga a poner @ y ., minimo de 3 digitos antes del arroba, minimo de 5 entre el arroba y punto, despues del punto no más de 6)
 //utn_getContrasenia (no acepta espacios, obliga a poner numeros, simbolos solo el punto, y numeros, minimo de 6)
@@ -194,3 +197,50 @@ static int esDecimal(char* pCadena)
 //utn_getDireccion (obliga a poner numeros, espacio y letras)
 //utn_getNombreApellido (obliga a poner 1 espacio)
 //
+
+int utn_contieneNumero(char* cadena)
+{
+    int retorno=FALSO;
+    int i=0;
+
+    while(cadena[i]!='\0')
+    {
+        if(cadena[i]>47 && cadena[i]<58)
+        {
+            retorno=VERDADERO;
+            break;
+        }
+        i++;
+    }
+    return retorno;
+}
+
+void utn_toUpperCadena(char* cadena, int len)
+{
+    char cadenaAux[len];
+    int i;
+    for(i=0; i<len; i++)
+    {
+        if(cadena[i]=='\0')
+        {
+            cadenaAux[i]='\0';
+            break;
+        }
+        if(cadena[i]>96 && cadena[i]<123)
+        {
+            cadenaAux[i]=cadena[i]-32;
+        }
+        else
+        {
+            cadenaAux[i]=cadena[i];
+        }
+    }
+    strncpy(cadena, cadenaAux, len);
+}
+
+int utn_getPrecio(char* cadena, int len)
+{
+    int retorno=ERROR;
+
+    return retorno;
+}
