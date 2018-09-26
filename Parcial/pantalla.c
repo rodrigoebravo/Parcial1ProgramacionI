@@ -19,35 +19,10 @@ int pan_inicializarLista(Pantalla* pan, int len)
     return retorno;
 }
 
-static int pan_getIdVacio(Pantalla* pan, int len)
-{
-    int i=0;
-    int retorno=ERROR;
-    if(pan !=NULL && len>0)
-    {
-        for(i=0;i<len;i++)
-        {
-            if(pan[i].isEmpty==VERDADERO)
-            {
-                retorno=i;
-                break;
-            }
-        }
-    }
-    return retorno;
-}
-
-static int generarID(void)
-{
-    static int id=-1;
-    id++;
-    return id;
-}
-
 int pan_Alta(Pantalla* pan, int len, int index)
 {
     int retorno=-1;
-    char tipoAux[2];
+    int tipoAux;
     char nombreAux[100];
     char direccionAux[100];
     char precioAux[10];
@@ -56,7 +31,7 @@ int pan_Alta(Pantalla* pan, int len, int index)
     if(pan!=NULL && len > 0 && index>=0 && index<len)
     {
 
-        if(utn_getEntero(tipoAux, 3, 2, -1, pedidoTipo, "Error al ingresar tipo\n")==TODOOK)
+        if(utn_getEntero(&tipoAux, 3, 2, -1, pedidoTipo, "Error al ingresar tipo\n")==TODOOK)
         {
             if(utn_getCadena(nombreAux, 100, 3,"Ingrese nombre:\n","Error en nombre!\n")==TODOOK)
             {
@@ -64,7 +39,7 @@ int pan_Alta(Pantalla* pan, int len, int index)
                 {
                     if(utn_getDecimal(precioAux,3,3000,0,"Ingrese precio: \n", "Error al ingresar precio\n")==TODOOK)
                     {
-                        pan[index].tipo=atoi(tipoAux);
+                        pan[index].tipo=tipoAux;
                         strncpy(pan[index].nombre,nombreAux,sizeof(nombreAux));
                         strncpy(pan[index].direccion,direccionAux,sizeof(direccionAux));
                         pan[index].precio=atof(precioAux);
@@ -79,7 +54,29 @@ int pan_Alta(Pantalla* pan, int len, int index)
     return retorno;
 }
 
+int pan_darAltaPantalla(Pantalla* pantallas, int len)
+{
+    int id=0;
+    int retorno=ERROR;
+    int indexRetorno;
 
+    pan_inicializarLista(pantallas,len);
+    id=pan_getIdVacio(pantallas, len);
+    pan_Alta(pantallas, len, id);
+
+    if(pan_obtenerPosicionPorID(pantallas, len, id, &indexRetorno)==TODOOK)
+    {
+        retorno=indexRetorno;
+    }
+    return retorno;
+}
+
+static int generarID(void)
+{
+    static int id=-1;
+    id++;
+    return id;
+}
 
 static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* indexRetorno)
 {
@@ -97,21 +94,20 @@ static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* i
     return retorno;
 }
 
-int pan_darAltaPantalla(Pantalla* pantallas, int len)
+static int pan_getIdVacio(Pantalla* pan, int len)
 {
-    int id=0;
+    int i=0;
     int retorno=ERROR;
-    int indexRetorno;
-
-    pan_inicializarLista(pantallas,len);
-    id=pan_getIdVacio(pantallas, len);
-    pan_Alta(pantallas, len, id);
-    printf("asd");
-
-    if(pan_obtenerPosicionPorID(pantallas, len, id, &indexRetorno)==TODOOK)
+    if(pan !=NULL && len>0)
     {
-        retorno=indexRetorno;
+        for(i=0;i<len;i++)
+        {
+            if(pan[i].isEmpty==VERDADERO)
+            {
+                retorno=i;
+                break;
+            }
+        }
     }
     return retorno;
 }
-//

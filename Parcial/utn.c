@@ -4,23 +4,24 @@ static int esNumero(char* pCadena);
 static int esDecimal(char* pCadena);
 static int getString(char* pBuffer, int limite);
 
-int utn_getEntero(char* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
+int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
-
+    char cadenaAux[4096];
     int retorno=ERROR;
-    int numero;
+    int numeroBufferAux;
     if(numeroBuffer!=NULL && intentos>0 && maximo >= minimo && mensaje != NULL && mensajeError != NULL)
     {
         do{
             printf(mensaje);
-            getString(numeroBuffer, sizeof(numeroBuffer));
+            getString(cadenaAux, sizeof(cadenaAux));
 
-            if(esNumero(numeroBuffer)==VERDADERO)
+            if(esNumero(cadenaAux)==VERDADERO)
             {
-                numero=atoi(numeroBuffer);
-                if(numero<maximo && numero>minimo)
+                numeroBufferAux=atoi(cadenaAux);
+                if(numeroBufferAux<maximo && numeroBufferAux>minimo)
                 {
                     retorno=TODOOK;
+                    *numeroBuffer=numeroBufferAux;
                     break;
                 }
                 else
@@ -103,7 +104,7 @@ static int esNumero(char* pCadena)
 
     while(pCadena[i]!=0 && pCadena[i]!=10)
     {
-        if(pCadena[i]<48 || pCadena[i]>57)
+        if((pCadena[i]<48 || pCadena[i]>57) && pCadena[i]!=45)
         {
             retorno=FALSO;
             break;
@@ -140,7 +141,7 @@ static int esDecimal(char* pCadena)
             contadorSimbolos++;
         }
 
-        if((pCadena[i]>47 && pCadena[i]<58) || pCadena[i]==46)
+        if((pCadena[i]>47 && pCadena[i]<58) || pCadena[i]==46 || pCadena[i]==45)
         {
             retorno=VERDADERO;
         }
@@ -155,6 +156,11 @@ static int esDecimal(char* pCadena)
     if(contadorSimbolos>1)
     {
         retorno=FALSO;
+    }
+
+    if(primerValor==45)
+    {
+        retorno=VERDADERO;
     }
 
     if(primerValor==46 || ultimoValor==46)
@@ -215,6 +221,23 @@ int utn_contieneNumero(char* cadena)
     return retorno;
 }
 
+int utn_contieneSimboloPesos(char* cadena)
+{
+    int retorno=FALSO;
+    int i=0;
+
+    while(cadena[i]!='\0')
+    {
+        if(cadena[i]==36)
+        {
+            retorno=VERDADERO;
+            break;
+        }
+        i++;
+    }
+    return retorno;
+}
+
 void utn_toUpperCadena(char* cadena, int len)
 {
     char cadenaAux[len];
@@ -238,9 +261,13 @@ void utn_toUpperCadena(char* cadena, int len)
     strncpy(cadena, cadenaAux, len);
 }
 
-int utn_getPrecio(char* cadena, int len)
+int utn_getPrecio(char* cadena, int len, int intentos, char* mensaje, char* mensajeError)
 {
     int retorno=ERROR;
 
+    if(utn_getCadena(cadena, len, intentos, mensaje, mensajeError)==TODOOK)
+    {
+
+    }
     return retorno;
 }

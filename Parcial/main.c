@@ -3,31 +3,31 @@
 #define CANTIDAD_PANTALLAS 100
 #define CANTIDAD_CONTRATACIONES 1000
 void limpiarScreen(void);
-int mostrarMenu(char* respuesta, int len, int* respuestaEntero);
+int mostrarMenu(int* respuesta, int len);
 void printMenu(void);
 void printPantalla(Pantalla* pantalla, int len, int posicion);
 
 int main()
 {
-    char opcionIngresada[2];
-    int opcionIngresadaEntero=ERROR;
+    int opcionIngresada=-1;
     int id;
-    char prueba[10];
+    int prueba;
     Pantalla pantallas[CANTIDAD_PANTALLAS];
     do{
-        if(mostrarMenu(opcionIngresada, 2, &opcionIngresadaEntero)==TODOOK)
+        if(mostrarMenu(&opcionIngresada, 2)==TODOOK)
         {
-            switch(opcionIngresadaEntero)
+            switch(opcionIngresada)
             {
                 case 1:
                     id=pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
                     printPantalla(pantallas, CANTIDAD_PANTALLAS, id);
                     break;
                 case 2:
-                    utn_getCadena(prueba, 10, 100, "ingrese carajo:\t", "No\n");
-                    printf("%s\n", prueba);
-                    utn_toUpperCadena(prueba,sizeof(prueba));
-                    printf("%s\n", prueba);
+
+                    /*printf("%s\n", prueba);
+                    utn_getPrecio(prueba,sizeof(prueba));
+                    printf("%s\n", prueba);*/
+                    //printf("%d\n", utn_getEntero(&prueba, 3, 300, -300,"ingrese num\n", "error!\n"));
                     break;
                 case 3:
                     break;
@@ -46,21 +46,21 @@ int main()
 
             }
         }
-    }while(opcionIngresadaEntero==ERROR);
+    }while(opcionIngresada==ERROR);
 
 
 
     return 0;
 }
 
-int mostrarMenu(char* respuesta, int len, int* respuestaEntero)
+int mostrarMenu(int* respuesta, int len)
 {
     int retorno=ERROR;
     printMenu();
 
     if(utn_getEntero(respuesta, 3, 10, 0, "Ingrese: ", "Error!\n")==TODOOK)
     {
-        *respuestaEntero=atoi(respuesta);
+        //*respuestaEntero=atoi(respuesta);
         retorno=TODOOK;
     }
     return retorno;
