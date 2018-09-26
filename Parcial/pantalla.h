@@ -34,7 +34,7 @@ int pan_Alta(Pantalla* pan, int len, int index);
 int pan_darAltaPantalla(Pantalla* pantallas, int len);
 int pan_modificarPantalla(Pantalla* pantalla, int len);
 int pan_pantallaVacia(Pantalla* pantalla, int len, int index);
-int pan_modificarPantalla(Pantalla* pantalla, int len);
+int pan_modificarPantallaPorID(Pantalla* pantalla, int len);
 int pan_alta_forzada(Pantalla* pantallas, int len, char* nombre, int tipo, char* direccion, float precio);
 
 #endif // PANTALLA_H_INCLUDED

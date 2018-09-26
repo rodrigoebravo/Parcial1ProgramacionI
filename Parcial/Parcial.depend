@@ -7,14 +7,14 @@
 	<string.h>
 	<stdio_ext.h>
 
-1538003243 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/main.c
+1538004067 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/main.c
 	"utn.h"
 	"pantalla.h"
 
-1538003401 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.c
+1538003588 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.c
 	"pantalla.h"
 
-1538002691 /home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.h
+1538004027 /home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

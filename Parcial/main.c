@@ -5,7 +5,8 @@
 void limpiarScreen(void);
 int mostrarMenu(int* respuesta, int len);
 void printMenu(void);
-void printPantalla(Pantalla* pantalla, int len, int posicion);
+void printPantallaPorPosicion(Pantalla* pantalla, int len, int posicion);
+void printPantallaPorID(Pantalla* pantalla, int len, int id);
 
 int main()
 {
@@ -35,7 +36,7 @@ int main()
                     printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "cccc", 0, "cccc", 2.0));
                     printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "dddd", 1, "dddd", 1.5));
 
-                    pan_modificarPantalla(pantallas, CANTIDAD_PANTALLAS);
+                    pan_modificarPantallaPorID(pantallas, CANTIDAD_PANTALLAS);
                     break;
                 case 3:
                     break;
@@ -81,10 +82,11 @@ void printMenu(void)
 
 void limpiarScreen(void)
 {
-    system("cls");
+    //system("cls");//windows
+    system("clear");//linux
 }
 
-void printPantalla(Pantalla* pantalla, int len, int posicion)
+void printPantallaPorPosicion(Pantalla* pantalla, int len, int posicion)
 {
  printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\nEsta vacio?\t%d\nBella Chao!",
         pantalla[posicion].id,
@@ -93,4 +95,23 @@ void printPantalla(Pantalla* pantalla, int len, int posicion)
         pantalla[posicion].direccion,
         pantalla[posicion].precio,
         pantalla[posicion].isEmpty);
+}
+
+void printPantallaPorID(Pantalla* pantalla, int len, int id)
+{
+    int i;
+
+    for(i=0;i<len;i++)
+    {
+        if(pantalla[i].id==id){
+            printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\nEsta vacio?\t%d\nBella Chao!",
+                    pantalla[i].id,
+                    pantalla[i].tipo,
+                    pantalla[i].nombre,
+                    pantalla[i].direccion,
+                    pantalla[i].precio,
+                    pantalla[i].isEmpty);
+            break;
+        }
+    }
 }
