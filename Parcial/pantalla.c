@@ -3,6 +3,9 @@
 static int generarID(void);
 static int pan_getIdVacio(Pantalla* pan, int len);
 static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* indexRetorno);
+int pan_pantallaVacia(Pantalla* pantalla, int len, int index);
+
+
 
 int pan_inicializarLista(Pantalla* pan, int len)
 {
@@ -10,9 +13,9 @@ int pan_inicializarLista(Pantalla* pan, int len)
     int retorno=ERROR;
     if(pan !=NULL && len>0)
     {
-        for(i=0;i<len;i++)
+        for(i=0; i<len; i++)
         {
-            pan[i].isEmpty=VERDADERO;
+            pan[i].isEmpty=TRUE;
         }
         retorno=TODOOK;
     }
@@ -44,7 +47,7 @@ int pan_Alta(Pantalla* pan, int len, int index)
                         strncpy(pan[index].direccion,direccionAux,sizeof(direccionAux));
                         pan[index].precio=precioAux;
                         pan[index].id=generarID();
-                        pan[index].isEmpty=FALSO;
+                        pan[index].isEmpty=FALSE;
                         retorno=0;
                     }
                 }
@@ -82,7 +85,7 @@ static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* i
 {
     int i;
     int retorno=ERROR;
-    for(i=0;i<len;i++)
+    for(i=0; i<len; i++)
     {
         if(pantallas[i].id==id)
         {
@@ -97,12 +100,12 @@ static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* i
 static int pan_getIdVacio(Pantalla* pan, int len)
 {
     int i=0;
-    int retorno=ERROR;
+    int retorno;
     if(pan !=NULL && len>0)
     {
-        for(i=0;i<len;i++)
+        for(i=0; i<len; i++)
         {
-            if(pan[i].isEmpty==VERDADERO)
+            if(pan[i].isEmpty==TRUE)
             {
                 retorno=i;
                 break;
@@ -110,4 +113,54 @@ static int pan_getIdVacio(Pantalla* pan, int len)
         }
     }
     return retorno;
+}
+
+int pan_modificarPantallaPorID(Pantalla* pantalla, int len)
+{
+    int retorno=ERROR;
+    int idModificar;
+    int indexModificar;
+    if(utn_getEntero(&idModificar, 3, len, -1, "Ingrese ID a modificar:\n", "ID erroneo\n")==TODOOK)
+    {
+
+        if(pan_obtenerPosicionPorID(pantalla, len, idModificar, &indexModificar)==TODOOK)
+        {
+
+            if(pan_pantallaVacia(pantalla, len, indexModificar)==FALSE)
+            {
+
+                if(pan_Alta(pantalla, len, indexModificar)==TODOOK)
+                {
+                    retorno=TODOOK;
+                }
+            }
+        }
+    }
+    return retorno;
+}
+
+int pan_pantallaVacia(Pantalla* pantalla, int len, int index)
+{
+    int retorno=TRUE;
+
+    if(pantalla!=NULL && index>=0 && len>0)
+    {
+        retorno=pantalla[index].isEmpty;
+    }
+    return retorno;
+}
+
+int pan_alta_forzada(Pantalla* pantallas, int len, char* nombre, int tipo, char* direccion, float precio)
+{
+    int index=pan_getIdVacio(pantallas, len);
+    if(index>=0)
+    {
+        pantallas[index].tipo=tipo;
+        strncpy(pantallas[index].nombre,nombre,strlen(nombre));
+        strncpy(pantallas[index].direccion,direccion,strlen(direccion));
+        pantallas[index].precio=precio;
+        pantallas[index].id=generarID();
+        pantallas[index].isEmpty=FALSE;
+    }
+    return index;
 }

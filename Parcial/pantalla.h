@@ -27,11 +27,14 @@ typedef struct{
 #include <stdlib.h>
 #include <string.h>
 #include "utn.h"
-#define FALSO 0
-#define VERDADERO 1
+#define FALSE 0
+#define TRUE 1
 int pan_inicializarLista(Pantalla* pan, int len);
 int pan_Alta(Pantalla* pan, int len, int index);
 int pan_darAltaPantalla(Pantalla* pantallas, int len);
-
+int pan_modificarPantalla(Pantalla* pantalla, int len);
+int pan_pantallaVacia(Pantalla* pantalla, int len, int index);
+int pan_modificarPantalla(Pantalla* pantalla, int len);
+int pan_alta_forzada(Pantalla* pantallas, int len, char* nombre, int tipo, char* direccion, float precio);
 
 #endif // PANTALLA_H_INCLUDED

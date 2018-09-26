@@ -11,7 +11,7 @@ int main()
 {
     int opcionIngresada=-1;
     int id;
-    char prueba[10]="$12.392";
+    //char prueba[10]="$12.392";
 
     Pantalla pantallas[CANTIDAD_PANTALLAS];
     do{
@@ -21,12 +21,21 @@ int main()
             {
                 case 1:
                     id=pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
-                    printPantalla(pantallas, CANTIDAD_PANTALLAS, id);
+                    //printPantalla(pantallas, CANTIDAD_PANTALLAS, id);
+                    //system("cls");
+                    system("clear");
+                    printf("%d", id);
+
+                    opcionIngresada=ERROR;
                     break;
                 case 2:
-                    printf("%s\n", prueba);
-                    limpiarNumero(prueba);
-                    printf("%s\n", prueba);
+                    pan_inicializarLista(pantallas, CANTIDAD_PANTALLAS);
+                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "aaaa", 0, "aaaa", 1.2));
+                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "bbbb", 1, "bbbb", 3.0));
+                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "cccc", 0, "cccc", 2.0));
+                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "dddd", 1, "dddd", 1.5));
+
+                    pan_modificarPantalla(pantallas, CANTIDAD_PANTALLAS);
                     break;
                 case 3:
                     break;

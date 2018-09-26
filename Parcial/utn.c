@@ -17,7 +17,7 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
             printf(mensaje);
             getString(cadenaAux, sizeof(cadenaAux));
 
-            if(esNumero(cadenaAux)==VERDADERO)
+            if(esNumero(cadenaAux)==TRUE)
             {
                 numeroBufferAux=atoi(cadenaAux);
                 if(numeroBufferAux<maximo && numeroBufferAux>minimo)
@@ -28,17 +28,19 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
                 }
                 else
                 {
-                    system("cls");
+                    //system("cls");//windows
+                    system("clear");//linux
                     printf(mensajeError);
                 }
             }
             else
             {
-                system("cls");
+                //system("cls");//windows
+                system("clear");//linux
                 printf(mensajeError);
             }
-            fflush(stdin);
-            //__fpurge(stdin);
+            //fflush(stdin);//windows
+            __fpurge(stdin);//linux
             intentos--;
         }while(intentos>0);
     }
@@ -55,7 +57,7 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
         do{
             printf(mensaje);
             getString(cadenaAux, sizeof(cadenaAux));
-            if(esDecimal(cadenaAux)==VERDADERO)
+            if(esDecimal(cadenaAux)==TRUE)
             {
                 decimalAux=atof(cadenaAux);
 
@@ -67,15 +69,19 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
                 }
                 else
                 {
+                    //system("cls");//windows
+                    system("clear");//linux
                     printf(mensajeError);
                 }
             }
             else
             {
+                //system("cls");//windows
+                system("clear");//linux
                 printf(mensajeError);
             }
-            fflush(stdin);
-            //__fpurge(stdin);
+            //fflush(stdin);//windows
+            __fpurge(stdin);//linux
             intentos--;
         }while(intentos>0);
     }
@@ -96,6 +102,8 @@ int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char
             }
             else
             {
+                //system("cls");//windows
+                system("clear");//linux
                 printf(mensajeError);
             }
             intentos--;
@@ -106,14 +114,14 @@ int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char
 
 static int esNumero(char* pCadena)
 {
-    int retorno=VERDADERO;
+    int retorno=TRUE;
     int i=0;
 
     while(pCadena[i]!=0 && pCadena[i]!=10)
     {
         if((pCadena[i]<48 || pCadena[i]>57) && pCadena[i]!=45)
         {
-            retorno=FALSO;
+            retorno=FALSE;
             break;
         }
          i++;
@@ -123,7 +131,7 @@ static int esNumero(char* pCadena)
 
 static int esDecimal(char* pCadena)
 {
-    int retorno=FALSO;
+    int retorno=FALSE;
     int i=0;
     int contadorSimbolos=0;
     char primerValor;
@@ -151,28 +159,28 @@ static int esDecimal(char* pCadena)
 
         if((pCadena[i]>47 && pCadena[i]<58) || pCadena[i]==46 || pCadena[i]==45)
         {
-            retorno=VERDADERO;
+            retorno=TRUE;
         }
         else
         {
-            retorno=FALSO;
+            retorno=FALSE;
             break;
         }
         i++;
     }
     if(contadorSimbolos>1)
     {
-        retorno=FALSO;
+        retorno=FALSE;
     }
 
     if(primerValor==45)
     {
-        retorno=VERDADERO;
+        retorno=TRUE;
     }
 
     if(primerValor==46 || ultimoValor==46)
     {
-        retorno=FALSO;
+        retorno=FALSE;
     }
 
     return retorno;
@@ -213,14 +221,14 @@ static int getString(char* pBuffer, int limite)
 
 static int contieneNumero(char* cadena)
 {
-    int retorno=FALSO;
+    int retorno=FALSE;
     int i=0;
 
     while(cadena[i]!='\0')
     {
         if(cadena[i]>47 && cadena[i]<58)
         {
-            retorno=VERDADERO;
+            retorno=TRUE;
             break;
         }
         i++;
@@ -230,14 +238,14 @@ static int contieneNumero(char* cadena)
 
 int utn_contieneSimboloPesos(char* cadena)
 {
-    int retorno=FALSO;
+    int retorno=FALSE;
     int i=0;
 
     while(cadena[i]!='\0')
     {
         if(cadena[i]==36)
         {
-            retorno=VERDADERO;
+            retorno=TRUE;
             break;
         }
         i++;
@@ -277,18 +285,18 @@ int utn_ordenarArray(int *pArray,int limite,int flagMaxMin){
     int i=0;
     int aux;
     int retorno=ERROR;
-    int flag=VERDADERO;
+    int flag=TRUE;
 
     if(pArray!=NULL&&limite>0){
         retorno=TODOOK;
         aux=pArray[i];
-        while(flag==VERDADERO){
-            flag=FALSO;
+        while(flag==TRUE){
+            flag=FALSE;
             for(i=0;i<(limite-1);i++){
                 if( (flagMaxMin==1 && pArray[i] > pArray[i+1]) ||
                     (flagMaxMin==0 && pArray[i] < pArray[i+1]))
                 {
-                    flag=VERDADERO;
+                    flag=TRUE;
                     aux=pArray[i];
                     pArray[i]=pArray[i+1];
                     pArray[i+1]=aux;
@@ -332,10 +340,10 @@ int utn_getPrecio(float* decimal, int intentos, int maximo, int minimo, char* me
         if(utn_getCadena(decimalAux, sizeof(decimalAux), intentos, mensaje, mensajeError)==TODOOK)
         {
             limpiarNumero(decimalAux);
-            if(esDecimal(decimalAux)==VERDADERO)
+            if(esDecimal(decimalAux)==TRUE)
             {
                 *decimal=atof(decimalAux);
-                retorno=VERDADERO;
+                retorno=TRUE;
             }
         }
     }

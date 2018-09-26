@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <stdio_ext.h>
-#define VERDADERO 1
-#define FALSO 0
+#include <stdio_ext.h>
+#define TRUE 1
+#define FALSE 0
 #define ERROR -1
 #define TODOOK 0
 int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError);

@@ -1,26 +1,24 @@
 # depslib dependency file v1.0
-1537483955 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/contrataciones.c
-	<stdio.h>
-	<stdlib.h>
-	"utn.h"
-	<string.h>
+1537998320 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/contrataciones.c
 
-1537404302 /home/alumno/Escritorio/Bravo/Parcial/Parcial/utn.h
-
-1537483955 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/main.c
-	<stdio.h>
-	<stdlib.h>
-	"utn.h"
-	<string.h>
-
-1537484835 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.c
+1538000924 /home/alumno/Escritorio/Bravo/Parcial/Parcial/utn.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<stdio_ext.h>
+
+1538003243 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/main.c
 	"utn.h"
 	"pantalla.h"
 
-1537484239 /home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.h
+1538003401 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.c
+	"pantalla.h"
+
+1538002691 /home/alumno/Escritorio/Bravo/Parcial/Parcial/pantalla.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
 
 1537659325 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\contrataciones.c
 
@@ -43,5 +41,8 @@
 	"utn.h"
 
 1537940460 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\utn.c
+	"utn.h"
+
+1538001353 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/utn.c
 	"utn.h"
 
