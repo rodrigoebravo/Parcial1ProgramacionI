@@ -9,8 +9,7 @@
 #define ERROR -1
 #define TODOOK 0
 int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError);
-int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError);
+int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError);
 int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char* mensajeError);
-int utn_contieneNumero(char* cadena);
-void utn_toUpperCadena(char* cadena, int len);
+void limpiarNumero(char* cadena);
 #endif // UTN_H_INCLUDED

@@ -11,7 +11,8 @@ int main()
 {
     int opcionIngresada=-1;
     int id;
-    int prueba;
+    char prueba[10]="$12.392";
+
     Pantalla pantallas[CANTIDAD_PANTALLAS];
     do{
         if(mostrarMenu(&opcionIngresada, 2)==TODOOK)
@@ -23,11 +24,9 @@ int main()
                     printPantalla(pantallas, CANTIDAD_PANTALLAS, id);
                     break;
                 case 2:
-
-                    /*printf("%s\n", prueba);
-                    utn_getPrecio(prueba,sizeof(prueba));
-                    printf("%s\n", prueba);*/
-                    //printf("%d\n", utn_getEntero(&prueba, 3, 300, -300,"ingrese num\n", "error!\n"));
+                    printf("%s\n", prueba);
+                    limpiarNumero(prueba);
+                    printf("%s\n", prueba);
                     break;
                 case 3:
                     break;

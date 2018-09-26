@@ -25,7 +25,7 @@ int pan_Alta(Pantalla* pan, int len, int index)
     int tipoAux;
     char nombreAux[100];
     char direccionAux[100];
-    char precioAux[10];
+    float precioAux;
     char pedidoTipo[]="Ingrese tipo de pantalla( 0-LED 1-LCD): \n";
 
     if(pan!=NULL && len > 0 && index>=0 && index<len)
@@ -37,12 +37,12 @@ int pan_Alta(Pantalla* pan, int len, int index)
             {
                 if(utn_getCadena(direccionAux, 100, 3, "Ingrese direccion\n","Error al ingresar\n" )==TODOOK)
                 {
-                    if(utn_getDecimal(precioAux,3,3000,0,"Ingrese precio: \n", "Error al ingresar precio\n")==TODOOK)
+                    if(utn_getDecimal(&precioAux,3,3000,0,"Ingrese precio: \n", "Error al ingresar precio\n")==TODOOK)
                     {
                         pan[index].tipo=tipoAux;
                         strncpy(pan[index].nombre,nombreAux,sizeof(nombreAux));
                         strncpy(pan[index].direccion,direccionAux,sizeof(direccionAux));
-                        pan[index].precio=atof(precioAux);
+                        pan[index].precio=precioAux;
                         pan[index].id=generarID();
                         pan[index].isEmpty=FALSO;
                         retorno=0;

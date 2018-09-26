@@ -3,6 +3,8 @@
 static int esNumero(char* pCadena);
 static int esDecimal(char* pCadena);
 static int getString(char* pBuffer, int limite);
+static int contieneNumero(char* cadena);
+static void utn_toUpperCadena(char* cadena, int len);
 
 int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
@@ -43,20 +45,23 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
     return retorno;
 }
 
-int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
+int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
     int retorno=ERROR;
-    float decimal;
+    char cadenaAux[4096];
+    float decimalAux;
     if(numeroBuffer!=NULL && intentos>0 && maximo >= minimo && mensaje != NULL && mensajeError != NULL)
     {
         do{
             printf(mensaje);
-            getString(numeroBuffer, sizeof(numeroBuffer));
-            if(esDecimal(numeroBuffer)==VERDADERO)
+            getString(cadenaAux, sizeof(cadenaAux));
+            if(esDecimal(cadenaAux)==VERDADERO)
             {
-                decimal=atof(numeroBuffer);
-                if(decimal<maximo && decimal>minimo)
+                decimalAux=atof(cadenaAux);
+
+                if(decimalAux<maximo && decimalAux>minimo)
                 {
+                    *numeroBuffer=decimalAux;
                     retorno=TODOOK;
                     break;
                 }
@@ -76,6 +81,7 @@ int utn_getDecimal(char* numeroBuffer, int intentos, int maximo, int minimo, cha
     }
     return retorno;
 }
+
 int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char* mensajeError)
 {
     int retorno=ERROR;
@@ -97,6 +103,7 @@ int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char
     }
     return retorno;
 }
+
 static int esNumero(char* pCadena)
 {
     int retorno=VERDADERO;
@@ -113,6 +120,7 @@ static int esNumero(char* pCadena)
     }
     return retorno;
 }
+
 static int esDecimal(char* pCadena)
 {
     int retorno=FALSO;
@@ -152,7 +160,6 @@ static int esDecimal(char* pCadena)
         }
         i++;
     }
-
     if(contadorSimbolos>1)
     {
         retorno=FALSO;
@@ -204,7 +211,7 @@ static int getString(char* pBuffer, int limite)
 //utn_getNombreApellido (obliga a poner 1 espacio)
 //
 
-int utn_contieneNumero(char* cadena)
+static int contieneNumero(char* cadena)
 {
     int retorno=FALSO;
     int i=0;
@@ -237,8 +244,63 @@ int utn_contieneSimboloPesos(char* cadena)
     }
     return retorno;
 }
+//CORREGIR
+void limpiarNumero(char* cadena)
+{
+    int i=0;
+    int j;
+    char cadenaAux[sizeof(cadena)];
+    char cadenaAuxDos[sizeof(cadena)];
 
-void utn_toUpperCadena(char* cadena, int len)
+    strncpy(cadenaAux, cadena, strlen(cadena));
+    strncpy(cadenaAuxDos, cadena, strlen(cadena));
+    while(cadenaAuxDos[i]!='\0')
+    {
+        if((cadenaAux[i]<48 || cadenaAux[i]>57) && cadenaAux[i]!=45)
+        {
+            printf("---------------\n");
+            j=i;
+            while(cadenaAux[j]!='\0')
+            {
+                printf("cadenaAux[j](%c)=cadenaAuxDos[j+1](%c)\n",cadenaAux[j], cadenaAuxDos[j+1]);
+                cadenaAux[j]=cadenaAuxDos[j+1];
+                j++;
+            }
+            strncpy(cadenaAuxDos, cadenaAux, strlen(cadena));
+        }
+        i++;
+    }
+    strncpy(cadena, cadenaAux, strlen(cadenaAux));
+}
+
+int utn_ordenarArray(int *pArray,int limite,int flagMaxMin){
+    int i=0;
+    int aux;
+    int retorno=ERROR;
+    int flag=VERDADERO;
+
+    if(pArray!=NULL&&limite>0){
+        retorno=TODOOK;
+        aux=pArray[i];
+        while(flag==VERDADERO){
+            flag=FALSO;
+            for(i=0;i<(limite-1);i++){
+                if( (flagMaxMin==1 && pArray[i] > pArray[i+1]) ||
+                    (flagMaxMin==0 && pArray[i] < pArray[i+1]))
+                {
+                    flag=VERDADERO;
+                    aux=pArray[i];
+                    pArray[i]=pArray[i+1];
+                    pArray[i+1]=aux;
+                }
+            }
+        }
+
+    }
+    return retorno;
+}
+
+static void utn_toUpperCadena(char* cadena, int len)
 {
     char cadenaAux[len];
     int i;
@@ -261,13 +323,21 @@ void utn_toUpperCadena(char* cadena, int len)
     strncpy(cadena, cadenaAux, len);
 }
 
-int utn_getPrecio(char* cadena, int len, int intentos, char* mensaje, char* mensajeError)
+int utn_getPrecio(float* decimal, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
     int retorno=ERROR;
-
-    if(utn_getCadena(cadena, len, intentos, mensaje, mensajeError)==TODOOK)
+    char decimalAux[4096];
+    if(decimal!=NULL && intentos>0 && maximo>=minimo && mensaje!=NULL && mensajeError!=NULL)
     {
-
+        if(utn_getCadena(decimalAux, sizeof(decimalAux), intentos, mensaje, mensajeError)==TODOOK)
+        {
+            limpiarNumero(decimalAux);
+            if(esDecimal(decimalAux)==VERDADERO)
+            {
+                *decimal=atof(decimalAux);
+                retorno=VERDADERO;
+            }
+        }
     }
     return retorno;
 }
