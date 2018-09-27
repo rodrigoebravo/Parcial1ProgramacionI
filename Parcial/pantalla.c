@@ -209,7 +209,19 @@ int pan_BajaPorPosicion(Pantalla* pan, int lenPan, int index, Contratacion* con,
     return retorno;
 }
 
-void contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon)
+int contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon)
 {
+    int retorno=ERROR;
+    int idContratar;
+    if(pan!=NULL && con!=null && lenPan>0 && lenCon>0)
+    {
+        if(utn_getEntero(&idContratar, 3, lenPan, -1, "Ingrese ID de pantalla a contratar\n", "Error al cargar el ID de pantalla a contratar")==TODOOK)
+        {
+            if(pan_pantallaVacia(Pantalla, lenPan, idContratar)==FALSE)
+            {
 
+            }
+        }
+    }
+    return retorno;
 }
