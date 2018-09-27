@@ -1,5 +1,6 @@
 #include "utn.h"
 #include "pantalla.h"
+#include "contrataciones.h"
 #define CANTIDAD_PANTALLAS 100
 #define CANTIDAD_CONTRATACIONES 1000
 void limpiarScreen(void);
@@ -7,7 +8,8 @@ int mostrarMenu(int* respuesta, int len);
 void printMenu(void);
 void printPantallaPorPosicion(Pantalla* pantalla, int len, int posicion);
 void printPantallaPorID(Pantalla* pantalla, int len, int id);
-
+void llenarPantallas(Pantalla* pantallas);
+void imprimirIDPantallasConInfo(Pantalla* pantallas);
 int main()
 {
     int opcionIngresada=-1;
@@ -15,6 +17,8 @@ int main()
     //char prueba[10]="$12.392";
 
     Pantalla pantallas[CANTIDAD_PANTALLAS];
+    Contratacion contrataciones[CANTIDAD_CONTRATACIONES];
+    llenarPantallas(pantallas);
     do{
         if(mostrarMenu(&opcionIngresada, 2)==TODOOK)
         {
@@ -22,25 +26,20 @@ int main()
             {
                 case 1:
                     id=pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
-                    //printPantalla(pantallas, CANTIDAD_PANTALLAS, id);
-                    //system("cls");
-                    system("clear");
-                    printf("%d", id);
-
+                    printf("El ID ingresado es: %d \n", id);
                     opcionIngresada=ERROR;
                     break;
                 case 2:
-                    pan_inicializarLista(pantallas, CANTIDAD_PANTALLAS);
-                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "aaaa", 0, "aaaa", 1.2));
-                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "bbbb", 1, "bbbb", 3.0));
-                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "cccc", 0, "cccc", 2.0));
-                    printf("%d\n",pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "dddd", 1, "dddd", 1.5));
-
                     pan_modificarPantallaPorID(pantallas, CANTIDAD_PANTALLAS);
+                    opcionIngresada=ERROR;
                     break;
                 case 3:
+                    pan_bajaPantallaPorID(pantallas, CANTIDAD_PANTALLAS, contrataciones, CANTIDAD_CONTRATACIONES);
+                    opcionIngresada=ERROR;
                     break;
                 case 4:
+                    imprimirIDPantallasConInfo(pantallas);
+                    contratarPantallasPorID(pantallas, CANTIDAD_PANTALLAS, contrataciones, CANTIDAD_CONTRATACIONES);
                     break;
                 case 5:
                     break;
@@ -69,7 +68,6 @@ int mostrarMenu(int* respuesta, int len)
 
     if(utn_getEntero(respuesta, 3, 10, 0, "Ingrese: ", "Error!\n")==TODOOK)
     {
-        //*respuestaEntero=atoi(respuesta);
         retorno=TODOOK;
     }
     return retorno;
@@ -112,6 +110,34 @@ void printPantallaPorID(Pantalla* pantalla, int len, int id)
                     pantalla[i].precio,
                     pantalla[i].isEmpty);
             break;
+        }
+    }
+}
+
+void llenarPantallas(Pantalla* pantallas)
+{
+    pan_inicializarLista(pantallas, CANTIDAD_PANTALLAS);
+    pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "aaaa", 0, "aaaa", 1.2);
+    pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "bbbb", 1, "bbbb", 3.0);
+    pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "cccc", 0, "cccc", 2.0);
+    pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "dddd", 1, "dddd", 1.5);
+}
+
+void imprimirIDPantallasConInfo(Pantalla* pantallas)
+{
+    int len=CANTIDAD_PANTALLAS;
+    int i;
+    for(i=0; i<len; i++)
+    {
+        if(pantallas[i].isEmpty==FALSE)
+        {
+                    printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\n",
+                    pantallas[i].id,
+                    pantallas[i].tipo,
+                    pantallas[i].nombre,
+                    pantallas[i].direccion,
+                    pantallas[i].precio);
+                    printf("****************************\n");
         }
     }
 }

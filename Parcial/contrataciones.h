@@ -11,7 +11,13 @@ typedef struct
     char cuit[20];
     int isEmpty;
 }Contratacion;
-#define FALSO 0
-#define VERDADERO 1
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#define FALSE 0
+#define TRUE 1
+int con_inicializarLista(Contratacion* con, int len);
+
 
 #endif // CONTRATACIONES_H_INCLUDED

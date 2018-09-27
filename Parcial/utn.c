@@ -3,8 +3,8 @@
 static int esNumero(char* pCadena);
 static int esDecimal(char* pCadena);
 static int getString(char* pBuffer, int limite);
-static int contieneNumero(char* cadena);
-static void utn_toUpperCadena(char* cadena, int len);
+//static int contieneNumero(char* cadena);
+//static void utn_toUpperCadena(char* cadena, int len);
 
 int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
@@ -219,6 +219,7 @@ static int getString(char* pBuffer, int limite)
 //utn_getNombreApellido (obliga a poner 1 espacio)
 //
 
+/*
 static int contieneNumero(char* cadena)
 {
     int retorno=FALSE;
@@ -235,7 +236,7 @@ static int contieneNumero(char* cadena)
     }
     return retorno;
 }
-
+*/
 int utn_contieneSimboloPesos(char* cadena)
 {
     int retorno=FALSE;
@@ -308,7 +309,7 @@ int utn_ordenarArray(int *pArray,int limite,int flagMaxMin){
     return retorno;
 }
 
-static void utn_toUpperCadena(char* cadena, int len)
+/*static void utn_toUpperCadena(char* cadena, int len)
 {
     char cadenaAux[len];
     int i;
@@ -329,7 +330,7 @@ static void utn_toUpperCadena(char* cadena, int len)
         }
     }
     strncpy(cadena, cadenaAux, len);
-}
+}*/
 
 int utn_getPrecio(float* decimal, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {

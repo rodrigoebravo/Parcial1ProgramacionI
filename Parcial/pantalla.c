@@ -1,9 +1,11 @@
 #include "pantalla.h"
+#include "contrataciones.h"
 
 static int generarID(void);
 static int pan_getIdVacio(Pantalla* pan, int len);
 static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* indexRetorno);
 int pan_pantallaVacia(Pantalla* pantalla, int len, int index);
+int pan_BajaPorPosicion(Pantalla* pan, int lenPan, int index, Contratacion* con, int lenCon);
 
 
 
@@ -29,12 +31,11 @@ int pan_Alta(Pantalla* pan, int len, int index)
     char nombreAux[100];
     char direccionAux[100];
     float precioAux;
-    char pedidoTipo[]="Ingrese tipo de pantalla( 0-LED 1-LCD): \n";
 
     if(pan!=NULL && len > 0 && index>=0 && index<len)
     {
 
-        if(utn_getEntero(&tipoAux, 3, 2, -1, pedidoTipo, "Error al ingresar tipo\n")==TODOOK)
+        if(utn_getEntero(&tipoAux, 3, 2, -1, "Ingrese tipo de pantalla( 0-LED 1-LCD): \n", "Error al ingresar tipo\n")==TODOOK)
         {
             if(utn_getCadena(nombreAux, 100, 3,"Ingrese nombre:\n","Error en nombre!\n")==TODOOK)
             {
@@ -163,4 +164,52 @@ int pan_alta_forzada(Pantalla* pantallas, int len, char* nombre, int tipo, char*
         pantallas[index].isEmpty=FALSE;
     }
     return index;
+}
+
+
+int pan_bajaPantallaPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon)
+{
+    int retorno=ERROR;
+    int idBaja;
+    int indexBaja;
+
+    if(pan!=NULL && lenPan>0)
+    {
+        if(utn_getEntero(&idBaja, 3, lenPan, -1, "Ingrese ID a dar de baja\n", "Error al dar de baja el ID\n")==TODOOK)
+        {
+            if(pan_obtenerPosicionPorID(pan, lenPan, idBaja, &indexBaja)==TODOOK)
+            {
+                if(pan_pantallaVacia(pan, lenPan, indexBaja)==FALSE)
+                {
+                    retorno=pan_BajaPorPosicion(pan, lenPan, indexBaja, con, lenCon);
+                }
+            }
+        }
+    }
+
+    return retorno;
+}
+
+int pan_BajaPorPosicion(Pantalla* pan, int lenPan, int index, Contratacion* con, int lenCon)
+{
+    int retorno=ERROR;
+    int i;
+    if(pan!=NULL && con!=NULL && lenCon>0 && lenPan>0 && index>=0)
+    {
+        pan[index].isEmpty=TRUE;
+        for(i=0; i<lenCon; i++)
+        {
+            if(con[i].idPantalla==pan[index].id && con[i].isEmpty==FALSE)
+            {
+                con[i].isEmpty=TRUE;
+            }
+        }
+        retorno=TODOOK;
+    }
+    return retorno;
+}
+
+void contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon)
+{
+
 }
