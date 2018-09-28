@@ -4,10 +4,6 @@
 static int generarID(void);
 static int pan_getIdVacio(Pantalla* pan, int len);
 static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* indexRetorno);
-int pan_pantallaVacia(Pantalla* pantalla, int len, int index);
-int pan_BajaPorPosicion(Pantalla* pan, int lenPan, int index, Contratacion* con, int lenCon);
-
-
 
 int pan_inicializarLista(Pantalla* pan, int len)
 {
@@ -166,7 +162,6 @@ int pan_alta_forzada(Pantalla* pantallas, int len, char* nombre, int tipo, char*
     return index;
 }
 
-
 int pan_bajaPantallaPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon)
 {
     int retorno=ERROR;
@@ -213,14 +208,14 @@ int contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int le
 {
     int retorno=ERROR;
     int idContratar;
-    if(pan!=NULL && con!=null && lenPan>0 && lenCon>0)
+    if(pan!=NULL && con!=NULL && lenPan>0 && lenCon>0)
     {
         if(utn_getEntero(&idContratar, 3, lenPan, -1, "Ingrese ID de pantalla a contratar\n", "Error al cargar el ID de pantalla a contratar")==TODOOK)
         {
-            if(pan_pantallaVacia(Pantalla, lenPan, idContratar)==FALSE)
+            /*if(pan_pantallaVacia(Pantalla, lenPan, idContratar)==FALSE)
             {
 
-            }
+            }*/
         }
     }
     return retorno;

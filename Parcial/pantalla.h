@@ -40,5 +40,5 @@ int pan_modificarPantallaPorID(Pantalla* pantalla, int len);
 int pan_alta_forzada(Pantalla* pantallas, int len, char* nombre, int tipo, char* direccion, float precio);
 int pan_BajaPorPosicion(Pantalla* pan, int lenPan, int index, Contratacion* con, int lenCon);
 int pan_bajaPantallaPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon);
-void contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon);
+int contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon);
 #endif // PANTALLA_H_INCLUDED

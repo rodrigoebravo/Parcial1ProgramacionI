@@ -24,33 +24,43 @@
 	"utn.h"
 	"contrataciones.h"
 
-1537659325 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\contrataciones.c
+1538100791 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\contrataciones.c
+	"contrataciones.h"
 
-1537939735 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\utn.h
+1538104385 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\utn.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1537939841 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\main.c
+1538100791 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\main.c
 	"utn.h"
 	"pantalla.h"
+	"contrataciones.h"
 
-1537936045 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\pantalla.c
+1538100791 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\pantalla.c
 	"pantalla.h"
+	"contrataciones.h"
 
-1537690081 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\pantalla.h
+1538100791 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\pantalla.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"utn.h"
+	"contrataciones.h"
 
-1537940460 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\utn.c
+1538100791 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\utn.c
 	"utn.h"
 
 1538009491 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/utn.c
 	"utn.h"
 
 1538007049 /home/alumno/Escritorio/Bravo/Parcial/Parcial/contrataciones.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1538100791 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\contrataciones.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

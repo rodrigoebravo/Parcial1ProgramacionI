@@ -3,6 +3,7 @@
 static int esNumero(char* pCadena);
 static int esDecimal(char* pCadena);
 static int getString(char* pBuffer, int limite);
+static void limpiarBuffer(void);
 //static int contieneNumero(char* cadena);
 //static void utn_toUpperCadena(char* cadena, int len);
 
@@ -13,7 +14,8 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
     int numeroBufferAux;
     if(numeroBuffer!=NULL && intentos>0 && maximo >= minimo && mensaje != NULL && mensajeError != NULL)
     {
-        do{
+        do
+        {
             printf(mensaje);
             getString(cadenaAux, sizeof(cadenaAux));
 
@@ -35,14 +37,15 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
             }
             else
             {
-                //system("cls");//windows
-                system("clear");//linux
+                limpiarBuffer();
                 printf(mensajeError);
             }
-            //fflush(stdin);//windows
-            __fpurge(stdin);//linux
+
+            limpiarBuffer();
             intentos--;
-        }while(intentos>0);
+
+        }
+        while(intentos>0);
     }
     return retorno;
 }
@@ -54,7 +57,8 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
     float decimalAux;
     if(numeroBuffer!=NULL && intentos>0 && maximo >= minimo && mensaje != NULL && mensajeError != NULL)
     {
-        do{
+        do
+        {
             printf(mensaje);
             getString(cadenaAux, sizeof(cadenaAux));
             if(esDecimal(cadenaAux)==TRUE)
@@ -76,14 +80,13 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
             }
             else
             {
-                //system("cls");//windows
-                system("clear");//linux
+                limpiarBuffer();
                 printf(mensajeError);
             }
-            //fflush(stdin);//windows
-            __fpurge(stdin);//linux
+            limpiarBuffer();
             intentos--;
-        }while(intentos>0);
+        }
+        while(intentos>0);
     }
     return retorno;
 }
@@ -93,7 +96,8 @@ int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char
     int retorno=ERROR;
     if(cadenaBuffer!=NULL && intentos>0 && mensaje!=NULL && mensajeError!=NULL)
     {
-        do{
+        do
+        {
             printf(mensaje);
             if(getString(cadenaBuffer, len)==TODOOK)
             {
@@ -107,7 +111,8 @@ int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char
                 printf(mensajeError);
             }
             intentos--;
-        }while(intentos>0);
+        }
+        while(intentos>0);
     }
     return retorno;
 }
@@ -124,7 +129,7 @@ static int esNumero(char* pCadena)
             retorno=FALSE;
             break;
         }
-         i++;
+        i++;
     }
     return retorno;
 }
@@ -193,8 +198,7 @@ static int getString(char* pBuffer, int limite)
 
     if(pBuffer!=NULL && limite>0)
     {
-        //__fpurge(stdin);
-        fflush(stdin);
+        limpiarBuffer();
         fgets(bufferString, sizeof(bufferString), stdin);
 
         if(bufferString[strlen(bufferString)-1]=='\n')
@@ -282,20 +286,24 @@ void limpiarNumero(char* cadena)
     strncpy(cadena, cadenaAux, strlen(cadenaAux));
 }
 
-int utn_ordenarArray(int *pArray,int limite,int flagMaxMin){
+int utn_ordenarArray(int *pArray,int limite,int flagMaxMin)
+{
     int i=0;
     int aux;
     int retorno=ERROR;
     int flag=TRUE;
 
-    if(pArray!=NULL&&limite>0){
+    if(pArray!=NULL&&limite>0)
+    {
         retorno=TODOOK;
         aux=pArray[i];
-        while(flag==TRUE){
+        while(flag==TRUE)
+        {
             flag=FALSE;
-            for(i=0;i<(limite-1);i++){
+            for(i=0; i<(limite-1); i++)
+            {
                 if( (flagMaxMin==1 && pArray[i] > pArray[i+1]) ||
-                    (flagMaxMin==0 && pArray[i] < pArray[i+1]))
+                        (flagMaxMin==0 && pArray[i] < pArray[i+1]))
                 {
                     flag=TRUE;
                     aux=pArray[i];
@@ -349,4 +357,10 @@ int utn_getPrecio(float* decimal, int intentos, int maximo, int minimo, char* me
         }
     }
     return retorno;
+}
+
+static void limpiarBuffer(void)
+{
+    //__fpurge(stdin);
+    fflush(stdin);
 }

@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio_ext.h>
+//#include <stdio_ext.h>
 #define TRUE 1
 #define FALSE 0
 #define ERROR -1
