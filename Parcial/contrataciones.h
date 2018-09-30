@@ -4,7 +4,7 @@
 typedef struct
 {
     int id;
-    char video;
+    char video[20];
     float precio;
     int dias;
     int idPantalla;
@@ -18,6 +18,7 @@ typedef struct
 #define FALSE 0
 #define TRUE 1
 int con_inicializarLista(Contratacion* con, int len);
+int con_Alta(Contratacion* con, int len, int index);
 
 
 #endif // CONTRATACIONES_H_INCLUDED

@@ -4,6 +4,7 @@ static int esNumero(char* pCadena);
 static int esDecimal(char* pCadena);
 static int getString(char* pBuffer, int limite);
 static void limpiarBuffer(void);
+static void limpiarScreen(void);
 //static int contieneNumero(char* cadena);
 //static void utn_toUpperCadena(char* cadena, int len);
 
@@ -30,20 +31,18 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
                 }
                 else
                 {
-                    //system("cls");//windows
-                    system("clear");//linux
+                    limpiarBuffer();
+                    limpiarScreen();
                     printf(mensajeError);
                 }
             }
             else
             {
                 limpiarBuffer();
+                limpiarScreen();
                 printf(mensajeError);
             }
-
-            limpiarBuffer();
             intentos--;
-
         }
         while(intentos>0);
     }
@@ -73,8 +72,7 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
                 }
                 else
                 {
-                    //system("cls");//windows
-                    system("clear");//linux
+                    limpiarBuffer();
                     printf(mensajeError);
                 }
             }
@@ -83,7 +81,6 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
                 limpiarBuffer();
                 printf(mensajeError);
             }
-            limpiarBuffer();
             intentos--;
         }
         while(intentos>0);
@@ -106,8 +103,8 @@ int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char
             }
             else
             {
-                //system("cls");//windows
-                system("clear");//linux
+                    //system("cls");//windows
+                    system("clear");//linux
                 printf(mensajeError);
             }
             intentos--;
@@ -363,4 +360,9 @@ static void limpiarBuffer(void)
 {
     //__fpurge(stdin);
     fflush(stdin);
+}
+static void limpiarScreen(void)
+{
+    system("cls");//windows
+    //system("clear");//linux
 }

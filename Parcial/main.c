@@ -15,48 +15,58 @@ void imprimirIDPantallasConInfo(Pantalla* pantallas);
 int main()
 {
 
-    int opcionIngresada=-1;
+    int opcionIngresada=ERROR;
     int id;
 
     Pantalla pantallas[CANTIDAD_PANTALLAS];
     Contratacion contrataciones[CANTIDAD_CONTRATACIONES];
+
+    pan_inicializarLista(pantallas,CANTIDAD_PANTALLAS);
+    con_inicializarLista(contrataciones, CANTIDAD_CONTRATACIONES);
     llenarPantallas(pantallas);
-    do{
+
+    do
+    {
         if(mostrarMenu(&opcionIngresada, 2)==TODOOK)
         {
             switch(opcionIngresada)
             {
-                case 1:
-                    id=pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
-                    printf("El ID ingresado es: %d \n", id);
-                    opcionIngresada=ERROR;
-                    break;
-                case 2:
-                    pan_modificarPantallaPorID(pantallas, CANTIDAD_PANTALLAS);
-                    opcionIngresada=ERROR;
-                    break;
-                case 3:
-                    pan_bajaPantallaPorID(pantallas, CANTIDAD_PANTALLAS, contrataciones, CANTIDAD_CONTRATACIONES);
-                    opcionIngresada=ERROR;
-                    break;
-                case 4:
-                    imprimirIDPantallasConInfo(pantallas);
-                    contratarPantallasPorID(pantallas, CANTIDAD_PANTALLAS, contrataciones, CANTIDAD_CONTRATACIONES);
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-
+            case 1:
+                limpiarScreen();
+                id=pan_darAltaPantalla(pantallas, CANTIDAD_PANTALLAS);
+                printf("El ID ingresado es: %d \n", id);
+                opcionIngresada=ERROR;
+                break;
+            case 2:
+                limpiarScreen();
+                pan_modificarPantallaPorID(pantallas, CANTIDAD_PANTALLAS);
+                opcionIngresada=ERROR;
+                break;
+            case 3:
+                limpiarScreen();
+                imprimirIDPantallasConInfo(pantallas);
+                pan_bajaPantallaPorID(pantallas, CANTIDAD_PANTALLAS, contrataciones, CANTIDAD_CONTRATACIONES);
+                opcionIngresada=ERROR;
+                break;
+            case 4:
+                limpiarScreen();
+                imprimirIDPantallasConInfo(pantallas);
+                contratarPantallasPorID(pantallas, CANTIDAD_PANTALLAS, contrataciones, CANTIDAD_CONTRATACIONES);
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
             }
         }
-    }while(opcionIngresada==ERROR);
+    }
+    while(opcionIngresada==ERROR);
 
     return 0;
 }
@@ -86,30 +96,30 @@ void limpiarScreen(void)
 
 void printPantallaPorPosicion(Pantalla* pantalla, int len, int posicion)
 {
- printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\nEsta vacio?\t%d\nBella Chao!",
-        pantalla[posicion].id,
-        pantalla[posicion].tipo,
-        pantalla[posicion].nombre,
-        pantalla[posicion].direccion,
-        pantalla[posicion].precio,
-        pantalla[posicion].isEmpty);
+    printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\nEsta vacio?\t%d\nBella Chao!",
+           pantalla[posicion].id,
+           pantalla[posicion].tipo,
+           pantalla[posicion].nombre,
+           pantalla[posicion].direccion,
+           pantalla[posicion].precio,
+           pantalla[posicion].isEmpty);
 }
 
 void printPantallaPorID(Pantalla* pantalla, int len, int id)
 {
     int i;
 
-    for(i=0;i<len;i++)
+    for(i=0; i<len; i++)
     {
         if(pantalla[i].id==id)
         {
             printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\nEsta vacio?\t%d\nBella Chao!",
-                    pantalla[i].id,
-                    pantalla[i].tipo,
-                    pantalla[i].nombre,
-                    pantalla[i].direccion,
-                    pantalla[i].precio,
-                    pantalla[i].isEmpty);
+                   pantalla[i].id,
+                   pantalla[i].tipo,
+                   pantalla[i].nombre,
+                   pantalla[i].direccion,
+                   pantalla[i].precio,
+                   pantalla[i].isEmpty);
             break;
         }
     }
@@ -132,13 +142,13 @@ void imprimirIDPantallasConInfo(Pantalla* pantallas)
     {
         if(pantallas[i].isEmpty==FALSE)
         {
-                    printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\n",
-                    pantallas[i].id,
-                    pantallas[i].tipo,
-                    pantallas[i].nombre,
-                    pantallas[i].direccion,
-                    pantallas[i].precio);
-                    printf("****************************\n");
+            printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\n",
+                   pantallas[i].id,
+                   pantallas[i].tipo,
+                   pantallas[i].nombre,
+                   pantallas[i].direccion,
+                   pantallas[i].precio);
+            printf("****************************\n");
         }
     }
 }

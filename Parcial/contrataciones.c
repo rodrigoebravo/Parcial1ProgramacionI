@@ -1,4 +1,7 @@
 #include "contrataciones.h"
+static int con_getIdVacio(Contratacion* con, int len);
+static int generarID(void);
+
 int con_inicializarLista(Contratacion* con, int len)
 {
     int i;
@@ -14,46 +17,68 @@ int con_inicializarLista(Contratacion* con, int len)
     return retorno;
 }
 
-
-/*int con_Alta(Contratacion* pan, int len, int index)
+int con_Alta(Contratacion* con, int len, int indexPan)
 {
-    int id;
-    char video;
-    float precio;
-    int dias;
-    int idPantalla;
-    char cuit[20];
-    int isEmpty;
-
-
-    int retorno=-1;
-    int tipoAux;
-    char nombreAux[100];
-    char direccionAux[100];
+    int idAux;
+    char videoAux[20];
     float precioAux;
+    int diasAux;
+    int idPantallaAux;
+    char cuitAux[20];
 
-    if(pan!=NULL && len > 0 && index>=0 && index<len)
+    int retorno=ERROR;
+
+    if(con!=NULL && len > 0 && indexPan>=0)
     {
-
-        if(utn_getEntero(&tipoAux, 3, 2, -1, "Ingrese tipo de pantalla( 0-LED 1-LCD): \n", "Error al ingresar tipo\n")==TODOOK)
+        if(utn_getCadena(videoAux, 20, 3, "Ingrese video: \n", "Error al ingresar video!\n")==TODOOK)
         {
-            if(utn_getCadena(nombreAux, 100, 3,"Ingrese nombre:\n","Error en nombre!\n")==TODOOK)
+            if(utn_getDecimal(&precioAux, 3, 10000, -1, "Ingrese precio:\n", "Error al ingresar precio!\n")==TODOOK)
             {
-                if(utn_getCadena(direccionAux, 100, 3, "Ingrese direccion\n","Error al ingresar\n" )==TODOOK)
+                if(utn_getEntero(&diasAux, 3, 32, 0, "Ingrese dias contratados:\n", "Error al ingresar dias contratados\n")==TODOOK)
                 {
-                    if(utn_getDecimal(&precioAux,3,3000,0,"Ingrese precio: \n", "Error al ingresar precio\n")==TODOOK)
+                    if(utn_getCadena(cuitAux, 20, 3, "Ingrese CUIT\n", "error al ingresar CUIT\n")==TODOOK)
                     {
-                        pan[index].tipo=tipoAux;
-                        strncpy(pan[index].nombre,nombreAux,sizeof(nombreAux));
-                        strncpy(pan[index].direccion,direccionAux,sizeof(direccionAux));
-                        pan[index].precio=precioAux;
-                        pan[index].id=generarID();
-                        pan[index].isEmpty=FALSE;
-                        retorno=0;
+                        idAux=con_getIdVacio(con, len);
+                        if(idAux != ERROR)
+                        {
+                            con[idAux].id=idAux;
+                            strncpy(con[idAux].video, videoAux, sizeof(videoAux));
+                            con[idAux].precio=precioAux;
+                            con[idAux].dias=diasAux;
+                            con[idAux].idPantalla=indexPan;
+                            con[idAux].isEmpty=FALSE;
+                            strncpy(con[idAux].cuit, cuitAux, sizeof(cuitAux));
+                            retorno=TODOOK;
+                        }
                     }
                 }
             }
         }
     }
     return retorno;
-}*/
+}
+
+static int con_getIdVacio(Contratacion* con, int len)
+{
+    int i=0;
+    int retorno=ERROR;
+    if(con !=NULL && len>0)
+    {
+        for(i=0; i<len; i++)
+        {
+            if(con[i].isEmpty==TRUE)
+            {
+                retorno=i;
+                break;
+            }
+        }
+    }
+    return retorno;
+}
+
+static int generarID(void)
+{
+    static int id=-1;
+    id++;
+    return id;
+}

@@ -22,7 +22,7 @@ int pan_inicializarLista(Pantalla* pan, int len)
 
 int pan_Alta(Pantalla* pan, int len, int index)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     int tipoAux;
     char nombreAux[100];
     char direccionAux[100];
@@ -45,7 +45,7 @@ int pan_Alta(Pantalla* pan, int len, int index)
                         pan[index].precio=precioAux;
                         pan[index].id=generarID();
                         pan[index].isEmpty=FALSE;
-                        retorno=0;
+                        retorno=TODOOK;
                     }
                 }
             }
@@ -60,7 +60,6 @@ int pan_darAltaPantalla(Pantalla* pantallas, int len)
     int retorno=ERROR;
     int indexRetorno;
 
-    pan_inicializarLista(pantallas,len);
     id=pan_getIdVacio(pantallas, len);
     pan_Alta(pantallas, len, id);
 
@@ -140,7 +139,7 @@ int pan_pantallaVacia(Pantalla* pantalla, int len, int index)
 {
     int retorno=TRUE;
 
-    if(pantalla!=NULL && index>=0 && len>0)
+    if(pantalla!=NULL && index>=0 && len>0 && index<len)
     {
         retorno=pantalla[index].isEmpty;
     }
@@ -212,10 +211,10 @@ int contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int le
     {
         if(utn_getEntero(&idContratar, 3, lenPan, -1, "Ingrese ID de pantalla a contratar\n", "Error al cargar el ID de pantalla a contratar")==TODOOK)
         {
-            /*if(pan_pantallaVacia(Pantalla, lenPan, idContratar)==FALSE)
+            if(pan_pantallaVacia(pan, lenPan, idContratar)==FALSE)
             {
-
-            }*/
+                retorno=con_Alta(con, lenCon, idContratar);
+            }
         }
     }
     return retorno;
