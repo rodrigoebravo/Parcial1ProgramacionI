@@ -366,3 +366,13 @@ static void limpiarScreen(void)
     system("cls");//windows
     //system("clear");//linux
 }
+
+int esCuit(char* cuit, int len)
+{
+    int retorno=FALSE;
+    if(cuit!=NULL && (len > 0 || len < 11))
+    {
+        retorno=esNumero(cuit);
+    }
+    return retorno;
+}

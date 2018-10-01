@@ -12,4 +12,5 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
 int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError);
 int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char* mensajeError);
 void limpiarNumero(char* cadena);
+int esCuit(char* cuit, int len);
 #endif // UTN_H_INCLUDED

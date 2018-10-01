@@ -30,7 +30,6 @@ int pan_Alta(Pantalla* pan, int len, int index)
 
     if(pan!=NULL && len > 0 && index>=0 && index<len)
     {
-
         if(utn_getEntero(&tipoAux, 3, 2, -1, "Ingrese tipo de pantalla( 0-LED 1-LCD): \n", "Error al ingresar tipo\n")==TODOOK)
         {
             if(utn_getCadena(nombreAux, 100, 3,"Ingrese nombre:\n","Error en nombre!\n")==TODOOK)
@@ -213,9 +212,10 @@ int contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int le
         {
             if(pan_pantallaVacia(pan, lenPan, idContratar)==FALSE)
             {
-                retorno=con_Alta(con, lenCon, idContratar);
+                retorno=con_Alta(con, lenCon, pan, lenPan, idContratar);
             }
         }
     }
     return retorno;
 }
+

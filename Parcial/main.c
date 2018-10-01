@@ -10,7 +10,10 @@ void limpiarScreen(void);
 void printPantallaPorPosicion(Pantalla* pantalla, int len, int posicion);
 void printPantallaPorID(Pantalla* pantalla, int len, int id);
 void llenarPantallas(Pantalla* pantallas);
+void llenarContratacion(Contratacion* con);
 void imprimirIDPantallasConInfo(Pantalla* pantallas);
+void imprimirContratacionesConInfo(Contratacion* con);
+
 
 int main()
 {
@@ -21,9 +24,8 @@ int main()
     Pantalla pantallas[CANTIDAD_PANTALLAS];
     Contratacion contrataciones[CANTIDAD_CONTRATACIONES];
 
-    pan_inicializarLista(pantallas,CANTIDAD_PANTALLAS);
-    con_inicializarLista(contrataciones, CANTIDAD_CONTRATACIONES);
     llenarPantallas(pantallas);
+    llenarContratacion(contrataciones);
 
     do
     {
@@ -52,10 +54,21 @@ int main()
                 limpiarScreen();
                 imprimirIDPantallasConInfo(pantallas);
                 contratarPantallasPorID(pantallas, CANTIDAD_PANTALLAS, contrataciones, CANTIDAD_CONTRATACIONES);
+                imprimirContratacionesConInfo(contrataciones);
+                opcionIngresada=ERROR;
                 break;
             case 5:
+                limpiarScreen();
+                if(con_ModificarPorCuit(contrataciones, CANTIDAD_CONTRATACIONES, pantallas, CANTIDAD_PANTALLAS)==TODOOK)
+                {
+                    limpiarScreen();
+                    printf("Modificacion exitosa");
+                }
                 break;
             case 6:
+                imprimirContratacionesConInfo(contrataciones);
+                con_cancelar(contrataciones, CANTIDAD_CONTRATACIONES, pantallas, CANTIDAD_PANTALLAS);
+                imprimirContratacionesConInfo(contrataciones);
                 break;
             case 7:
                 break;
@@ -134,6 +147,16 @@ void llenarPantallas(Pantalla* pantallas)
     pan_alta_forzada(pantallas, CANTIDAD_PANTALLAS, "dddd", 1, "dddd", 1.5);
 }
 
+void llenarContratacion(Contratacion* con)
+{
+    con_inicializarLista(con, CANTIDAD_CONTRATACIONES);
+    con_alta_forzada(con, CANTIDAD_CONTRATACIONES, "asd1", 100, 20, 0, "23359762879");
+    con_alta_forzada(con, CANTIDAD_CONTRATACIONES, "asd2", 96, 18, 1, "23359762879");
+    con_alta_forzada(con, CANTIDAD_CONTRATACIONES, "asd3", 19, 17, 2, "23359762870");
+    con_alta_forzada(con, CANTIDAD_CONTRATACIONES, "asd4", 99, 16, 0, "23359762870");
+    con_alta_forzada(con, CANTIDAD_CONTRATACIONES, "asd5", 102, 15, 2, "23359762870");
+}
+
 void imprimirIDPantallasConInfo(Pantalla* pantallas)
 {
     int len=CANTIDAD_PANTALLAS;
@@ -148,6 +171,26 @@ void imprimirIDPantallasConInfo(Pantalla* pantallas)
                    pantallas[i].nombre,
                    pantallas[i].direccion,
                    pantallas[i].precio);
+            printf("****************************\n");
+        }
+    }
+}
+
+void imprimirContratacionesConInfo(Contratacion* con)
+{
+    int len=CANTIDAD_PANTALLAS;
+    int i;
+    for(i=0; i<len; i++)
+    {
+        if(con[i].isEmpty==FALSE)
+        {
+            printf("id:\t%d\nvideo:\t%s\nprecio:\t%f\ndias:\t%d\nidPantalla:\t%d\ncuit:\t%s\n",
+                    con[i].id,
+                    con[i].video,
+                    con[i].precio,
+                    con[i].dias,
+                    con[i].idPantalla,
+                    con[i].cuit);
             printf("****************************\n");
         }
     }
