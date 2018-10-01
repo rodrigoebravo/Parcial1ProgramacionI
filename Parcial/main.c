@@ -66,7 +66,6 @@ int main()
                 }
                 break;
             case 6:
-                imprimirContratacionesConInfo(contrataciones);
                 con_cancelar(contrataciones, CANTIDAD_CONTRATACIONES, pantallas, CANTIDAD_PANTALLAS);
                 imprimirContratacionesConInfo(contrataciones);
                 break;
@@ -98,7 +97,7 @@ int mostrarMenu(int* respuesta, int len)
 
 void printMenu(void)
 {
-    printf("1- Nueva pantalla\n2- Modificar Pantalla\n3- Eliminar Pantalla\n4- Contratar publicidad\n5- Modificar publicidad\6- Cancelar publicidad\n7- Consultar facturacion por cliente(CUIT)\n8- Listar publicidades contratadas\n9- Listar Pantallas\n");
+    printf("1- Nueva pantalla\n2- Modificar Pantalla\n3- Eliminar Pantalla\n4- Contratar publicidad\n5- Modificar publicidad\n6- Cancelar publicidad\n7- Consultar facturacion por cliente(CUIT)\n8- Listar publicidades contratadas\n9- Listar Pantallas\n");
 }
 
 void limpiarScreen(void)

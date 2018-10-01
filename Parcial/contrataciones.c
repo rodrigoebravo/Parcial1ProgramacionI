@@ -190,9 +190,9 @@ void con_bajaPorCuitId(Contratacion* con, int lenCon, int idBaja, char* cuitAux)
     int i;
     for(i=0; i<lenCon; i++)
     {
-        if(con[i].idPantalla==idBaja && strncpy(con[i].cuit, cuitAux, strlen(cuitAux))==TODOOK)
+        if(con[i].idPantalla==idBaja && strcmp(con[i].cuit, cuitAux)==TODOOK)
         {
-            printf("asdjkvwkdnvcdssssssssssssssssssssssssssssssssss\n");
+            printf("asdjkvwkdnvcdssssssssssssssssssssssssssssssssss i:%d\n", i);
             con[i].isEmpty=TRUE;
         }
     }
