@@ -19,7 +19,7 @@ int pan_inicializarLista(Pantalla* pan, int len)
     }
     return retorno;
 }
-
+/*
 int pan_Alta(Pantalla* pan, int len, int index)
 {
     int retorno=ERROR;
@@ -51,9 +51,9 @@ int pan_Alta(Pantalla* pan, int len, int index)
         }
     }
     return retorno;
-}
+}*/
 
-int pan_darAltaPantalla(Pantalla* pantallas, int len)
+/*int pan_darAltaPantalla(Pantalla* pantallas, int len)
 {
     int id=0;
     int retorno=ERROR;
@@ -67,15 +67,16 @@ int pan_darAltaPantalla(Pantalla* pantallas, int len)
         retorno=indexRetorno;
     }
     return retorno;
-}
+}*/
 
-static int generarID(void)
+/*static int generarID(void)
 {
     static int id=-1;
     id++;
     return id;
-}
+}*/
 
+/*
 static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* indexRetorno)
 {
     int i;
@@ -90,8 +91,9 @@ static int pan_obtenerPosicionPorID(Pantalla* pantallas, int len, int id, int* i
         }
     }
     return retorno;
-}
+}*/
 
+/*
 static int pan_getIdVacio(Pantalla* pan, int len)
 {
     int i=0;
@@ -109,8 +111,9 @@ static int pan_getIdVacio(Pantalla* pan, int len)
     }
     return retorno;
 }
+*/
 
-int pan_modificarPantallaPorID(Pantalla* pantalla, int len)
+/*int pan_modificarPantallaPorID(Pantalla* pantalla, int len)
 {
     int retorno=ERROR;
     int idModificar;
@@ -133,6 +136,7 @@ int pan_modificarPantallaPorID(Pantalla* pantalla, int len)
     }
     return retorno;
 }
+*/
 
 int pan_pantallaVacia(Pantalla* pantalla, int len, int index)
 {

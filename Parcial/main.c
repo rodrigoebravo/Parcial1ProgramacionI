@@ -6,7 +6,6 @@
 
 int mostrarMenu(int* respuesta, int len);
 void printMenu(void);
-void limpiarScreen(void);
 void printPantallaPorPosicion(Pantalla* pantalla, int len, int posicion);
 void printPantallaPorID(Pantalla* pantalla, int len, int id);
 void llenarPantallas(Pantalla* pantallas);
@@ -98,12 +97,6 @@ int mostrarMenu(int* respuesta, int len)
 void printMenu(void)
 {
     printf("1- Nueva pantalla\n2- Modificar Pantalla\n3- Eliminar Pantalla\n4- Contratar publicidad\n5- Modificar publicidad\n6- Cancelar publicidad\n7- Consultar facturacion por cliente(CUIT)\n8- Listar publicidades contratadas\n9- Listar Pantallas\n");
-}
-
-void limpiarScreen(void)
-{
-    system("cls");//windows
-    //system("clear");//linux
 }
 
 void printPantallaPorPosicion(Pantalla* pantalla, int len, int posicion)

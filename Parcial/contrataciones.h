@@ -16,8 +16,6 @@ typedef struct
 #include <string.h>
 #include "utn.h"
 #include "pantalla.h"
-#define FALSE 0
-#define TRUE 1
 int con_inicializarLista(Contratacion* con, int len);
 int con_Alta(Contratacion* con, int lenCon, Pantalla* pan, int lenPan, int indexPan);
 int con_printPantallaPorCuit(Contratacion* con, int lenCon, char* cuit, int lenCuit, Pantalla* pan, int lenPan);
