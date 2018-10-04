@@ -11,7 +11,8 @@ static int generarID(void);
 static int pan_obtenerPosicionPorID(Pantalla* pEntidad, int len, int id, int* indexRetorno);
 static int pan_getIdVacio(Pantalla* pan, int len);
 int pan_modificarPantallaPorID(Pantalla* pantalla, int len);
-
+int pan_bajaPantallaPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon);
+int pan_BajaPorPosicion(Pantalla* pan, int lenPan, int index, Contratacion* con, int lenCon);
 
 int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char* mensaje, char* mensajeError)
 {
@@ -527,3 +528,89 @@ int pan_bajaPantallaPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenC
 
     return retorno;
 }
+
+/*BAJA POR POSICION*/
+int pan_BajaPorPosicion(Pantalla* pan, int lenPan, int index, Contratacion* con, int lenCon)
+{
+    int retorno=ERROR;
+    int i;
+    if(pan!=NULL && con!=NULL && lenCon>0 && lenPan>0 && index>=0)
+    {
+        pan[index].isEmpty=TRUE;
+        for(i=0; i<lenCon; i++)
+        {
+            if(con[i].idPantalla==pan[index].id && con[i].isEmpty==FALSE)
+            {
+                con[i].isEmpty=TRUE;
+            }
+        }
+        retorno=TODOOK;
+    }
+    return retorno;
+}
+
+/*CONTRATA PÁNTALLA POR ID*/
+int contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int lenCon)
+{
+    int retorno=ERROR;
+    int idContratar;
+    if(pan!=NULL && con!=NULL && lenPan>0 && lenCon>0)
+    {
+        if(utn_getEntero(&idContratar, 3, lenPan, -1, "Ingrese ID de pantalla a contratar\n", "Error al cargar el ID de pantalla a contratar")==TODOOK)
+        {
+            if(pan_pantallaVacia(pan, lenPan, idContratar)==FALSE)
+            {
+                retorno=con_Alta(con, lenCon, pan, lenPan, idContratar);
+            }
+        }
+    }
+    return retorno;
+}
+
+
+
+/* *********************************************************** */
+/* *********************************************************** */
+/* *********************************************************** */
+/* *********************CONTRATACIONES************************ */
+/* *********************************************************** */
+/* *********************************************************** */
+
+/*PIDE CUIT E IMPRIME TODAS LAS ENTIDADES QUE VA A IMPRIMIR*/
+int con_printPantallaPorCuit(Contratacion* con, int lenCon, char* cuit, int lenCuit, Pantalla* pan, int lenPan)
+{
+    int retorno=ERROR;
+    int i;
+    int j;
+    if(con!=NULL && lenCon>0 && lenCuit>0)
+    {
+        if(esCuit(cuit, lenCuit)==TRUE)
+        {
+            for(i=0; i<lenCon; i++)
+            {
+                if(strcmp(con[i].cuit, cuit)==TODOOK && con[i].isEmpty==FALSE)
+                {
+                    for(j=0; j<lenPan; j++)
+                    {
+                        if(con[i].idPantalla==pan[j].id && pan[j].isEmpty==FALSE)
+                        {
+                            printf("id: \t%d\nTipo:\t%d\nNombre:\t%s\nDireccion:\t%s\nPrecio:\t%f\nEsta vacio?\t%d\n",
+                                   pan[j].id,
+                                   pan[j].tipo,
+                                   pan[j].nombre,
+                                   pan[j].direccion,
+                                   pan[j].precio,
+                                   pan[j].isEmpty);
+                            printf("******************\n");
+                        }
+                    }
+                }
+            }
+            retorno=TODOOK;
+        }
+    }
+    return retorno;
+}
+
+
+
