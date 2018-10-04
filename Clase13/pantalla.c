@@ -31,7 +31,7 @@ int pantalla_init(Pantalla* array,int limite)
     if(limite > 0 && array != NULL)
     {
         retorno = 0;
-        for(i=0;i<limite;i++)
+        for(i=0; i<limite; i++)
         {
             array[i].isEmpty=1;
         }
@@ -46,7 +46,7 @@ int pantalla_mostrarDebug(Pantalla* array,int limite)
     if(limite > 0 && array != NULL)
     {
         retorno = 0;
-        for(i=0;i<limite;i++)
+        for(i=0; i<limite; i++)
         {
             printf("[DEBUG] - %d - %s - %s - %f - %d - %d\n",array[i].idPantalla, array[i].nombre,array[i].direccion,array[i].precio,array[i].tipo, array[i].isEmpty);
         }
@@ -61,7 +61,7 @@ int pantalla_mostrar(Pantalla* array,int limite)
     if(limite > 0 && array != NULL)
     {
         retorno = 0;
-        for(i=0;i<limite;i++)
+        for(i=0; i<limite; i++)
         {
             if(!array[i].isEmpty)
                 printf("[RELEASE] - %d - %s - %d\n",array[i].idPantalla, array[i].nombre, array[i].isEmpty);
@@ -168,7 +168,7 @@ int pantalla_ordenar(Pantalla* array,int limite, int orden)
         do
         {
             flagSwap = 0;
-            for(i=0;i<limite-1;i++)
+            for(i=0; i<limite-1; i++)
             {
                 if(!array[i].isEmpty && !array[i+1].isEmpty)
                 {
@@ -181,7 +181,8 @@ int pantalla_ordenar(Pantalla* array,int limite, int orden)
                     }
                 }
             }
-        }while(flagSwap);
+        }
+        while(flagSwap);
     }
     return retorno;
 }
@@ -192,7 +193,7 @@ static int buscarLugarLibre(Pantalla* array,int limite)
     int i;
     if(limite > 0 && array != NULL)
     {
-        for(i=0;i<limite;i++)
+        for(i=0; i<limite; i++)
         {
             if(array[i].isEmpty==1)
             {
@@ -220,7 +221,7 @@ int pantalla_buscarPorId(Pantalla* array,int limite, int id)
     if(limite > 0 && array != NULL)
     {
         retorno = -2;
-        for(i=0;i<limite;i++)
+        for(i=0; i<limite; i++)
         {
             if(!array[i].isEmpty && array[i].idPantalla==id)
             {
@@ -275,7 +276,7 @@ static int pan_sortPantalla(Pantalla* list, int len, int order)
             for(i=0; i<(len-1); i++)
             {
                 if((order==1 && list[i].precio > list[i+1].precio) ||
-                   (order==0 && list[i].precio < list[i+1].precio))
+                        (order==0 && list[i].precio < list[i+1].precio))
                 {
                     flag=1;
                     pan_swap(list, i);
@@ -343,11 +344,11 @@ static int pan_imprimirPantalla(Pantalla* list, int len)
             if(list[i].isEmpty==0)
             {
                 printf("IDPantalla: %d\nNombre: %s\nDireccion: %s\nPrecio: %.2f\nTipo: %d\n**********\n",
-                    list[i].idPantalla,
-                    list[i].nombre,
-                    list[i].direccion,
-                    list[i].precio,
-                    list[i].tipo);
+                       list[i].idPantalla,
+                       list[i].nombre,
+                       list[i].direccion,
+                       list[i].precio,
+                       list[i].tipo);
             }
         }
         retorno=0;
@@ -390,7 +391,7 @@ void pantalla_ordenarPrecioNombre(Pantalla* list, int len)
         do
         {
             flagSwap=0;
-            for(i=0; i<len-1;i++)
+            for(i=0; i<len-1; i++)
             {
                 if((list[i].precio>list[i+1].precio) || (list[i].precio==list[i+1].precio && strcmp(list[i].nombre, list[i+1].nombre) < 0))
                 {
@@ -398,15 +399,12 @@ void pantalla_ordenarPrecioNombre(Pantalla* list, int len)
                     list[i] = list[i+1];
                     list[i+1] = listAux;
                     flagSwap = 1;
+                }
+
             }
-
-        }while(flagSwap==1)
-
-
-
-
-
-
+            while(flagSwap==1);
+        }
     }
 }
-pan_ordenarPorCriterio(array, QTY, 5,
+
+//pan_ordenarPorCriterio(array, QTY, 5,
