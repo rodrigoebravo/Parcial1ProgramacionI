@@ -613,4 +613,23 @@ int con_printPantallaPorCuit(Contratacion* con, int lenCon, char* cuit, int lenC
 }
 
 
+int con_cancelar(Contratacion* con, int lenCon, Pantalla* pan, int lenPan)
+{
+    char cuitAux[20];
+    int idBaja;
+    int retorno=ERROR;
+    if(utn_getCadena(cuitAux, 20, 3, "Ingrese cuit a cancelar\n", "Error al ingresar cuit\n")==TODOOK)
+    {
+        if(con_printPantallaPorCuit(con, lenCon, cuitAux, 20, pan, lenPan)==TODOOK)
+        {
+            if(utn_getEntero(&idBaja, 3, lenPan, -1, "Ingrese ID a cancelar\n", "Error al ingresar ID\n")==TODOOK)
+            {
+                con_bajaPorCuitId(con, lenCon, idBaja, cuitAux);
 
+                retorno=TODOOK;
+
+            }
+        }
+    }
+    return retorno;
+}
