@@ -566,6 +566,70 @@ int contratarPantallasPorID(Pantalla* pan, int lenPan, Contratacion* con, int le
     }
     return retorno;
 }
+/*ORDENAR POR MUCHOS CRITERIOIS*/
+int pantalla_ordenar(Pantalla* array,int limite, int orden)
+{
+    int retorno = -1;
+    int i;
+    int flagSwap;
+    Pantalla auxiliarEstructura;
+
+    if(limite > 0 && array != NULL)
+    {
+        do
+        {
+            flagSwap = 0;
+            for(i=0;i<limite-1;i++)
+            {
+                if(!array[i].isEmpty && !array[i+1].isEmpty)
+                {
+                    if((strcmp(array[i].nombre,array[i+1].nombre) > 0 && orden) || (strcmp(array[i].nombre,array[i+1].nombre) < 0 && !orden)) //******
+                    {
+                        auxiliarEstructura = array[i];
+                        array[i] = array[i+1];
+                        array[i+1] = auxiliarEstructura;
+                        flagSwap = 1;
+                    }
+                }
+            }
+        }while(flagSwap);
+    }
+    return retorno;
+}
+
+/*ORDENAR POR MUCHOS CRITERIOIS*/
+int pantalla_ordenarPrecioNombre(Pantalla arrayPantallas[],int limiteArrayPantallas)
+{
+    int retorno = -1;
+    int flagSwap;
+    int i;
+    Pantalla auxiliarPantalla;
+    if(arrayPantallas != NULL && limiteArrayPantallas > 0)
+    {
+        retorno = 0;
+        do
+        {
+            flagSwap = 0;
+            for(i=0;i<limiteArrayPantallas-1;i++)
+            {
+                if( arrayPantallas[i].precio > arrayPantallas[i+1].precio ||
+                    (arrayPantallas[i].precio == arrayPantallas[i+1].precio &&
+                    strcmp(arrayPantallas[i].nombre,arrayPantallas[i+1].nombre)<0))
+                {
+                    flagSwap = 1;
+                    auxiliarPantalla = arrayPantallas[i];
+                    arrayPantallas[i] = arrayPantallas[i+1];
+                    arrayPantallas[i+1] = auxiliarPantalla;
+                }
+            }
+        }while(flagSwap);
+    }
+    return retorno;
+}
+
+
+
+
 
 
 
@@ -633,3 +697,139 @@ int con_cancelar(Contratacion* con, int lenCon, Pantalla* pan, int lenPan)
     }
     return retorno;
 }
+
+
+
+
+/*INFORMARRRRRRRRRRRRRRR*/
+
+
+
+
+
+
+
+typedef struct
+{
+    char cuit[50];
+    float importe;
+    int cantidadCont;
+    int isEmpty;
+} InfoCliente;
+
+InfoCliente arrayIC[1000];
+
+static int estaCuitEnInfoCliente(InfoCliente arrayInfoC[],int limiteInfoC, char cuit[]);
+
+static void initInfoCliente( Contratacion arrayCont[],int limiteCont,
+                            InfoCliente arrayInfoC[],int limiteInfoC)
+{
+    int i;
+    int proximoLibre=0;
+    for(i=0;i<limiteInfoC;i++)
+    {
+        arrayInfoC[i].isEmpty = 1;
+    }
+
+    for(i=0;i<limiteCont;i++)
+    {
+        if(!estaCuitEnInfoCliente(arrayInfoC,limiteInfoC,arrayCont[i].cuit))
+        {
+            strcpy(arrayInfoC[proximoLibre].cuit,arrayCont[i].cuit);
+            arrayInfoC[proximoLibre].isEmpty = 0;
+            proximoLibre++;
+        }
+    }
+}
+
+static void cargaInfoCliente( Contratacion arrayCont[],int limiteCont,
+                            InfoCliente arrayInfoC[],int limiteInfoC,
+                            Pantalla* pantallas, int lenPantallas)
+{
+    int i,j;
+    int qtyContrataciones = 0;
+    Pantalla* auxPatalla;
+
+    for(i=0;i<limiteInfoC;i++)
+    {
+        if(!arrayInfoC[i].isEmpty)
+        {
+            qtyContrataciones=0;
+            arrayInfoC[i].importe = 0;
+            for(j=0;j<limiteCont;j++)
+            {
+                if(!strcmp(arrayInfoC[i].cuit,arrayCont[j].cuit))
+                {
+                    qtyContrataciones++;
+                    auxPatalla = getPantallaById(pantallas,lenPantallas,arrayCont[j].idPantalla);
+                    arrayInfoC[i].importe += auxPatalla->precio * arrayCont[j].dias;
+                }
+            }
+            arrayInfoC[i].cantidadCont = qtyContrataciones;
+        }
+    }
+}
+
+
+
+static int estaCuitEnInfoCliente(InfoCliente arrayInfoC[],int limiteInfoC, char cuit[])
+{
+    int i;
+    int retorno = 0;
+    for(i=0;i<limiteInfoC;i++)
+    {
+        if(!arrayInfoC[i].isEmpty && !strcmp(arrayInfoC[i].cuit, cuit))
+        {
+            retorno = 1;
+            break;
+        }
+    }
+    return retorno;
+}
+
+int informar_ConsultaFacturacion(Contratacion* arrayC,int limite,
+              Pantalla* pantallas, int lenPantallas, char* cuit)
+{
+    int retorno = -1;
+
+    return retorno;
+}
+
+
+
+int informar_ListarContrataciones(Contratacion* arrayC,int limite,
+              Pantalla* pantallas, int lenPantallas)
+{
+    int retorno = -1;
+
+    return retorno;
+}
+
+
+int informar_ListarCantidadContratacionesImporte(Contratacion* arrayC,int limite,
+              Pantalla* pantallas, int lenPantallas)
+{
+    int retorno = -1;
+
+    return retorno;
+}
+
+/*
+A.  Realizar un solo listado de las pantallas ordenadas
+    por los siguientes criterios:
+        o Precio (descendentemente)
+        o Nombre (ascendentemente)
+*/
+
+int informar_listadoPantallas(Pantalla arrayPantallas[],int limiteArrayPantallas)
+{
+    int retorno = -1;
+    if(arrayPantallas != NULL && limiteArrayPantallas > 0)
+    {
+        pantalla_ordenarPrecioNombre(arrayPantallas,limiteArrayPantallas);
+        pantalla_mostrarDebug(arrayPantallas,limiteArrayPantallas);
+    }
+    return retorno;
+}
+
+
