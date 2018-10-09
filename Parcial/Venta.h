@@ -58,4 +58,5 @@ int ventaAfiche(Cliente* cli, int lenCli, Venta* ven, int lenVen);
     return -1 si ocurre algun error o 0 si esta todo OK
 */
 int printVentas(Venta* ventas, int len);
+int ven_cobrarVenta(Venta* ven, int lenVentas, Cliente* cli, int lenCli);
 #endif // VENTA_H_INCLUDED

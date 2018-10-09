@@ -114,7 +114,7 @@ int ven_obtenerPosicionPorID(Venta* pEntidad, int len, int id, int* indexRetorno
 
 
 
-int ven_cobrarVenta(Venta* ven, lenVentas, Cliente* cli, lenCli)
+int ven_cobrarVenta(Venta* ven, int lenVentas, Cliente* cli, int lenCli)
 {
     int retorno=ERROR;
 
