@@ -9,6 +9,8 @@ static int generarID(void);
 static void printCliente(Cliente* pEntidad, int index);
 static int cli_modificar(Cliente* pEntidad, int len, int index);
 static int clientesTieneDatos(Cliente* pEntidad, int len);
+static void cli_altas(Cliente* pEntidad, char* nombre, char* apellido, char* cuit, int i);
+static void cli_forzarAltas(Cliente* pEntidad, int len);
 
 int cli_inicializarListaClientes(Cliente* pEntidad, int len)
 {
@@ -20,6 +22,7 @@ int cli_inicializarListaClientes(Cliente* pEntidad, int len)
         {
             pEntidad[i].isEmpty=TRUE;
         }
+        cli_forzarAltas(pEntidad, len);
         retorno=TODOOK;
     }
     return retorno;
@@ -277,4 +280,49 @@ static int clientesTieneDatos(Cliente* pEntidad, int len)
         }
     }
     return retorno;
+}
+
+
+static void cli_forzarAltas(Cliente* pEntidad, int len)
+{
+    cli_altas(pEntidad, "Rodrigo", "Bravo", "20453164166", 0);
+    cli_altas(pEntidad, "Sebastian", "Martinez", "23645168354", 1);
+    cli_altas(pEntidad, "Maria", "Arange", "23845186798", 2);
+    cli_altas(pEntidad, "Jose", "Morin", "23135416874", 3);
+    cli_altas(pEntidad, "Brian", "Miria", "20835421687", 4);
+    cli_altas(pEntidad, "Romina", "Zapiola", "20531687461", 5);
+    cli_altas(pEntidad, "Ana", "Echeverria", "21168749684", 6);
+    cli_altas(pEntidad, "Ayelen", "Ituzaingo", "21653196874", 7);
+    cli_altas(pEntidad, "Daniel", "Mirin", "21845146879", 8);
+    cli_altas(pEntidad, "Juan", "Isasia", "20459896874", 9);
+    cli_altas(pEntidad, "Ramiro", "Birus", "23584168514", 10);
+    cli_altas(pEntidad, "Lorenzo", "Abarin", "20851465841", 11);
+    cli_altas(pEntidad, "Lorenzo", "Mulli", "22163446465", 12);
+    cli_altas(pEntidad, "Lauriel", "Paoli", "22879774131", 13);
+    cli_altas(pEntidad, "Gael", "Mique", "22465784698", 14);
+    cli_altas(pEntidad, "David", "Lamel", "22623251648", 15);
+    cli_altas(pEntidad, "Paula", "Ramirez", "20849469864", 16);
+    cli_altas(pEntidad, "Alejandra", "Coria", "20684613351", 17);
+    cli_altas(pEntidad, "Miguel", "Lev", "20746532168", 18);
+    cli_altas(pEntidad, "Angel", "Yuri", "20873696387", 19);
+    cli_altas(pEntidad, "Elio", "Pobli", "21258963214", 20);
+    cli_altas(pEntidad, "XXXXXXX", "Bari", "21621478963", 21);
+    cli_altas(pEntidad, "Maximiliano", "Vu", "21874541235", 22);
+    cli_altas(pEntidad, "Ornela", "Wall", "21646584891", 23);
+    cli_altas(pEntidad, "Wally", "Kor", "24654168468", 24);
+    cli_altas(pEntidad, "Wol", "apl", "25346846384", 25);
+    cli_altas(pEntidad, "Celeste", "Xur", "26385468768", 26);
+    cli_altas(pEntidad, "Rosa", "Florencio", "23684634638", 27);
+    cli_altas(pEntidad, "Blanca", "Troll", "23684124638", 28);
+    cli_altas(pEntidad, "Gabriel", "Gabri", "23114634638", 28);
+    cli_altas(pEntidad, "Julieta", "venegas", "23114631000", 29);
+}
+
+static void cli_altas(Cliente* pEntidad, char* nombre, char* apellido, char* cuit, int i)
+{
+    pEntidad[i].id=generarID();
+    strcpy(pEntidad[i].nombre, nombre);
+    strcpy(pEntidad[i].apellido, apellido);
+    strcpy(pEntidad[i].cuit, cuit);
+    pEntidad[i].isEmpty=FALSE;
 }
