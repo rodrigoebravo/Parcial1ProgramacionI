@@ -17,12 +17,15 @@ int main()
             switch(opcion)
             {
                 case 1:
+                    cli_printClientes(clientes, CANTIDAD_CLIENTES);
                     cli_darAltaCliente(clientes, CANTIDAD_CLIENTES);
                     break;
                 case 2:
+                    cli_printClientes(clientes, CANTIDAD_CLIENTES);
                     cli_modificarClientePorID(clientes, CANTIDAD_CLIENTES);
                     break;
                 case 3:
+                    cli_printClientes(clientes, CANTIDAD_CLIENTES);
                     cli_bajaClientePorID(clientes, CANTIDAD_CLIENTES, ventas, CANTIDAD_VENTAS);
                     break;
                 case 4:
