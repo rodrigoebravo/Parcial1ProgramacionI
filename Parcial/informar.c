@@ -112,3 +112,25 @@ void inf_cantidadAfichesPorIDCliente(Cliente* cli, Venta* ven, int lenCli, int l
     }
 }
 
+
+void inf_maximoMinimoAfichesCliente(Cliente* cli, Venta* ven, int lenCli, int lenVen)
+{
+    int i;
+    int j;
+    int maximoAfiches=;
+    int minimoAfiches;
+    int idClienteMaximo;
+    int idClienteMinimo;
+    for(j=0; j<lenVen; j++)
+    {
+        if(!ven[j].isEmpty && ven[j].cantidadAfiches>maximoAfiches)
+        {
+            maximoAfiches=ven[j].cantidadAfiches;
+        }
+    }
+    printf("Cantidad de ventas %d\n", cantidadAfiches);
+
+
+}
+
+
