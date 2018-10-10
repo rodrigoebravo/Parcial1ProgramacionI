@@ -89,4 +89,26 @@ int inf_ordenarNombreApellidoCuit(Cliente* pEntidad,int len)
     return retorno;
 }
 
+void inf_cantidadAfichesPorIDCliente(Cliente* cli, Venta* ven, int lenCli, int lenVen)
+{
+    int i;
+    int j;
+    int cantidadAfiches;
+    for(i=0; i<lenCli; i++)
+    {
+        if(!cli[i].isEmpty)
+        {
+            cli_printCliente(cli, i);
+            cantidadAfiches=0;
+            for(j=0; j<lenVen; j++)
+            {
+                if(cli[i].id==ven[j].idCliente && !cli[i].isEmpty && !ven[j].isEmpty)
+                {
+                    cantidadAfiches++;
+                }
+            }
+            printf("Cantidad de ventas %d\n", cantidadAfiches);
+        }
+    }
+}
 

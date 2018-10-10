@@ -1,13 +1,75 @@
 #include "Venta.h"
 #include "utn.h"
 #include "Cliente.h"
+/**
+    funcion para generarID para Ventas (Array)
+    return id generado
+*/
 static int generarID(void);
+/**
+    funcion pide datos para hacer alta en ventas
+    parametro ven: lista de clientes
+    parametro lenVen: longitud de lista de clientes
+    parametro cli: lista de clientes
+    parametro lenCli: longitud de lista de clientes
+    parametro idCliente: idCliente a dar de alta
+    return -1 si ocurre algun error o 0 si esta todo OK
+*/
 static int getAltaVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idCliente);
+
+/**
+    funcion encuentra posicion vacia
+    parametro pEntidad: lista de clientes
+    parametro len: longitud de lista de clientes
+    parametro *indexVacio: posicion vacia (retorno)
+    return -1 si ocurre algun error o 0 si esta todo OK
+*/
 static int obtenerPosicionVaciaVentas(Venta* pEntidad, int len, int* indexVacio);
+/**
+    funcion pregunta si tiene datos
+    parametro pEntidad: lista de clientes
+    parametro len: longitud de lista de clientes
+    parametro *indexVacio: posicion vacia (retorno)
+    return FALSE O TRUE segun corresponda
+*/
 static int ventasTieneDatos(Venta* pEntidad, int len);
+/**
+    funcion encuentra maximo id
+    parametro pEntidad: lista de clientes
+    parametro len: longitud de lista de clientes
+    parametro *idRetorno: maximo id(return)
+    return -1 si ocurre algun error o 0 si esta todo OK
+*/
 static int obtenerMaximoID(Venta* pEntidad, int len, int* idRetorno);
+/**
+    funcion obtiene la posicion en clientes por id de venta
+    parametro ven: lista de clientes
+    parametro lenVen: longitud de lista de clientes
+    parametro cli: lista de clientes
+    parametro lenCli: longitud de lista de clientes
+
+    parametro idVen: id a buscar en clientes
+    parametro *indexClienteRetorno: posicion del cliente encontrado(retorno)
+    return -1 si ocurre algun error o 0 si esta todo OK
+*/
 static int obtenerIndexClientePorIDVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idVen, int* indexClienteRetorno);
+/**
+    funcion da de alta un cliente a la vez por posicion
+    parametro pEntidad: lista de venta
+    parametro cantidadAfiches: cantidad de afiches
+    parametro idCliente: id del cliente a concretar venta
+    parametro nombreArchivo: nombre archivo
+    parametro zona: zona a contratar
+    parametro estado: ESTADO_ACOBRAR o ESTADO_COBRADA
+    parametro i: posicion a dar de alta
+
+*/
 static void ventaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int estado, int i);
+/**
+    funcion da de alta algunas ventas
+    parametro pEntidad: lista de clientes
+    parametro len: longitud de lista de clientes
+*/
 static void forzarAltas(Venta* pEntidad, int len);
 
 int ven_inicializarListaVentas(Venta* pEntidad, int len)

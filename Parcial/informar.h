@@ -8,4 +8,5 @@ void inicializaListas(Cliente* cli, int lenCli, Venta* ven, int lenVen);
 void imprimirIDAlta(int id);
 void imprimirClientesConVentasACobrar(Venta* ven, Cliente* cli, int lenVen, int lenCli);
 int inf_ordenarNombreApellidoCuit(Cliente* pEntidad,int len);
+void inf_cantidadAfichesPorIDCliente(Cliente* cli, Venta* ven, int lenCli, int lenVen);
 #endif // INFORMAR_H_INCLUDED

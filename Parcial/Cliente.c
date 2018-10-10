@@ -102,11 +102,12 @@ int cli_modificarClientePorID(Cliente* pEntidad, int len)
     int retorno=ERROR;
     int idModificar;
     int indexModificar;
-
+    int idMaximo=cli_getMaxIDCliente(pEntidad, len);
     if(clientesTieneDatos(pEntidad, len))
     {
         cli_printClientes(pEntidad, len);
-        if(utn_getEntero(&idModificar, 3, len, -1, "Ingrese ID a modificar:\n", "ID erroneo\n")==TODOOK &&
+
+        if(idMaximo!=ERROR && utn_getEntero(&idModificar, 3, idMaximo+1, -1, "Ingrese ID a modificar:\n", "ID erroneo\n")==TODOOK &&
                 cli_obtenerPosicionPorID(pEntidad, len, idModificar, &indexModificar)==TODOOK &&
                 cli_posicionEstaVacia(pEntidad, len, indexModificar)==FALSE &&
                 cli_modificar(pEntidad, len, indexModificar)==TODOOK)
@@ -132,11 +133,12 @@ int cli_bajaClientePorID(Cliente* pEntidad, int lenCli, Venta* ven, int lenVen)
     int retorno=ERROR;
     int idBaja;
     int indexBaja;
+    int idMaxCliente=cli_getMaxIDCliente(pEntidad, lenCli);
     if(clientesTieneDatos(pEntidad, lenCli))
     {
         cli_printClientes(pEntidad, lenCli);
-        if(cli_validarParametros(pEntidad, lenCli)==TODOOK && ven!=NULL && lenVen>0
-            && utn_getEntero(&idBaja, 3, lenCli, -1, "Ingrese ID del cliente a dar de baja\n", "Error al dar de baja el ID\n")==TODOOK
+        if(cli_validarParametros(pEntidad, lenCli)==TODOOK && ven!=NULL && lenVen>0 && idMaxCliente!=ERROR
+            && utn_getEntero(&idBaja, 3, idMaxCliente+1, -1, "Ingrese ID del cliente a dar de baja\n", "Error al dar de baja el ID\n")==TODOOK
             && cli_obtenerPosicionPorID(pEntidad, lenCli, idBaja, &indexBaja)==TODOOK
             && cli_posicionEstaVacia(pEntidad, lenCli, indexBaja)==FALSE)
         {

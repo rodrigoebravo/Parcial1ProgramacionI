@@ -39,7 +39,7 @@ int main()
                     break;
                 case 8:
                     inf_ordenarNombreApellidoCuit(clientes,CANTIDAD_CLIENTES);
-
+                    inf_cantidadAfichesPorIDCliente(clientes, ventas, CANTIDAD_CLIENTES, CANTIDAD_VENTAS);
                     break;
             };
         }

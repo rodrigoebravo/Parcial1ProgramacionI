@@ -80,12 +80,12 @@
 	"utn.h"
 	"Cliente.h"
 
-1539200593 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\cliente.c
+1539204166 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\cliente.c
 	"Cliente.h"
 	"Venta.h"
 	"utn.h"
 
-1539184913 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\cliente.h
+1539202196 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\cliente.h
 	"utn.h"
 	"Venta.h"
 
@@ -94,19 +94,19 @@
 	<stdlib.h>
 	<string.h>
 
-1539182167 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\venta.h
+1539202196 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\venta.h
 	"utn.h"
 	"Cliente.h"
 
-1539200801 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\informar.c
+1539204734 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\informar.c
 	"informar.h"
 	"utn.h"
 
-1539199849 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\informar.h
+1539204461 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\informar.h
 	"Cliente.h"
 	"Venta.h"
 
-1539199927 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\main.c
+1539204481 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\main.c
 	"utn.h"
 	"informar.h"
 	"Cliente.h"
@@ -115,7 +115,7 @@
 1539184038 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\utn.c
 	"utn.h"
 
-1539184934 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\venta.c
+1539203781 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\venta.c
 	"Venta.h"
 	"utn.h"
 	"Cliente.h"
