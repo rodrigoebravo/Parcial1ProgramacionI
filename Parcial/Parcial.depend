@@ -80,3 +80,43 @@
 	"utn.h"
 	"Cliente.h"
 
+1539200593 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\cliente.c
+	"Cliente.h"
+	"Venta.h"
+	"utn.h"
+
+1539184913 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\cliente.h
+	"utn.h"
+	"Venta.h"
+
+1539183898 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1539182167 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\venta.h
+	"utn.h"
+	"Cliente.h"
+
+1539200801 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\informar.c
+	"informar.h"
+	"utn.h"
+
+1539199849 d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\informar.h
+	"Cliente.h"
+	"Venta.h"
+
+1539199927 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\main.c
+	"utn.h"
+	"informar.h"
+	"Cliente.h"
+	"Venta.h"
+
+1539184038 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\utn.c
+	"utn.h"
+
+1539184934 source:d:\users\rbravo\escritorio\programacion i\parcial programacion i\parcial1programacioni\parcial\venta.c
+	"Venta.h"
+	"utn.h"
+	"Cliente.h"
+

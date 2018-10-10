@@ -49,3 +49,44 @@ void imprimirClientesConVentasACobrar(Venta* ven, Cliente* cli, int lenVen, int 
         }
     }
 }
+
+
+//Yo hice ordenamiento de clientes.  X nombre apellido y cuit
+//Una función q me devuelve cuantos afiches tiene cada id
+//Otra q me calcula el Max y min de afiches, y los datos del cliente quien los compro
+//Cantidad de a pagar y cantidad de cobrados
+
+
+int inf_ordenarNombreApellidoCuit(Cliente* pEntidad,int len)
+{
+    int retorno = ERROR;
+    int flagSwap;
+    int i;
+    Cliente auxiliarVenta;
+    if(pEntidad != NULL && len > 0)
+    {
+        retorno = TODOOK;
+        do
+        {
+
+            flagSwap = FALSE;
+            for(i=0;i<len-1;i++)
+            {
+                if( strcmp(pEntidad[i].nombre, pEntidad[i+1].nombre)>0 ||
+                    (strcmp(pEntidad[i].nombre, pEntidad[i+1].nombre)==0 && strcmp(pEntidad[i].apellido, pEntidad[i+1].apellido)>0) ||
+					(strcmp(pEntidad[i].apellido, pEntidad[i+1].apellido)==0 && strcmp(pEntidad[i].cuit,pEntidad[i+1].cuit)>0)
+                  )
+                {
+                    flagSwap = TRUE;
+                    auxiliarVenta = pEntidad[i];
+                    pEntidad[i] = pEntidad[i+1];
+                    pEntidad[i+1] = auxiliarVenta;
+                }
+            }
+        }while(flagSwap);
+    }
+    cli_printClientes(pEntidad, len);
+    return retorno;
+}
+
+

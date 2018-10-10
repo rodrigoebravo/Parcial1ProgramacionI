@@ -40,7 +40,7 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
  * \param char* mensajeError mensaje en caso de error
  * \return 0 en caso de error, 1 en caso de que este todo ok
  */
-int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char* mensajeError);
+int utn_getCadena(char* cadenaBuffer, int len, int max, int min, int intentos, char* mensaje, char* mensajeError);
 /** \brief funcion void que permite limpiar pantalla
  */
 void limpiarScreen(void);
@@ -49,4 +49,5 @@ void limpiarScreen(void);
  */
 void limpiarBuffer(void);
 int esCuit(char* pBuffer, int len);
+
 #endif // UTN_H_INCLUDED

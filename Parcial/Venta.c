@@ -2,13 +2,14 @@
 #include "utn.h"
 #include "Cliente.h"
 static int generarID(void);
-static int ven_Alta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idCliente);
-static int ven_obtenerPosicionVacia(Venta* pEntidad, int len, int* indexVacio);
+static int getAltaVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idCliente);
+static int obtenerPosicionVaciaVentas(Venta* pEntidad, int len, int* indexVacio);
 static int ventasTieneDatos(Venta* pEntidad, int len);
-static void ven_altaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int estado, int i);
-static void ven_forzarAltas(Venta* pEntidad, int len);
 static int obtenerMaximoID(Venta* pEntidad, int len, int* idRetorno);
 static int obtenerIndexClientePorIDVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idVen, int* indexClienteRetorno);
+static void ventaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int estado, int i);
+static void forzarAltas(Venta* pEntidad, int len);
+
 int ven_inicializarListaVentas(Venta* pEntidad, int len)
 {
     int i;
@@ -19,7 +20,7 @@ int ven_inicializarListaVentas(Venta* pEntidad, int len)
         {
             pEntidad[i].isEmpty=TRUE;
         }
-        ven_forzarAltas(pEntidad, len);
+        forzarAltas(pEntidad, len);
         retorno=TODOOK;
     }
     return retorno;
@@ -30,16 +31,17 @@ int ven_ventaAfiche(Cliente* cli, int lenCli, Venta* ven, int lenVen)
     int retorno=ERROR;
     int idCliente;
     int posicionCliente;
+    int maxIDCliente=cli_getMaxIDCliente(cli, lenCli);
 
     cli_printClientes(cli, lenCli);
     if(ven_validarParametros(ven, lenVen)==TODOOK
         && cli_validarParametros(cli, lenCli)==TODOOK
-        && utn_getEntero(&idCliente, 3, lenCli, -1, "Ingrese ID de cliente\n", "Error al cargar el ID cliente")==TODOOK
+        && utn_getEntero(&idCliente, 3, maxIDCliente+1, -1, "Ingrese ID de cliente\n", "Error al cargar el ID cliente")==TODOOK
         && cli_obtenerPosicionPorID(cli, lenCli, idCliente, &posicionCliente)!=ERROR
         && !cli_posicionEstaVacia(cli, lenCli, posicionCliente)
         )
         {
-            retorno=ven_Alta(ven, lenVen, cli, lenCli, idCliente);
+            retorno=getAltaVenta(ven, lenVen, cli, lenCli, idCliente);
         }
         else
         {
@@ -49,7 +51,7 @@ int ven_ventaAfiche(Cliente* cli, int lenCli, Venta* ven, int lenVen)
     return retorno;
 }
 
-static int ven_Alta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idCliente)
+static int getAltaVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idCliente)
 {
     Venta aux;
     int retorno=ERROR;
@@ -59,8 +61,8 @@ static int ven_Alta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idClie
         && idCliente>=0
         && utn_getEntero(&(aux.cantidadAfiches), 3, 10000, 0, "Ingrese cantidad de afiches\n", "cantidad incorrecta\n")==TODOOK
         && utn_getEntero(&(aux.zona), 3, 4, 0, "Ingrese zona: \n\t1- CABA\n\t2- ZONA SUR\n\t3- ZONA OESTE\nIngrese:", "Zona incorrecta\n")==TODOOK
-        && utn_getCadena(aux.nombreArchivo, 100, 3, "Ingrese nombre archivo\n", "Nombre erroneo\n")==TODOOK
-        && ven_obtenerPosicionVacia(ven, lenVen, &indexVentaVacio)!=ERROR
+        && utn_getCadena(aux.nombreArchivo, 100, 100, 4, 3, "Ingrese nombre archivo\n", "Nombre erroneo\n")==TODOOK
+        && obtenerPosicionVaciaVentas(ven, lenVen, &indexVentaVacio)!=ERROR
       )
     {
         aux.id=generarID();
@@ -73,7 +75,7 @@ static int ven_Alta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idClie
     return retorno;
 }
 
-static int ven_obtenerPosicionVacia(Venta* pEntidad, int len, int* indexVacio)
+static int obtenerPosicionVaciaVentas(Venta* pEntidad, int len, int* indexVacio)
 {
     int i;
     int retorno=ERROR;
@@ -299,42 +301,42 @@ static int ventasTieneDatos(Venta* pEntidad, int len)
     return retorno;
 }
 
-static void ven_forzarAltas(Venta* pEntidad, int len)
+static void forzarAltas(Venta* pEntidad, int len)
 {
-    ven_altaForzada(pEntidad, 1, 0, "asd.av", 1, 0,0);
-    ven_altaForzada(pEntidad, 10, 1, "ertryrsd.av", 1, 1,1);
-    ven_altaForzada(pEntidad, 1, 2, "ggga3sd.av", 1, 0,2);
-    ven_altaForzada(pEntidad, 18, 3, "123dasd.av", 2, 0,3);
-    ven_altaForzada(pEntidad, 107, 3, "098asd.av", 3, 0,4);
-    ven_altaForzada(pEntidad, 1066, 4, "1345asd.av", 1, 0,5);
-    ven_altaForzada(pEntidad, 1048, 5, "x2asd.av", 2, 0,6);
-    ven_altaForzada(pEntidad, 10, 2, "dxasd.av", 1, 0,7);
-    ven_altaForzada(pEntidad, 200, 9, "sawasd.av", 3, 1,8);
-    ven_altaForzada(pEntidad, 100, 11, "vsasd.av", 3, 1,9);
-    ven_altaForzada(pEntidad, 10, 19, "vvasd.av", 3, 1,10);
-    ven_altaForzada(pEntidad, 300, 22, "gbasd.av", 3, 1,11);
-    ven_altaForzada(pEntidad, 400, 29, "poiasd.av", 2, 1,12);
-    ven_altaForzada(pEntidad, 1, 30, "mmasd.av", 1, 1,13);
-    ven_altaForzada(pEntidad, 2, 26, "mmasd.aCv", 2, 0,14);
-    ven_altaForzada(pEntidad, 77, 15, "dsvFVRasd.av", 3, 1,15);
-    ven_altaForzada(pEntidad, 66, 14, "ccasd.av", 2, 0,16);
-    ven_altaForzada(pEntidad, 66, 13, "ccasd.av", 1, 1,17);
-    ven_altaForzada(pEntidad, 54, 18, "cdsasd.av", 2, 0,18);
-    ven_altaForzada(pEntidad, 1, 19, "cdsasd.av", 1, 1,19);
-    ven_altaForzada(pEntidad, 5, 10, "dcasd.av", 2, 0,20);
-    ven_altaForzada(pEntidad, 8, 8, "fbasd.av", 3, 1,21);
-    ven_altaForzada(pEntidad, 10, 1, "ascasd.av", 2, 0,22);
-    ven_altaForzada(pEntidad, 24, 1, "fdsasd.av", 1, 0,23);
-    ven_altaForzada(pEntidad, 1, 29, "fasd.av", 2, 0,24);
-    ven_altaForzada(pEntidad, 14, 25, "7asd.av", 2, 0,25);
-    ven_altaForzada(pEntidad, 145, 11, "rasd.av", 2, 0,26);
-    ven_altaForzada(pEntidad, 1, 12, "4asd.av", 3, 0,27);
-    ven_altaForzada(pEntidad, 1, 12, "3asd.av", 2, 1,28);
-    ven_altaForzada(pEntidad, 3, 12, "2asd.av", 1, 0,29);
-    ven_altaForzada(pEntidad, 5, 14, "1asd.av", 2, 0,30);
+    ventaForzada(pEntidad, 1, 0, "asd.av", 1, 0,0);
+    ventaForzada(pEntidad, 10, 1, "ertryrsd.av", 1, 1,1);
+    ventaForzada(pEntidad, 1, 2, "ggga3sd.av", 1, 0,2);
+    ventaForzada(pEntidad, 18, 3, "123dasd.av", 2, 0,3);
+    ventaForzada(pEntidad, 107, 3, "098asd.av", 3, 0,4);
+    ventaForzada(pEntidad, 1066, 4, "1345asd.av", 1, 0,5);
+    ventaForzada(pEntidad, 1048, 5, "x2asd.av", 2, 0,6);
+    ventaForzada(pEntidad, 10, 2, "dxasd.av", 1, 0,7);
+    ventaForzada(pEntidad, 200, 9, "sawasd.av", 3, 1,8);
+    ventaForzada(pEntidad, 100, 11, "vsasd.av", 3, 1,9);
+    ventaForzada(pEntidad, 10, 19, "vvasd.av", 3, 1,10);
+    ventaForzada(pEntidad, 300, 22, "gbasd.av", 3, 1,11);
+    ventaForzada(pEntidad, 400, 29, "poiasd.av", 2, 1,12);
+    ventaForzada(pEntidad, 1, 30, "mmasd.av", 1, 1,13);
+    ventaForzada(pEntidad, 2, 26, "mmasd.aCv", 2, 0,14);
+    ventaForzada(pEntidad, 77, 15, "dsvFVRasd.av", 3, 1,15);
+    ventaForzada(pEntidad, 66, 14, "ccasd.av", 2, 0,16);
+    ventaForzada(pEntidad, 66, 13, "ccasd.av", 1, 1,17);
+    ventaForzada(pEntidad, 54, 18, "cdsasd.av", 2, 0,18);
+    ventaForzada(pEntidad, 1, 19, "cdsasd.av", 1, 1,19);
+    ventaForzada(pEntidad, 5, 10, "dcasd.av", 2, 0,20);
+    ventaForzada(pEntidad, 8, 8, "fbasd.av", 3, 1,21);
+    ventaForzada(pEntidad, 10, 1, "ascasd.av", 2, 0,22);
+    ventaForzada(pEntidad, 24, 1, "fdsasd.av", 1, 0,23);
+    ventaForzada(pEntidad, 1, 29, "fasd.av", 2, 0,24);
+    ventaForzada(pEntidad, 14, 25, "7asd.av", 2, 0,25);
+    ventaForzada(pEntidad, 145, 11, "rasd.av", 2, 0,26);
+    ventaForzada(pEntidad, 1, 12, "4asd.av", 3, 0,27);
+    ventaForzada(pEntidad, 1, 12, "3asd.av", 2, 1,28);
+    ventaForzada(pEntidad, 3, 12, "2asd.av", 1, 0,29);
+    ventaForzada(pEntidad, 5, 14, "1asd.av", 2, 0,30);
 }
 
-static void ven_altaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int estado, int i)
+static void ventaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int estado, int i)
 {
     pEntidad[i].id=generarID();
     pEntidad[i].cantidadAfiches=cantidadAfiches;
@@ -380,3 +382,4 @@ void ven_printVentaPorIndex(Venta* venta, int index)
                 venta[index].idCliente,
                 estado);
 }
+

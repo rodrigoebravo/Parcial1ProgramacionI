@@ -92,23 +92,22 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
     return retorno;
 }
 
-int utn_getCadena(char* cadenaBuffer, int len, int intentos, char* mensaje, char* mensajeError)
+int utn_getCadena(char* cadenaBuffer, int len, int max, int min, int intentos, char* mensaje, char* mensajeError)
 {
     int retorno=ERROR;
-    if(cadenaBuffer!=NULL && intentos>0 && mensaje!=NULL && mensajeError!=NULL)
+    if(cadenaBuffer!=NULL && intentos>0 && mensaje!=NULL && mensajeError!=NULL && max > min)
     {
         do
         {
             printf(mensaje);
-            if(getString(cadenaBuffer, len)==TODOOK)
+            if(getString(cadenaBuffer, len)==TODOOK && strlen(cadenaBuffer) <= max && strlen(cadenaBuffer) >= min)
             {
                 retorno=TODOOK;
                 break;
             }
             else
             {
-                //system("cls");//windows
-                system("clear");//linux
+                limpiarScreen();
                 printf(mensajeError);
             }
             intentos--;
@@ -290,7 +289,7 @@ int utn_getMail(char* pBuffer, int len)
     int retorno=TRUE;
     int i;
     int contadorPuntos=0;
-    if(pBuffer!=NULL && len > 10 && utn_getCadena(pBuffer, len, 3, "Ingrese mail:\n", "Error en mail")==TODOOK)
+    if(pBuffer!=NULL && len > 10 && utn_getCadena(pBuffer, len, 100, 12, 3, "Ingrese mail:\n", "Error en mail")==TODOOK)
     {
         for(i=0; i<3; i++)
         {

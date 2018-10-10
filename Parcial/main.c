@@ -38,6 +38,8 @@ int main()
                     imprimirClientesConVentasACobrar(ventas, clientes, CANTIDAD_VENTAS, CANTIDAD_CLIENTES);
                     break;
                 case 8:
+                    inf_ordenarNombreApellidoCuit(clientes,CANTIDAD_CLIENTES);
+
                     break;
             };
         }
