@@ -40,12 +40,12 @@
 	"utn.h"
 	"Cliente.h"
 
-1539145647 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.c
+1539150681 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.c
 	"Cliente.h"
 	"Venta.h"
 	"utn.h"
 
-1539136677 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.h
+1539150054 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.h
 	"utn.h"
 	"Venta.h"
 
@@ -54,19 +54,19 @@
 	<stdlib.h>
 	<string.h>
 
-1539138274 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.h
+1539153704 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.h
 	"utn.h"
 	"Cliente.h"
 
-1539133294 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\informar.c
+1539154554 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\informar.c
 	"informar.h"
 	"utn.h"
 
-1539132234 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\informar.h
+1539153953 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\informar.h
 	"Cliente.h"
 	"Venta.h"
 
-1539137570 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\main.c
+1539153928 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\main.c
 	"utn.h"
 	"informar.h"
 	"Cliente.h"
@@ -75,7 +75,7 @@
 1539123428 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\utn.c
 	"utn.h"
 
-1539147693 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.c
+1539153703 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.c
 	"Venta.h"
 	"utn.h"
 	"Cliente.h"

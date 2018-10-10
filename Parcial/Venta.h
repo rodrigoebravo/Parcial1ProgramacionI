@@ -12,7 +12,8 @@ typedef struct{
 }Venta;
 #include "utn.h"
 #include "Cliente.h"
-
+#define ESTADO_ACOBRAR 0
+#define ESTADO_COBRADA 1
 
 /**
     funcion para inicializar lista ventas
@@ -58,6 +59,7 @@ int ven_ventaAfiche(Cliente* cli, int lenCli, Venta* ven, int lenVen);
     return -1 si ocurre algun error o 0 si esta todo OK
 */
 int ven_printVentas(Venta* ventas, int len);
-int ven_cobrarVenta(Venta* ven, int lenVentas, Cliente* cli, int lenCli);
+int ven_cobrarVentaPorID(Venta* ven, int lenVentas, Cliente* cli, int lenCli);
 int ven_validarParametros(Venta* pEntidad, int lenVen);
+void ven_printVentaPorIndex(Venta* venta, int index);
 #endif // VENTA_H_INCLUDED

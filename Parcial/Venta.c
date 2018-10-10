@@ -1,13 +1,14 @@
 #include "Venta.h"
 #include "utn.h"
 #include "Cliente.h"
-#define ESTADO_ACOBRAR 0
 static int generarID(void);
 static int ven_Alta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idCliente);
 static int ven_obtenerPosicionVacia(Venta* pEntidad, int len, int* indexVacio);
 static int ventasTieneDatos(Venta* pEntidad, int len);
-static void ven_altaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int i);
+static void ven_altaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int estado, int i);
 static void ven_forzarAltas(Venta* pEntidad, int len);
+static int obtenerMaximoID(Venta* pEntidad, int len, int* idRetorno);
+static int obtenerIndexClientePorIDVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idVen, int* indexClienteRetorno);
 int ven_inicializarListaVentas(Venta* pEntidad, int len)
 {
     int i;
@@ -71,6 +72,7 @@ static int ven_Alta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idClie
     }
     return retorno;
 }
+
 static int ven_obtenerPosicionVacia(Venta* pEntidad, int len, int* indexVacio)
 {
     int i;
@@ -90,7 +92,6 @@ static int ven_obtenerPosicionVacia(Venta* pEntidad, int len, int* indexVacio)
     }
     return retorno;
 }
-
 
 int ven_ModificarPorID(Venta* ven, int lenVen, Cliente* cli, int lenCli)
 {
@@ -127,13 +128,6 @@ int ven_ModificarPorID(Venta* ven, int lenVen, Cliente* cli, int lenCli)
     return retorno;
 }
 
-static int generarID(void)
-{
-    static int id=-1;
-    id++;
-    return id;
-}
-
 int ven_obtenerPosicionPorID(Venta* pEntidad, int len, int id, int* indexRetorno)
 {
     int i;
@@ -154,11 +148,64 @@ int ven_obtenerPosicionPorID(Venta* pEntidad, int len, int id, int* indexRetorno
     return retorno;
 }
 
-int ven_cobrarVenta(Venta* ven, int lenVentas, Cliente* cli, int lenCli)
+int ven_cobrarVentaPorID(Venta* ven, int lenVen, Cliente* cli, int lenCli)
 {
     int retorno=ERROR;
+    int idCobrar;
+    int indexCliente;
+    int indexVentaCobrada;
+    int idMaximo;
+    int opcion;
+    char mensaje[50]="No se pudo realizar cobro.\n";
 
+    limpiarScreen();
 
+    ven_printVentas(ven, lenVen);
+    if(obtenerMaximoID(ven, lenVen, &idMaximo)==TODOOK &&
+       utn_getEntero(&idCobrar, 3, idMaximo+1, -1, "Ingrese ID de la venta a cobrar:\n", "ID incorrecto")==TODOOK &&
+       obtenerIndexClientePorIDVenta(ven, lenVen, cli, lenCli, idCobrar, &indexCliente)==TODOOK)
+    {
+        printf("CLIENTE:\t");
+        cli_printCliente(cli, indexCliente);
+        if(utn_getEntero(&opcion, 3, 3, 0, "Confirma? \n\t1-Si\n\t2-No\n", "Opcion incorrecta\n")==TODOOK)
+        {
+            switch(opcion)
+            {
+                case 1:
+                    if(ven_obtenerPosicionPorID(ven, lenVen , idCobrar, &indexVentaCobrada)==TODOOK)
+                    {
+                        ven[indexVentaCobrada].estado=ESTADO_COBRADA;
+                        strcpy(mensaje, "Venta cobrada exitosamente.\n");
+                    }
+                    break;
+                case 2:
+                        strcpy(mensaje, "Operacion abortada.\n");
+                    break;
+            }
+        }
+    }
+    limpiarScreen();
+    printf(mensaje);
+
+    return retorno;
+}
+
+static int obtenerIndexClientePorIDVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int idVen, int* indexClienteRetorno)
+{
+    int retorno=ERROR;
+    int i;
+    int indexVen;
+    if(ven_obtenerPosicionPorID(ven, lenVen, idVen, &indexVen)==TODOOK)
+    {
+        for(i=0; i<lenCli; i++)
+        {
+            if(cli[i].id==ven[indexVen].id && !cli[i].isEmpty)
+            {
+                *indexClienteRetorno=i;
+                retorno=TODOOK;
+            }
+        }
+    }
     return retorno;
 }
 
@@ -166,7 +213,6 @@ int ven_printVentas(Venta* ventas, int len)
 {
 
     int i;
-    char zonaAux[11];
     int retorno=ERROR;
     if(ven_validarParametros(ventas, len)==TODOOK)
     {
@@ -175,7 +221,136 @@ int ven_printVentas(Venta* ventas, int len)
         {
             if(!ventas[i].isEmpty)
             {
-                switch(ventas[i].zona)
+                ven_printVentaPorIndex(ventas, i);
+            }
+        }
+        retorno=TODOOK;
+    }
+    return retorno;
+}
+
+int ven_validarParametros(Venta* pEntidad, int lenVen)
+{
+    int retorno=ERROR;
+
+    if(pEntidad!=NULL && lenVen>0)
+    {
+        retorno=TODOOK;
+    }
+    return retorno;
+}
+
+static int obtenerMaximoID(Venta* pEntidad, int len, int* idRetorno)
+{
+    int maxID;
+    int retorno=ERROR;
+    int i;
+
+
+    if(ven_validarParametros(pEntidad, len)==TODOOK && ventasTieneDatos(pEntidad, len))
+    {
+
+        for(i=0; i<len; i++)
+        {
+            if(!pEntidad[i].isEmpty)
+            {
+                if(i==0)
+                {
+                    maxID=pEntidad[i].id;
+
+                }
+                else if(pEntidad[i].id>maxID)
+                {
+                    maxID=pEntidad[i].id;
+                }
+
+            }
+        }
+        *idRetorno=maxID;
+        retorno=TODOOK;
+
+    }
+    return retorno;
+}
+
+static int generarID(void)
+{
+    static int id=-1;
+    id++;
+    return id;
+}
+
+static int ventasTieneDatos(Venta* pEntidad, int len)
+{
+    int retorno=FALSE;
+    int i;
+    if(ven_validarParametros(pEntidad, len)==TODOOK)
+    {
+        for(i=0; i<len; i++)
+        {
+            if(pEntidad[i].isEmpty==FALSE)
+            {
+                retorno=TRUE;
+                break;
+            }
+        }
+    }
+
+    return retorno;
+}
+
+static void ven_forzarAltas(Venta* pEntidad, int len)
+{
+    ven_altaForzada(pEntidad, 1, 0, "asd.av", 1, 0,0);
+    ven_altaForzada(pEntidad, 10, 1, "ertryrsd.av", 1, 1,1);
+    ven_altaForzada(pEntidad, 1, 2, "ggga3sd.av", 1, 0,2);
+    ven_altaForzada(pEntidad, 18, 3, "123dasd.av", 2, 0,3);
+    ven_altaForzada(pEntidad, 107, 3, "098asd.av", 3, 0,4);
+    ven_altaForzada(pEntidad, 1066, 4, "1345asd.av", 1, 0,5);
+    ven_altaForzada(pEntidad, 1048, 5, "x2asd.av", 2, 0,6);
+    ven_altaForzada(pEntidad, 10, 2, "dxasd.av", 1, 0,7);
+    ven_altaForzada(pEntidad, 200, 9, "sawasd.av", 3, 1,8);
+    ven_altaForzada(pEntidad, 100, 11, "vsasd.av", 3, 1,9);
+    ven_altaForzada(pEntidad, 10, 19, "vvasd.av", 3, 1,10);
+    ven_altaForzada(pEntidad, 300, 22, "gbasd.av", 3, 1,11);
+    ven_altaForzada(pEntidad, 400, 29, "poiasd.av", 2, 1,12);
+    ven_altaForzada(pEntidad, 1, 30, "mmasd.av", 1, 1,13);
+    ven_altaForzada(pEntidad, 2, 26, "mmasd.aCv", 2, 0,14);
+    ven_altaForzada(pEntidad, 77, 15, "dsvFVRasd.av", 3, 1,15);
+    ven_altaForzada(pEntidad, 66, 14, "ccasd.av", 2, 0,16);
+    ven_altaForzada(pEntidad, 66, 13, "ccasd.av", 1, 1,17);
+    ven_altaForzada(pEntidad, 54, 18, "cdsasd.av", 2, 0,18);
+    ven_altaForzada(pEntidad, 1, 19, "cdsasd.av", 1, 1,19);
+    ven_altaForzada(pEntidad, 5, 10, "dcasd.av", 2, 0,20);
+    ven_altaForzada(pEntidad, 8, 8, "fbasd.av", 3, 1,21);
+    ven_altaForzada(pEntidad, 10, 1, "ascasd.av", 2, 0,22);
+    ven_altaForzada(pEntidad, 24, 1, "fdsasd.av", 1, 0,23);
+    ven_altaForzada(pEntidad, 1, 29, "fasd.av", 2, 0,24);
+    ven_altaForzada(pEntidad, 14, 25, "7asd.av", 2, 0,25);
+    ven_altaForzada(pEntidad, 145, 11, "rasd.av", 2, 0,26);
+    ven_altaForzada(pEntidad, 1, 12, "4asd.av", 3, 0,27);
+    ven_altaForzada(pEntidad, 1, 12, "3asd.av", 2, 1,28);
+    ven_altaForzada(pEntidad, 3, 12, "2asd.av", 1, 0,29);
+    ven_altaForzada(pEntidad, 5, 14, "1asd.av", 2, 0,30);
+}
+
+static void ven_altaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int estado, int i)
+{
+    pEntidad[i].id=generarID();
+    pEntidad[i].cantidadAfiches=cantidadAfiches;
+    pEntidad[i].idCliente=idCliente;
+    strcpy(pEntidad[i].nombreArchivo, nombreArchivo);
+    pEntidad[i].zona=zona;
+
+    pEntidad[i].estado=estado;
+    pEntidad[i].isEmpty=FALSE;
+}
+
+void ven_printVentaPorIndex(Venta* venta, int index)
+{
+    char zonaAux[11];
+    char estado[9];
+    switch(venta[index].zona)
                 {
                     case 1:
                         strcpy(zonaAux, "CABA");
@@ -187,94 +362,21 @@ int ven_printVentas(Venta* ventas, int len)
                         strcpy(zonaAux, "ZONA OESTE");
                         break;
                 }
+                switch(venta[index].estado)
+                {
+                    case ESTADO_ACOBRAR:
+                        strcpy(estado, "A COBRAR");
+                        break;
+                    case ESTADO_COBRADA:
+                        strcpy(estado, "COBRADA");
+                        break;
+                }
 
-                printf("ID: %d - Archivo: %s - Cantidad de afiches: %d - Zona: %s - IDCliente: %d\n",
-                ventas[i].id,
-                ventas[i].nombreArchivo,
-                ventas[i].cantidadAfiches,
+                printf("ID: %d - Archivo: %s - Cantidad de afiches: %d - Zona: %s - IDCliente: %d - Estado: %s\n",
+                venta[index].id,
+                venta[index].nombreArchivo,
+                venta[index].cantidadAfiches,
                 zonaAux,
-                ventas[i].idCliente);
-            }
-        }
-        retorno=TODOOK;
-    }
-    return retorno;
-}
-
-
-int ven_validarParametros(Venta* pEntidad, int lenVen)
-{
-    int retorno=ERROR;
-    if(pEntidad!=NULL && lenVen>0)
-    {
-        retorno=TODOOK;
-    }
-    return retorno;
-}
-
-static int ventasTieneDatos(Venta* pEntidad, int len)
-{
-    int retorno=FALSE;
-    int i;
-    if(ven_validarParametros(pEntidad, len)==TODOOK)
-    {
-        for(i=0; i<len; i++)
-        {
-            if(!pEntidad[i].isEmpty)
-            {
-                retorno=TRUE;
-                break;
-            }
-        }
-    }
-    return retorno;
-}
-
-
-
-static void ven_forzarAltas(Venta* pEntidad, int len)
-{
-	ven_altaForzada(pEntidad, 1, 0, "asd.av", 1, 0);
-    ven_altaForzada(pEntidad, 10, 1, "ertryrsd.av", 1, 1);
-    ven_altaForzada(pEntidad, 1, 2, "ggga3sd.av", 1, 2);
-    ven_altaForzada(pEntidad, 18, 3, "123dasd.av", 2, 3);
-    ven_altaForzada(pEntidad, 107, 3, "098asd.av", 3, 4);
-    ven_altaForzada(pEntidad, 1066, 4, "1345asd.av", 1, 5);
-    ven_altaForzada(pEntidad, 1048, 5, "x2asd.av", 2, 6);
-    ven_altaForzada(pEntidad, 10, 2, "dxasd.av", 1, 7);
-    ven_altaForzada(pEntidad, 200, 9, "sawasd.av", 3, 8);
-    ven_altaForzada(pEntidad, 100, 11, "vsasd.av", 3, 9);
-    ven_altaForzada(pEntidad, 10, 19, "vvasd.av", 3, 10);
-    ven_altaForzada(pEntidad, 300, 22, "gbasd.av", 3, 11);
-    ven_altaForzada(pEntidad, 400, 29, "poiasd.av", 2, 12);
-    ven_altaForzada(pEntidad, 1, 30, "mmasd.av", 1, 13);
-    ven_altaForzada(pEntidad, 2, 26, "mmasd.aCv", 2, 14);
-    ven_altaForzada(pEntidad, 77, 15, "dsvqRWFVRasd.av", 3, 15);
-    ven_altaForzada(pEntidad, 66, 14, "ccasd.av", 2, 16);
-    ven_altaForzada(pEntidad, 66, 13, "ccasd.av", 1, 17);
-    ven_altaForzada(pEntidad, 54, 18, "cdsasd.av", 2, 18);
-    ven_altaForzada(pEntidad, 1, 19, "cdsasd.av", 1, 19);
-    ven_altaForzada(pEntidad, 5, 10, "dcasd.av", 2, 20);
-    ven_altaForzada(pEntidad, 8, 8, "fbasd.av", 3, 21);
-    ven_altaForzada(pEntidad, 10, 1, "ascasd.av", 2, 22);
-    ven_altaForzada(pEntidad, 24, 1, "fdsasd.av", 1, 23);
-    ven_altaForzada(pEntidad, 1, 29, "fasd.av", 2, 24);
-    ven_altaForzada(pEntidad, 14, 25, "7asd.av", 2, 25);
-    ven_altaForzada(pEntidad, 145, 11, "rasd.av", 2, 26);
-    ven_altaForzada(pEntidad, 1, 12, "4asd.av", 3, 27);
-    ven_altaForzada(pEntidad, 1, 12, "3asd.av", 2, 28);
-    ven_altaForzada(pEntidad, 3, 12, "2asd.av", 1, 29);
-    ven_altaForzada(pEntidad, 5, 14, "1asd.av", 2, 30);
-}
-
-static void ven_altaForzada(Venta* pEntidad, int cantidadAfiches, int idCliente, char* nombreArchivo, int zona, int i)
-{
-    pEntidad[i].id=generarID();
-    pEntidad[i].cantidadAfiches=cantidadAfiches;
-    pEntidad[i].idCliente=idCliente;
-    strcpy(pEntidad[i].nombreArchivo, nombreArchivo);
-    pEntidad[i].zona=zona;
-
-    pEntidad[i].estado=ESTADO_ACOBRAR;
-    pEntidad[i].isEmpty=FALSE;
+                venta[index].idCliente,
+                estado);
 }

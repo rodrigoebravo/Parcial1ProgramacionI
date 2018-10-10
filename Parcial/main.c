@@ -32,9 +32,10 @@ int main()
                     ven_ModificarPorID(ventas, CANTIDAD_VENTAS, clientes, CANTIDAD_CLIENTES);
                     break;
                 case 6:
-                    ven_cobrarVenta(ventas, CANTIDAD_VENTAS, clientes, CANTIDAD_CLIENTES);
+                    ven_cobrarVentaPorID(ventas, CANTIDAD_VENTAS, clientes, CANTIDAD_CLIENTES);
                     break;
                 case 7:
+                    imprimirClientesConVentasACobrar(ventas, clientes, CANTIDAD_VENTAS, CANTIDAD_CLIENTES);
                     break;
                 case 8:
                     break;

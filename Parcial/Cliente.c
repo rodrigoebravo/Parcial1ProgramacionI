@@ -6,11 +6,11 @@ static int cli_getAltaCliente(Cliente* pEntidad, int len, int index);
 static int cli_BajaPorPosicion(Cliente* cli, int lenCli, int index, Venta* ven, int lenVen);
 static int cli_obtenerPosicionVacia(Cliente* pEntidad, int len, int* indexVacio);
 static int generarID(void);
-static void printCliente(Cliente* pEntidad, int index);
 static int cli_modificar(Cliente* pEntidad, int len, int index);
 static int clientesTieneDatos(Cliente* pEntidad, int len);
 static void cli_altas(Cliente* pEntidad, char* nombre, char* apellido, char* cuit, int i);
 static void cli_forzarAltas(Cliente* pEntidad, int len);
+
 
 int cli_inicializarListaClientes(Cliente* pEntidad, int len)
 {
@@ -242,14 +242,14 @@ int cli_printClientes(Cliente* pEntidad, int lenCli)
         {
             if(!pEntidad[i].isEmpty)
             {
-                printCliente(pEntidad, i);
+                cli_printCliente(pEntidad, i);
             }
         }
     }
     return retorno;
 }
 
-static void printCliente(Cliente* pEntidad, int index)
+void cli_printCliente(Cliente* pEntidad, int index)
 {
     printf("ID: %d Nombre: %s Apellido: %s Cuit: %s \n", pEntidad[index].id, pEntidad[index].nombre, pEntidad[index].apellido, pEntidad[index].cuit);
 }

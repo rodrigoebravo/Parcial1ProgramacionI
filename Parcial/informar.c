@@ -29,3 +29,23 @@ void imprimirIDAlta(int id)
         printf("ID: %d\n", id);
     }
 }
+
+void imprimirClientesConVentasACobrar(Venta* ven, Cliente* cli, int lenVen, int lenCli)
+{
+    int i;
+    int j;
+
+    for(i=0; i<lenCli; i++)
+    {
+        if(!cli[i].isEmpty)
+            cli_printCliente(cli, i);
+
+        for(j=0; j<lenVen; j++)
+        {
+            if(cli[i].id==ven[j].idCliente && !cli[i].isEmpty && !ven[j].isEmpty && ven[j].estado==ESTADO_ACOBRAR)
+            {
+                ven_printVentaPorIndex(ven, j);
+            }
+        }
+    }
+}
