@@ -26,7 +26,7 @@ int main()
                     cli_bajaClientePorID(clientes, CANTIDAD_CLIENTES, ventas, CANTIDAD_VENTAS);
                     break;
                 case 4:
-                    ventaAfiche(clientes,CANTIDAD_CLIENTES, ventas, CANTIDAD_VENTAS);
+                    ven_ventaAfiche(clientes,CANTIDAD_CLIENTES, ventas, CANTIDAD_VENTAS);
                     break;
                 case 5:
                     ven_ModificarPorID(ventas, CANTIDAD_VENTAS, clientes, CANTIDAD_CLIENTES);

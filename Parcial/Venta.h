@@ -48,7 +48,7 @@ int ven_ModificarPorID(Venta* ven, int lenVen, Cliente* cli, int lenCli);
     parametro: lenCli longitud de lista de clientes
     return -1 si ocurre algun error o 0 si esta todo OK
 */
-int ventaAfiche(Cliente* cli, int lenCli, Venta* ven, int lenVen);
+int ven_ventaAfiche(Cliente* cli, int lenCli, Venta* ven, int lenVen);
 /**
     funcion modifica una venta por di
     parametro: ven lista ventas
@@ -57,6 +57,7 @@ int ventaAfiche(Cliente* cli, int lenCli, Venta* ven, int lenVen);
     parametro: lenCli longitud de lista de clientes
     return -1 si ocurre algun error o 0 si esta todo OK
 */
-int printVentas(Venta* ventas, int len);
+int ven_printVentas(Venta* ventas, int len);
 int ven_cobrarVenta(Venta* ven, int lenVentas, Cliente* cli, int lenCli);
+int ven_validarParametros(Venta* pEntidad, int lenVen);
 #endif // VENTA_H_INCLUDED

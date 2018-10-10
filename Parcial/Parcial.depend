@@ -40,12 +40,12 @@
 	"utn.h"
 	"Cliente.h"
 
-1539133957 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.c
+1539140542 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.c
 	"Cliente.h"
 	"Venta.h"
 	"utn.h"
 
-1539127610 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.h
+1539136677 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\cliente.h
 	"utn.h"
 	"Venta.h"
 
@@ -54,7 +54,7 @@
 	<stdlib.h>
 	<string.h>
 
-1539123428 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.h
+1539138274 c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.h
 	"utn.h"
 	"Cliente.h"
 
@@ -66,7 +66,7 @@
 	"Cliente.h"
 	"Venta.h"
 
-1539133415 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\main.c
+1539137570 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\main.c
 	"utn.h"
 	"informar.h"
 	"Cliente.h"
@@ -75,7 +75,7 @@
 1539123428 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\utn.c
 	"utn.h"
 
-1539123428 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.c
+1539140818 source:c:\users\usuario\desktop\utn\apuntes\programacioni\proyectosprogramacioni\parcial1programacioni\parcial\venta.c
 	"Venta.h"
 	"utn.h"
 	"Cliente.h"

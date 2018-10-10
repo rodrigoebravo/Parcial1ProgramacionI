@@ -6,10 +6,9 @@ static int cli_getAltaCliente(Cliente* pEntidad, int len, int index);
 static int cli_BajaPorPosicion(Cliente* cli, int lenCli, int index, Venta* ven, int lenVen);
 static int cli_obtenerPosicionVacia(Cliente* pEntidad, int len, int* indexVacio);
 static int generarID(void);
-static int validarParametros(Cliente* pEntidad, int lenCli);
 static void printCliente(Cliente* pEntidad, int index);
 static int cli_modificar(Cliente* pEntidad, int len, int index);
-static int tieneDatos(Cliente* pEntidad, int len);
+static int clientesTieneDatos(Cliente* pEntidad, int len);
 
 int cli_inicializarListaClientes(Cliente* pEntidad, int len)
 {
@@ -31,7 +30,7 @@ int cli_darAltaCliente(Cliente* pEntidad, int len)
     int index;
     int retorno=ERROR;
 
-    if(validarParametros(pEntidad, len)==TODOOK && cli_obtenerPosicionVacia(pEntidad, len, &index)==TODOOK)
+    if(cli_validarParametros(pEntidad, len)==TODOOK && cli_obtenerPosicionVacia(pEntidad, len, &index)==TODOOK)
     {
         cli_getAltaCliente(pEntidad, len, index);
         retorno=index;
@@ -45,7 +44,7 @@ int cli_modificarClientePorID(Cliente* pEntidad, int len)
     int idModificar;
     int indexModificar;
 
-    if(tieneDatos(pEntidad, len))
+    if(clientesTieneDatos(pEntidad, len))
     {
         cli_printClientes(pEntidad, len);
         if(utn_getEntero(&idModificar, 3, len, -1, "Ingrese ID a modificar:\n", "ID erroneo\n")==TODOOK &&
@@ -74,10 +73,10 @@ int cli_bajaClientePorID(Cliente* pEntidad, int lenCli, Venta* ven, int lenVen)
     int retorno=ERROR;
     int idBaja;
     int indexBaja;
-    if(tieneDatos(pEntidad, lenCli))
+    if(clientesTieneDatos(pEntidad, lenCli))
     {
         cli_printClientes(pEntidad, lenCli);
-        if(validarParametros(pEntidad, lenCli)==TODOOK && ven!=NULL && lenVen>0
+        if(cli_validarParametros(pEntidad, lenCli)==TODOOK && ven!=NULL && lenVen>0
             && utn_getEntero(&idBaja, 3, lenCli, -1, "Ingrese ID del cliente a dar de baja\n", "Error al dar de baja el ID\n")==TODOOK
             && cli_obtenerPosicionPorID(pEntidad, lenCli, idBaja, &indexBaja)==TODOOK
             && cli_posicionEstaVacia(pEntidad, lenCli, indexBaja)==FALSE)
@@ -105,7 +104,7 @@ static int cli_getAltaCliente(Cliente* pEntidad, int len, int index)
     Cliente auxCli;
 
     limpiarScreen();
-    if(validarParametros(pEntidad, len)==TODOOK &&
+    if(cli_validarParametros(pEntidad, len)==TODOOK &&
             index>=0 &&
             index<len &&
             utn_getCadena(auxCli.nombre, 20, 3, "Ingrese nombre\n", "Nombre incorrecto\n")==TODOOK &&
@@ -126,7 +125,7 @@ static int cli_modificar(Cliente* pEntidad, int len, int index)
     int opcionModificar;
     Cliente auxCli;
 
-    if(validarParametros(pEntidad, len)==TODOOK && index>=0 && index<len)
+    if(cli_validarParametros(pEntidad, len)==TODOOK && index>=0 && index<len)
     {
         auxCli=pEntidad[index];
 
@@ -158,7 +157,7 @@ static int cli_BajaPorPosicion(Cliente* cli, int lenCli, int index, Venta* ven, 
 {
     int retorno=ERROR;
     int i;
-    if(validarParametros(cli, lenCli)==TODOOK && ven!=NULL && lenVen>0 && index>=0 && index<lenCli)
+    if(cli_validarParametros(cli, lenCli)==TODOOK && ven!=NULL && lenVen>0 && index>=0 && index<lenCli)
     {
         cli[index].isEmpty=TRUE;
 
@@ -190,7 +189,7 @@ static int cli_obtenerPosicionVacia(Cliente* pEntidad, int len, int* indexVacio)
     int i;
     int retorno=ERROR;
 
-    if(validarParametros(pEntidad, len)==TODOOK)
+    if(cli_validarParametros(pEntidad, len)==TODOOK)
     {
         for(i=0; i<len; i++)
         {
@@ -232,7 +231,7 @@ int cli_printClientes(Cliente* pEntidad, int lenCli)
 {
     int retorno=ERROR;
     int i;
-    if(validarParametros(pEntidad, lenCli)==TODOOK)
+    if(cli_validarParametros(pEntidad, lenCli)==TODOOK)
     {
         limpiarScreen();
         retorno=TODOOK;
@@ -252,7 +251,7 @@ static void printCliente(Cliente* pEntidad, int index)
     printf("ID: %d Nombre: %s Apellido: %s Cuit: %s \n", pEntidad[index].id, pEntidad[index].nombre, pEntidad[index].apellido, pEntidad[index].cuit);
 }
 
-static int validarParametros(Cliente* pEntidad, int lenCli)
+int cli_validarParametros(Cliente* pEntidad, int lenCli)
 {
     int retorno=ERROR;
     if(pEntidad!=NULL && lenCli>0)
@@ -262,11 +261,11 @@ static int validarParametros(Cliente* pEntidad, int lenCli)
     return retorno;
 }
 
-static int tieneDatos(Cliente* pEntidad, int len)
+static int clientesTieneDatos(Cliente* pEntidad, int len)
 {
     int retorno=FALSE;
     int i;
-    if(validarParametros(pEntidad, len)==TODOOK)
+    if(cli_validarParametros(pEntidad, len)==TODOOK)
     {
         for(i=0; i<len; i++)
         {

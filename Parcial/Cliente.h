@@ -19,5 +19,6 @@ int cli_bajaClientePorID(Cliente* cli, int lenCli, Venta* ven, int lenVen);
 int cli_obtenerPosicionPorID(Cliente* pEntidad, int len, int id, int* indexRetorno);
 int cli_posicionEstaVacia(Cliente* pEntidad, int len, int index);
 int cli_printClientes(Cliente* pEntidad, int lenCli);
+int cli_validarParametros(Cliente* pEntidad, int lenCli);
 
 #endif // CLIENTE_H_INCLUDED
