@@ -2,7 +2,7 @@
 #include "informar.h"
 #include "Cliente.h"
 #define CANTIDAD_CLIENTES 100
-#define CANTIDAD_VENTAS 1000
+#define CANTIDAD_VENTAS 31
 #include "Venta.h"
 int main()
 {
@@ -35,15 +35,30 @@ int main()
                     ven_cobrarVentaPorID(ventas, CANTIDAD_VENTAS, clientes, CANTIDAD_CLIENTES);
                     break;
                 case 7:
-                    imprimirClientesConVentasACobrar(ventas, clientes, CANTIDAD_VENTAS, CANTIDAD_CLIENTES);
+                    inf_imprimirClientesConVentasACobrar(ventas, clientes, CANTIDAD_VENTAS, CANTIDAD_CLIENTES);
                     break;
-                case 8:
-                    inf_ordenarNombreApellidoCuit(clientes,CANTIDAD_CLIENTES);
-                    inf_cantidadAfichesPorIDCliente(clientes, ventas, CANTIDAD_CLIENTES, CANTIDAD_VENTAS);
+                case 8://a
+                    inf_printClienteMasVentas(clientes,ventas, CANTIDAD_CLIENTES, CANTIDAD_VENTAS, ESTADO_ACOBRAR, FALSE, FALSE);
                     break;
+                case 9://b
+                    inf_printClienteMasVentas(clientes,ventas, CANTIDAD_CLIENTES, CANTIDAD_VENTAS, ESTADO_COBRADA, FALSE, FALSE);
+                    break;
+                case 10://c
+                    inf_printClienteMasVentas(clientes,ventas, CANTIDAD_CLIENTES, CANTIDAD_VENTAS, -1, TRUE, TRUE);
+                    break;
+                case 11://d
+                    inf_printClienteMasVentas(clientes,ventas, CANTIDAD_CLIENTES, CANTIDAD_VENTAS, ESTADO_ACOBRAR, FALSE, TRUE);
+                    break;
+                case 12://e
+                    inf_printClienteComproMasAfiches(ventas, CANTIDAD_VENTAS, clientes, CANTIDAD_CLIENTES);
+                    break;
+                case 13:
+                    inf_printVentasPorZonaAfiche(ventas, CANTIDAD_VENTAS);
+                    break;
+
             };
         }
-    }while(opcion!=8);
+    }while(opcion!=20);
 
 
     return 0;

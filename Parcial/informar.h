@@ -3,6 +3,14 @@
 
 #include "Cliente.h"
 #include "Venta.h"
+
+typedef struct
+{
+    Cliente cliente;
+    int cantidadVentas;
+    int cantidadAfiches;
+    int isEmpty;
+}ClienteCantidadVentas;
 /**
     Imprime menu principal
     parametro *opcion: opcion a ingresar por el usurio
@@ -28,7 +36,7 @@ void imprimirIDAlta(int id);
     parametro cli: lista de clientes
     parametro lenCli: longitud de lista de clientes
 */
-void imprimirClientesConVentasACobrar(Venta* ven, Cliente* cli, int lenVen, int lenCli);
+void inf_imprimirClientesConVentasACobrar(Venta* ven, Cliente* cli, int lenVen, int lenCli);
 
 /**
     funcion que reordena lista clientes por nombre apellido y cuit
@@ -36,5 +44,10 @@ void imprimirClientesConVentasACobrar(Venta* ven, Cliente* cli, int lenVen, int 
     parametro len: longitud de lista de clientes
 */
 int inf_ordenarNombreApellidoCuit(Cliente* pEntidad,int len);
-void inf_cantidadAfichesPorIDCliente(Cliente* cli, Venta* ven, int lenCli, int lenVen);
+int inf_cantidadDeVentasPorIDEstado(Venta* pEntidad, int len, int idCliente, int estado, int estadoNoClasificado);
+int inf_cantidadDeAfichesPorIDEstado(Venta* pEntidad, int len, int idCliente, int estado);
+int inf_printClienteMasVentas(Cliente* cli, Venta* ven, int lenCli, int lenVen, int estado, int estadoNoClasificado, int imprimirAfiches);
+void inf_printVentasPorZonaAfiche(Venta* pEntidad, int len);
+void inf_printClienteComproMasAfiches(Venta* ven, int lenVen, Cliente* cli, int lenCli);
+int inf_cantidadDeAfichesPorID(Venta* pEntidad, int len, int idCliente);
 #endif // INFORMAR_H_INCLUDED

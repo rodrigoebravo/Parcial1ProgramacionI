@@ -94,5 +94,11 @@ int cli_obtenerMaximoID(Cliente* pEntidad, int len, int* idRetorno);
     return -1 si ocurre algun error o >=0 si esta todo OK (id)
 */
 int cli_getMaxIDCliente(Cliente* pEntidad, int len);
-
+/**
+    funcion pregunta si el array de clientes tiene datos
+    parametro pEntidad: lista de clientes
+    parametro len: longitud de lista de clientes
+    return -1 si ocurre algun error o >=0 si esta todo OK
+*/
+int clientesTieneDatos(Cliente* pEntidad, int len);
 #endif // CLIENTE_H_INCLUDED

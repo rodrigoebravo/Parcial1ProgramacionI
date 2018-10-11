@@ -25,14 +25,7 @@ static int getAltaVenta(Venta* ven, int lenVen, Cliente* cli, int lenCli, int id
     return -1 si ocurre algun error o 0 si esta todo OK
 */
 static int obtenerPosicionVaciaVentas(Venta* pEntidad, int len, int* indexVacio);
-/**
-    funcion pregunta si tiene datos
-    parametro pEntidad: lista de clientes
-    parametro len: longitud de lista de clientes
-    parametro *indexVacio: posicion vacia (retorno)
-    return FALSE O TRUE segun corresponda
-*/
-static int ventasTieneDatos(Venta* pEntidad, int len);
+
 /**
     funcion encuentra maximo id
     parametro pEntidad: lista de clientes
@@ -344,7 +337,7 @@ static int generarID(void)
     return id;
 }
 
-static int ventasTieneDatos(Venta* pEntidad, int len)
+int ventasTieneDatos(Venta* pEntidad, int len)
 {
     int retorno=FALSE;
     int i;

@@ -87,4 +87,13 @@ int ven_validarParametros(Venta* pEntidad, int lenVen);
     return -1 si ocurre algun error o 0 si esta todo OK
 */
 void ven_printVentaPorIndex(Venta* venta, int index);
+
+/**
+    funcion pregunta si tiene datos
+    parametro pEntidad: lista de clientes
+    parametro len: longitud de lista de clientes
+    parametro *indexVacio: posicion vacia (retorno)
+    return FALSE O TRUE segun corresponda
+*/
+int ventasTieneDatos(Venta* pEntidad, int len);
 #endif // VENTA_H_INCLUDED

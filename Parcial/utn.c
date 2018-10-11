@@ -267,13 +267,13 @@ int utn_contieneSimboloPesos(char* cadena)
 
 void limpiarBuffer(void)
 {
-    //__fpurge(stdin);
-    fflush(stdin);
+    __fpurge(stdin);
+    //fflush(stdin);
 }
 void limpiarScreen(void)
 {
-    system("cls");//windows
-    //system("clear");//linux
+    //system("cls");//windows
+    system("clear");//linux
 }
 
 int esCuit(char* pBuffer, int len)

@@ -120,3 +120,44 @@
 	"utn.h"
 	"Cliente.h"
 
+1539208264 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/Cliente.c
+	"Cliente.h"
+	"Venta.h"
+	"utn.h"
+
+1539208264 /home/alumno/Escritorio/Bravo/Parcial/Parcial/Cliente.h
+	"utn.h"
+	"Venta.h"
+
+1539207457 /home/alumno/Escritorio/Bravo/Parcial/Parcial/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+
+1539208264 /home/alumno/Escritorio/Bravo/Parcial/Parcial/Venta.h
+	"utn.h"
+	"Cliente.h"
+
+1539219374 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/main.c
+	"utn.h"
+	"informar.h"
+	"Cliente.h"
+	"Venta.h"
+
+1539218139 /home/alumno/Escritorio/Bravo/Parcial/Parcial/informar.h
+	"Cliente.h"
+	"Venta.h"
+
+1539207457 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/utn.c
+	"utn.h"
+
+1539218613 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/Venta.c
+	"Venta.h"
+	"utn.h"
+	"Cliente.h"
+
+1539218613 source:/home/alumno/Escritorio/Bravo/Parcial/Parcial/informar.c
+	"informar.h"
+	"utn.h"
+

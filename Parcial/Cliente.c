@@ -42,13 +42,7 @@ static int generarID(void);
     return -1 si ocurre algun error o >=0 si esta todo OK
 */
 static int cli_modificar(Cliente* pEntidad, int len, int index);
-/**
-    funcion pregunta si el array de clientes tiene datos
-    parametro pEntidad: lista de clientes
-    parametro len: longitud de lista de clientes
-    return -1 si ocurre algun error o >=0 si esta todo OK
-*/
-static int clientesTieneDatos(Cliente* pEntidad, int len);
+
 /**
     funcion da de alta un cliente a la vez por posicion
     parametro pEntidad: lista de clientes
@@ -322,7 +316,7 @@ int cli_validarParametros(Cliente* pEntidad, int lenCli)
     return retorno;
 }
 
-static int clientesTieneDatos(Cliente* pEntidad, int len)
+int clientesTieneDatos(Cliente* pEntidad, int len)
 {
     int retorno=FALSE;
     int i;
