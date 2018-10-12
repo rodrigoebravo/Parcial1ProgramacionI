@@ -14,7 +14,7 @@ int main()
     pBuffer=newArray(ENTEROS);
     inicializar(pBuffer, ENTEROS, 1024);
     mostrarArray(pBuffer, ENTEROS);
-    deleteArray(pBuffer);
+    //deleteArray(pBuffer);
     pBuffer=redimencionarArray(pBuffer, ENTEROS+5);
     //inicializar(pBuffer, ENTEROS+5, 1);
     //mostrarArray(pBuffer, ENTEROS+5);
@@ -98,17 +98,11 @@ int deleteArray(int* pBuffer)
 
 int* redimencionarArray(int* pBuffer, int size)
 {
-    int* pAux;
     int* retorno=NULL;
     printf("--->%p",pBuffer);
     if(pBuffer!=NULL && size>0)
     {
-        pAux = (int *) realloc (pBuffer , sizeof(int) * size);
-
-        if(pAux != NULL)
-        {
-            retorno = pAux;
-        }
+        retorno = (int *) realloc(pBuffer , sizeof(int) * size);
     }
     return retorno;
 }
