@@ -3,7 +3,7 @@
 #include "empleado.h"
 //#include "service.h"
 //#include "user.h"
-void ordenar(void** lista, int limite, int(*comparar)(void*,void*));
+void ordenar(void* lista[], int limite, int(*comparar)(void*,void*));
 /*int inicializar(int* pBuffer, int len, int valor);
 int mostrarArray(int* pBuffer, int len);
 int* newArray(int size);
@@ -41,19 +41,21 @@ int main()
     Empleado* listaEmpleados[1000];
     int qtyEmpleados=0;
     char auxiliar[50];
-
     for(int i=0; i<100;i++)
     {
         sprintf(auxiliar, "Juan_%d", i);
         listaEmpleados[i]=empleado_newParametros(auxiliar, "Perez", 1.45);
         qtyEmpleados++;
     }
-    int* emp=(int*)empleado_compareNombre;
-    ordenar(listaEmpleados, qtyEmpleados, emp);
+
+    ordenar((void*)listaEmpleados, qtyEmpleados, empleado_compareNombre);
+
     for(int i=0; i<qtyEmpleados;i++)
     {
         empleado_print(listaEmpleados[i]);
     }
+
+
     //c_function_qsort.html
     /*Service* listaService[1000];
     int qtyService=0;

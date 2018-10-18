@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1539900063 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/prueba/main.c
+	<stdio.h>
+	<stdlib.h>
+
