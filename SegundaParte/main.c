@@ -1,6 +1,8 @@
 
 #define ENTEROS 3
 #include "empleado.h"
+#include "service.h"
+#include "user.h"
 
 /*int inicializar(int* pBuffer, int len, int valor);
 int mostrarArray(int* pBuffer, int len);
@@ -35,7 +37,7 @@ int main()
 
     if(pAux != NULL)
         a = pAux;
-    */
+
     Empleado* listaEmpleados[1000];
     int qtyEmpleados=0;
     char auxiliar[50];
@@ -49,11 +51,39 @@ int main()
     for(int i=0; i<qtyEmpleados;i++)
     {
         empleado_print(listaEmpleados[i]);
+    }*/
+
+    /*Service* listaService[1000];
+    int qtyService=0;
+    char auxiliar[50];
+
+    for(int i=0; i<100;i++)
+    {
+        sprintf(auxiliar, "NOT FOUND_%d", i);
+        listaService[i]=service_newParametros(i, auxiliar);
+        qtyService++;
     }
+    for(int i=0; i<qtyService;i++)
+    {
+        service_print(listaService[i]);
+    }*/
 
+    User* listaUser[1000];
+    int qtyUser=0;
+    char auxiliarName[50];
+    char auxiliarEmail[50];
 
-
-
+    for(int i=0; i<100;i++)
+    {
+        sprintf(auxiliarName, "Jose Hernandez_%d", i);
+        sprintf(auxiliarEmail, "jose_%d@gmail.com", i);
+        listaUser[i]=user_newParametros(auxiliarName, auxiliarEmail);
+        qtyUser++;
+    }
+    for(int i=0; i<qtyUser;i++)
+    {
+        user_print(listaUser[i]);
+    }
     return 0;
 }
 /*int inicializar(int* pBuffer, int len, int valor)

@@ -14,14 +14,24 @@
 	<stdlib.h>
 	<string.h>
 
-1539818869 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/main.c
+1539823973 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/main.c
 	"empleado.h"
+	"service.h"
+	"user.h"
 
-1539822280 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/service.c
+1539822745 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/service.c
 	"service.h"
 
-1539822320 /home/alumno/Escritorio/Bravo/Parcial/SegundaParte/service.h
+1539822745 /home/alumno/Escritorio/Bravo/Parcial/SegundaParte/service.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+
+1539823800 /home/alumno/Escritorio/Bravo/Parcial/SegundaParte/user.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1539823837 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/user.c
+	"user.h"
 

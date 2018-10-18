@@ -12,7 +12,7 @@ Service* service_new(void)
     return (Service*) malloc (sizeof(Service));
 }
 
-Service* service_newParametros(int gravedad, char* mensaje, int serviceId)
+Service* service_newParametros(int gravedad, char* mensaje)
 {
     Service* this=NULL;
     this=service_new();
@@ -85,7 +85,6 @@ static int isValidMensaje(char* mensaje)
 {
     return TRUE;
 }
-
 
 int service_compareMensaje(Service* thisA, Service* thisB)
 {

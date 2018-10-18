@@ -16,7 +16,7 @@ typedef struct
 }Service;
 
 Service* service_new(void);
-Service* service_newParametros(int gravedad, char* mensaje, int serviceId);
+Service* service_newParametros(int gravedad, char* mensaje);
 void service_delete(Service* this);
 
 int service_setGravedad(Service* this, int gravedad);
