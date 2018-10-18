@@ -3,21 +3,19 @@
 	<stdio.h>
 	<stdlib.h>
 
-1539818326 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/empleado.c
+1539825527 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/empleado.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"empleado.h"
 
-1539818913 /home/alumno/Escritorio/Bravo/Parcial/SegundaParte/empleado.h
+1539825584 /home/alumno/Escritorio/Bravo/Parcial/SegundaParte/empleado.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1539823973 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/main.c
+1539826058 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/main.c
 	"empleado.h"
-	"service.h"
-	"user.h"
 
 1539822745 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/service.c
 	"service.h"
@@ -34,4 +32,6 @@
 
 1539823837 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/user.c
 	"user.h"
+
+1539824342 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/Venta.c
 

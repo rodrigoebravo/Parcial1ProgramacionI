@@ -31,9 +31,25 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Venta.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Venta.h" />
+		<Unit filename="empleado.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="empleado.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="service.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="service.h" />
+		<Unit filename="user.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="user.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

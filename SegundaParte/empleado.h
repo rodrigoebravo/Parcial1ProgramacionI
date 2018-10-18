@@ -29,6 +29,6 @@ int empleado_setApellido(Empleado* this, char* apellido);
 int empleado_getApellido(Empleado* this, char* apellido);
 int empleado_setAltura(Empleado* this, float altura);
 int empleado_getAltura(Empleado* this, float* altura);
-int empleado_compareNombre(Empleado* thisA, Empleado* thisB);
+int empleado_compareNombre(void* thisA, void* thisB);
 void empleado_print(Empleado* this);
 #endif // EMPLEADO_H_INCLUDED
