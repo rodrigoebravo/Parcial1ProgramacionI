@@ -1,26 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
+
 #define ENTEROS 3
-#define ERROR -1
-#define TODOOK 0
-int inicializar(int* pBuffer, int len, int valor);
+#include "empleado.h"
+
+/*int inicializar(int* pBuffer, int len, int valor);
 int mostrarArray(int* pBuffer, int len);
 int* newArray(int size);
 int deleteArray(int* pBuffer);
-int* redimencionarArray(int* pBuffer, int size);
+int* redimencionarArray(int* pBuffer, int size);*/
 int main()
 {
-    int* pBuffer;
+    /*int* pBuffer;
     pBuffer=newArray(ENTEROS);
     inicializar(pBuffer, ENTEROS, 1024);
     mostrarArray(pBuffer, ENTEROS);
     //deleteArray(pBuffer);
-    pBuffer=redimencionarArray(pBuffer, ENTEROS+5);
+    pBuffer=redimencionarArray(pBuffer, ENTEROS+5);*/
     //inicializar(pBuffer, ENTEROS+5, 1);
     //mostrarArray(pBuffer, ENTEROS+5);
-
-
-
 
     /* malloc
     int *a;
@@ -40,9 +36,27 @@ int main()
     if(pAux != NULL)
         a = pAux;
     */
+    Empleado* listaEmpleados[1000];
+    int qtyEmpleados=0;
+    char auxiliar[50];
+
+    for(int i=0; i<100;i++)
+    {
+        sprintf(auxiliar, "Juan_%d", i);
+        listaEmpleados[i]=empleado_newParametros(auxiliar, "Perez", 1.45);
+        qtyEmpleados++;
+    }
+    for(int i=0; i<qtyEmpleados;i++)
+    {
+        empleado_print(listaEmpleados[i]);
+    }
+
+
+
+
     return 0;
 }
-int inicializar(int* pBuffer, int len, int valor)
+/*int inicializar(int* pBuffer, int len, int valor)
 {
     int i;
     int retorno=ERROR;
@@ -106,3 +120,4 @@ int* redimencionarArray(int* pBuffer, int size)
     }
     return retorno;
 }
+*/

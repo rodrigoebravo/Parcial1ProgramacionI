@@ -3,3 +3,25 @@
 	<stdio.h>
 	<stdlib.h>
 
+1539818326 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
+1539818913 /home/alumno/Escritorio/Bravo/Parcial/SegundaParte/empleado.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1539818869 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/main.c
+	"empleado.h"
+
+1539822280 source:/home/alumno/Escritorio/Bravo/Parcial/SegundaParte/service.c
+	"service.h"
+
+1539822320 /home/alumno/Escritorio/Bravo/Parcial/SegundaParte/service.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
