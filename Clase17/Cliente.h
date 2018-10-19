@@ -24,6 +24,7 @@ int cliente_compareName(Cliente* thisA, Cliente* thisB);
 int cliente_setApellido(Cliente* this, char* apellido);
 int cliente_getApellido(Cliente* this, char* apellido);
 int cliente_compareApellido(Cliente* thisA, Cliente* thisB);
+int cliente_buscarLugarVacio(Cliente* pBuffer[], int len);
 void cliente_print(Cliente* this);
 
 #endif // CLIENTE_H_INCLUDED

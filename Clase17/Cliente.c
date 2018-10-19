@@ -23,7 +23,8 @@ Cliente* cliente_newParametros(char* name, char* apellido)
 
 void cliente_delete(Cliente* this)
 {
-    free(this);
+    if(this!=NULL)
+        free(this);
 }
 
 int cliente_setName(Cliente* this, char* name)
@@ -97,4 +98,43 @@ void cliente_print(Cliente* this)
         this->apellido,
         this->id
           );
+}
+
+int cliente_buscarLugarVacio(Cliente* pBuffer[], int len)
+{
+    int i,retorno=-1;
+    if(pBuffer!=NULL)
+    {
+        for(i=0; i<len; i++)
+        {
+            if(pBuffer==NULL)
+            {
+                retorno=i;
+                break;
+            }
+        }
+    }
+
+    return retorno;
+}
+
+
+int cliente_buscarPorID(Cliente* pBuffer[], int len, int ID)
+{
+    int i,retorno=-1;
+    Cliente* aux;
+    if(pBuffer!=NULL)
+    {
+        for(i=0; i<len; i++)
+        {
+            aux=pBuffer[i];
+            if(aux!=NULL && aux->id==id)
+            {
+                retorno=i;
+                break;
+            }
+        }
+    }
+
+    return retorno;
 }

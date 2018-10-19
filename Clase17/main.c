@@ -4,19 +4,20 @@ int main()
 {
     Cliente* clientes[CANT_CLIENTES];
     Cliente* aux;
-    int i;
+    int i, indexVacio;
 
+    //inicializar
     for(i=0;i<CANT_CLIENTES;i++)
     {
         clientes[i]=NULL;
     }
-
+    //ALTA CLIENTE
     aux=cliente_new();
-    if(aux!=NULL)
+    indexVacio=cliente_buscarLugarVacio(clientes, CANT_CLIENTES);
+    if(aux!=NULL && indexVacio>=0)
     {
-        clientes[0] = cliente_newParametros("bla", "bla");
+        clientes[indexVacio] = cliente_newParametros("bla", "bla");
     }
-
 
     return 0;
 }
