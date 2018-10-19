@@ -128,7 +128,7 @@ int cliente_buscarPorID(Cliente* pBuffer[], int len, int ID)
         for(i=0; i<len; i++)
         {
             aux=pBuffer[i];
-            if(aux!=NULL && aux->id==id)
+            if(aux!=NULL && aux->id==ID)
             {
                 retorno=i;
                 break;
