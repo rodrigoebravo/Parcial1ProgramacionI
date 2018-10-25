@@ -1,23 +1,24 @@
 # depslib dependency file v1.0
-1540422127 source:/home/alumno/Escritorio/Bravo/Parcial/archivos/main.c
+1540430187 source:/home/alumno/Escritorio/Bravo/Parcial/archivos/main.c
 	<stdio.h>
 	<stdlib.h>
-
-1540426258 source:/home/alumno/Escritorio/Bravo/Parcial/archivos/persona.c
 	"persona.h"
 
-1540426022 /home/alumno/Escritorio/Bravo/Parcial/archivos/persona.h
+1540429272 source:/home/alumno/Escritorio/Bravo/Parcial/archivos/persona.c
+	"persona.h"
+
+1540427585 /home/alumno/Escritorio/Bravo/Parcial/archivos/persona.h
 	"utn.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1539207457 /home/alumno/Escritorio/Bravo/Parcial/archivos/utn.h
+1540427428 /home/alumno/Escritorio/Bravo/Parcial/archivos/utn.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<stdio_ext.h>
 
-1539207457 source:/home/alumno/Escritorio/Bravo/Parcial/archivos/utn.c
+1540427428 source:/home/alumno/Escritorio/Bravo/Parcial/archivos/utn.c
 	"utn.h"
 

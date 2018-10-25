@@ -68,6 +68,7 @@ int main()
         {
             if(flagOnce)
             {
+                fscanf(pArchivo,"%s", bufferId);
                 flagOnce=0;
             }
             fscanf(pArchivo,"%[^,],%[^,],%[^\n]\n", bufferId, bufferNombre, bufferApellido);
