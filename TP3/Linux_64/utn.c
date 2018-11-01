@@ -21,7 +21,7 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
     {
         do
         {
-            printf(mensaje);
+            printf("%s", mensaje);
             getString(cadenaAux, sizeof(cadenaAux));
 
             if(esNumero(cadenaAux)==TRUE)
@@ -37,14 +37,14 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
                 {
                     limpiarBuffer();
                     limpiarScreen();
-                    printf(mensajeError);
+                    printf("%s", mensajeError);
                 }
             }
             else
             {
                 limpiarBuffer();
                 limpiarScreen();
-                printf(mensajeError);
+                printf("%s", mensajeError);
             }
             intentos--;
         }
@@ -62,7 +62,7 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
     {
         do
         {
-            printf(mensaje);
+            printf("%s", mensaje);
             getString(cadenaAux, sizeof(cadenaAux));
             if(esDecimal(cadenaAux)==TRUE)
             {
@@ -77,13 +77,13 @@ int utn_getDecimal(float* numeroBuffer, int intentos, int maximo, int minimo, ch
                 else
                 {
                     limpiarBuffer();
-                    printf(mensajeError);
+                    printf("%s", mensajeError);
                 }
             }
             else
             {
                 limpiarBuffer();
-                printf(mensajeError);
+                printf("%s", mensajeError);
             }
             intentos--;
         }
@@ -99,7 +99,7 @@ int utn_getCadena(char* cadenaBuffer, int len, int max, int min, int intentos, c
     {
         do
         {
-            printf(mensaje);
+            printf("%s", mensaje);
             if(getString(cadenaBuffer, len)==TODOOK && strlen(cadenaBuffer) <= max && strlen(cadenaBuffer) >= min)
             {
                 retorno=TODOOK;
@@ -108,7 +108,7 @@ int utn_getCadena(char* cadenaBuffer, int len, int max, int min, int intentos, c
             else
             {
                 limpiarScreen();
-                printf(mensajeError);
+                printf("%s", mensajeError);
             }
             intentos--;
         }

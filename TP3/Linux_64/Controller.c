@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Employee.h"
-
+#include "utn.h"
+#include "parser.h"
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  * \param path char*
@@ -12,13 +13,15 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-    int ret=-1;
+    int ret=ERROR;
     FILE* pFile;
-    pFile=fopen(path, "r");
+    pFile=fopen(path, "w");
     if(pFile!=NULL)
     {
-        parser_EmployeeFromText()
+        //parser_EmployeeFromText(pFile, pArrayListEmployee);
+
     }
+    fclose(pFile);
 
     return ret;
 }
@@ -44,7 +47,19 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno=ERROR;
+    char idAux[1024];
+    char nombreAux[1024];
+    char horasTrabajadasAux[1024];
+    char sueldoAux[1024];
+    if(pArrayListEmployee !=NULL &&
+
+    )
+    {
+        retorno=TODOOK;
+
+    }
+    return retorno;
 }
 
 /** \brief Modificar datos de empleado

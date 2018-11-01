@@ -53,3 +53,50 @@
 	"LinkedList.h"
 	"Employee.h"
 
+1541043057 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+	"parser.h"
+
+1541040850 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/LinkedList.h
+
+1541040850 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/Employee.h
+
+1541040850 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+
+1541042945 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/parser.h
+
+1541040850 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/Employee.c
+	"Employee.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1541043033 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+
+1541043956 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/utn.c
+	"utn.h"
+
+1541044071 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1541040850 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/TP3/Linux_64/Controller.h
+
