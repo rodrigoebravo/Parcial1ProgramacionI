@@ -39,4 +39,11 @@ int main()
         }
     }while(option != 10);
     return 0;
+    //MAIN CLASE
+    //---------------------------------------------------------------------case 1
+    //controller_loadFromText("data.csv", listaEmpleados);
+    //controller_loadFromBinary("data.bin", listaEmpleados);
+    //---------------------------------------------------------------------case 6
+    //ll_sort(listaEmpleados, employee_criterioSortNombre, 1);
+    //controller_saveAsBinary("data.bin", listaEmpleados);
 }

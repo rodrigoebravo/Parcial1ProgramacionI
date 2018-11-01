@@ -12,10 +12,13 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-    int ret;
+    int ret=-1;
     FILE* pFile;
     pFile=fopen(path, "r");
     if(pFile!=NULL)
+    {
+        parser_EmployeeFromText()
+    }
 
     return ret;
 }
@@ -113,6 +116,20 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
+    FILE *pArchivo=fopen(path, "wb");
+    Employee* pEmpleado;
+    int lenArray=ll_len(pArrayListEmployee);
+    int i;
+    if(pArchivo!=NULL && path!=NULL && pArrayListEmployee!=NULL)
+    {
+        for(i=0; i<lenArray;i++)
+        {
+            pEmpleado=ll_get(pArrayListEmployee, i);
+            fwrite(pEmpleado, sizeof(pEmpleado), 1, pArchivo);
+        }
+    }
+    fclose(pArchivo);
+
     return 1;
 }
 
