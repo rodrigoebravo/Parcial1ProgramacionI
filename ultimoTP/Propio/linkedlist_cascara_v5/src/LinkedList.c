@@ -117,7 +117,6 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
         }
         else
         {
-            printf("------------------PRUEBA------------------\n");
             pNode=getNode(this,nodeIndex-1);
             pNewNode->pNextNode=pNode->pNextNode;
             pNode->pNextNode=pNewNode;
@@ -153,7 +152,10 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
  */
 int ll_add(LinkedList* this, void* pElement)
 {
-    int returnAux = -1;
+    int returnAux = ERROR;
+
+    if(this!=NULL)
+        returnAux = addNode(this, this->size, pElement);
 
     return returnAux;
 }
@@ -169,6 +171,14 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
     void* returnAux = NULL;
+    Node* pNode;
+
+    if(this!=NULL && index>=0 && index<(this->size))
+    {
+        pNode = getNode(this, index);
+        if(pNode!=NULL)
+            returnAux=pNode->pElement;
+    }
 
     return returnAux;
 }
@@ -185,8 +195,15 @@ void* ll_get(LinkedList* this, int index)
  */
 int ll_set(LinkedList* this, int index,void* pElement)
 {
-    int returnAux = -1;
-
+    int returnAux = ERROR;
+    Node* pNode;
+    if(this!=NULL && index>=0 &&index<this->size)
+    {
+        returnAux = TODOOK;
+        pNode=getNode(this, index);
+        if(pNode!=NULL)
+            pNode->pElement=pElement;
+    }
     return returnAux;
 }
 
@@ -201,7 +218,32 @@ int ll_set(LinkedList* this, int index,void* pElement)
  */
 int ll_remove(LinkedList* this,int index)
 {
-    int returnAux = -1;
+    int returnAux = ERROR;
+    Node* primerNodo;
+    Node* segundoNodo;
+
+    if(this!=NULL && index>=0 &&index<this->size)
+    {
+        returnAux=TODOOK;
+        if(this->size==1)
+        {
+            this->pFirstNode=NULL;
+            this->size--;
+            primerNodo=getNode(this, index);
+            free(primerNodo);
+        }
+        else
+        {
+            primerNodo=getNode(this,index);
+            if(primerNodo!=NULL)
+            {
+                segundoNodo=getNode(this,index-1);
+                segundoNodo->pNextNode=primerNodo->pNextNode;
+                this->size--;
+                free(primerNodo);
+            }
+        }
+    }
 
     return returnAux;
 }
@@ -216,8 +258,35 @@ int ll_remove(LinkedList* this,int index)
  */
 int ll_clear(LinkedList* this)
 {
-    int returnAux = -1;
+    int returnAux = ERROR;
+    Node* pNodoA;
+    Node* pNodoB;
+    int i, size;
 
+    if(this!=NULL)
+    {
+        size=this->size;
+        if(size==0)
+        {
+            returnAux=TODOOK;
+        }
+        else
+        {
+            for(i=0;i<size;i--)
+            {
+                pNodoA=getNode(this, i);
+
+                if(pNodoA!=NULL)
+                {
+                    pNodoB=pNodoA->pNextNode;
+                    free(pNodoA);
+                }
+            }
+            free(pNodoB);
+            returnAux=TODOOK;
+        }
+        this->size=0;
+    }
     return returnAux;
 }
 
@@ -372,9 +441,14 @@ LinkedList* ll_clone(LinkedList* this)
  */
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
-    int returnAux =-1;
+    int returnAux =ERROR;
 
     return returnAux;
 
 }
 
+//si func devuelve 1 es que se agrega a la nueva lista
+//Linkedlist* ll_filter(linkedlist* this, int* func(void*))
+
+//ll_startIter()
+//ll_getNext()
