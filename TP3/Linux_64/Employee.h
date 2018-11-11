@@ -31,5 +31,7 @@ int Employee_setSueldo(Employee* this,int sueldo);
 int Employee_getSueldo(Employee* this,int* sueldo);
 int isValidSueldo(char* sueldo);
 
+void Employee_print(Employee* this);
+
 
 #endif // EMPLOYEE_H_INCLUDED

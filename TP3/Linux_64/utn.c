@@ -46,6 +46,7 @@ int utn_getEntero(int* numeroBuffer, int intentos, int maximo, int minimo, char*
                 limpiarScreen();
                 printf("%s", mensajeError);
             }
+
             intentos--;
         }
         while(intentos>0);

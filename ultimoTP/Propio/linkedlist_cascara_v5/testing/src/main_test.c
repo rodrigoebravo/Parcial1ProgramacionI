@@ -128,6 +128,7 @@ void startTesting(int testGroup)
             break;
 
         case 9:
+
             utest_printStartTesting("ll_clear()");
             utest_init();
             utest_startTest(clearTestCase01,clearTestSetup,">Caso [Verifica retorno con parametros correctos]");
@@ -192,8 +193,10 @@ void startTesting(int testGroup)
             break;
 
         case 16:
+
             utest_printStartTesting("ll_containsAll()");
             utest_init();
+
             utest_startTest(containsAllTestCase01,containsAllTestSetup,">Caso [Verifica retorno con parametros correctos]");
             utest_startTest(containsAllTestCase02,containsAllTestSetup,">Caso [Verifica el valor de retorno cuando la lista2 NO esta contenida en la lista1]");
             utest_startTest(containsAllTestCase03,containsAllTestSetup,">Caso [Verifica el valor de retorno cuando la lista2 SI esta contenida en la lista1]");

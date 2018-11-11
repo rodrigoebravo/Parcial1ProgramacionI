@@ -66,12 +66,14 @@ void containsAllTestCase02(void)
 
     for(i=0; i < LENGTH; i++)
     {
+
         pAux[i] = newEmployee(id[i],unsortedList[i],unsortedList[i],salary[i],sector[i]);
         ll_add(list,pAux[i]);
         ll_add(pOtherList,pAux[i]);
     }
 
     ll_remove(list,0);
+
 
     r = ll_containsAll(list,pOtherList);
     utest_assertEqualsIntMsg(r, 0 ,"Error en el valor de retorno <containsAll> si la lista2 no esta contenida se debe retornar 0");

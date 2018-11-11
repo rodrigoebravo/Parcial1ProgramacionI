@@ -34,31 +34,31 @@ Employee* Employee_newConParametros(char* id,char* nombre,char* horasTrabajadas,
 
 int Employee_setId(Employee* this,int id)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     static int proximoId=-1;
 
     if(this!=NULL && id==-1)
     {
         proximoId++;
         this->id=proximoId;
-        retorno=0;
+        retorno=TODOOK;
     }
     else if(id>proximoId)
     {
         proximoId=id;
         this->id=proximoId;
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
 
 int Employee_getId(Employee* this,int* id)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     if(this!=NULL)
     {
         *id=this->id;
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
@@ -77,22 +77,22 @@ int isValidId(char* id)
 
 int Employee_setNombre(Employee* this,char* nombre)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     if(this!=NULL && nombre!=NULL)
     {
         strcpy(this->nombre,nombre);
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
 
 int Employee_getNombre(Employee* this,char* nombre)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     if(this!=NULL && nombre!=NULL)
     {
         strcpy(nombre,this->nombre);
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
@@ -110,22 +110,22 @@ int isValidNombre(char* nombre)
 
 int Employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     if(this!=NULL)
     {
         this->horasTrabajadas=horasTrabajadas;
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
 
 int Employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     if(this!=NULL)
     {
         *horasTrabajadas=this->horasTrabajadas;
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
@@ -141,22 +141,22 @@ int isValidHorasTrabajadas(char* HorasTrabajadas)
 
 int Employee_setSueldo(Employee* this,int sueldo)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     if(this!=NULL)
     {
         this->sueldo=sueldo;
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
 
 int Employee_getSueldo(Employee* this,int* sueldo)
 {
-    int retorno=-1;
+    int retorno=ERROR;
     if(this!=NULL)
     {
         *sueldo=this->sueldo;
-        retorno=0;
+        retorno=TODOOK;
     }
     return retorno;
 }
@@ -170,4 +170,16 @@ int isValidSueldo(char* sueldo)
         ret=TRUE;
     }
     return ret;
+}
+
+void Employee_print(Employee* this)
+{
+    int idAux, horasTrabajadasAux, sueldoAux;
+    char nombreAux[50];
+
+    if(Employee_getId(this, &idAux) ==TODOOK &&
+    Employee_getNombre(this, nombreAux) ==TODOOK&&
+    Employee_getHorasTrabajadas(this, &horasTrabajadasAux) ==TODOOK&&
+    Employee_getSueldo(this, &sueldoAux)==TODOOK)
+        printf("id: %d - nombre: %s - horas:%d - sueldo: %d\n", idAux, nombreAux, horasTrabajadasAux, sueldoAux);
 }
