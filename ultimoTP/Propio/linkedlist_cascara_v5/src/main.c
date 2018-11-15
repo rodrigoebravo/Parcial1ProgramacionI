@@ -33,7 +33,6 @@ int main(void)
         //startTesting(5);  // ll_add
         //startTesting(6);  // ll_get
         //startTesting(7);  // ll_set
-
         //startTesting(8);  // ll_remove
         //startTesting(9);  // ll_clear
         //startTesting(10); // ll_deleteLinkedList
@@ -46,6 +45,11 @@ int main(void)
         //startTesting(17); // ll_subList
         //startTesting(18); // ll_clone
         startTesting(19); // ll_sort
-
+        //strtok("hola-hola-hola", "-");
+        //si pones null en el primer parametro agarra de donde se quedo
+        //strstr("holamundoholamundoholamundo");
+        //Hacer una entidad rapidamente con el builder!!!!
     return 0;
 }
+
+
