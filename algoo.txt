@@ -1,0 +1,80 @@
+static int generarID(void)
+{
+    static int id=-1;
+    id++;
+    return id;
+}
+
+
+LinkedList* ll_filter(LinkedList* this, int* func(void*));
+
+
+
+
+//si func devuelve 1 es que se agrega a la nueva lista
+//Linkedlist* ll_filter(linkedlist* this, int* func(void*))
+
+//ll_startIteration()
+//ll_getNext()
+
+LinkedList* ll_filter(LinkedList* this, int* func(void*))
+{
+    LinkedList* pThisReturn;
+    Node* pNode;
+    int i;
+    if(this!=NULL && func!=NULL)
+    {
+        pThisReturn=ll_newLinkedList();
+        for(i=0;i<this->size;i++)
+        {
+            pNode=ll_get(this, i);
+            if(pNode!=NULL && func(pNode->pElement))
+                ll_add(pThisReturn, pNode);
+        }
+    }
+    return pThisReturn;
+}
+
+/*void ll_startIteration(LinkedList* this, Node* pNode)
+{
+    int i, ret;
+    Node* pNodeAux;
+    ret=ERROR;
+    if(this!=NULL && pNode!=NULL)
+    {
+        for(i=0; i<this->size; i++)
+        {
+            pNodeAux=ll_get(this, i);
+            if(pNode==pNodeAux)
+            {
+                this->pIteratorNode=pNodeAux->pNextNode;
+                ret=TODOOK;
+                break;
+            }
+        }
+    }
+    return ret;
+}*/
+
+/*Node* ll_getNextNode(LinkedList* this, Node* pNode)
+{
+    int i;
+    Node* pNodeReturn;
+    if(this!=NULL && pNode!=NULL)
+    {
+        pNodeReturn=pNode->pNextNode;
+    }
+    return pNodeReturn;
+}
+
+
+void* ll_Mapper(LinkedList* this, int* func(void*))
+{
+    if(this!=NULL && func!=NULL)
+    {
+//        func()
+    }
+}*/
+
+/*agregar a la estructura un puntero al primer nodo, nuevo puntero que apunta al proximo, funcion que lo inicializa
+*/
