@@ -55,3 +55,7 @@ LinkedList* ll_subList(LinkedList* this,int from,int to);
 LinkedList* ll_clone(LinkedList* this);
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 LinkedList* ll_filter(LinkedList* this, int* func(void*));
+
+void* ll_startIteration(LinkedList* this);
+void* ll_getNextNode(LinkedList* this);
+void ll_Mapper(LinkedList* this, int* func(void*));

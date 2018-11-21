@@ -598,46 +598,42 @@ LinkedList* ll_filter(LinkedList* this, int* func(void*))
     return pThisReturn;
 }
 
-void ll_startIteration(LinkedList* this, Node* pNode)
+void* ll_startIteration(LinkedList* this)
 {
-    int i, ret;
-    Node* pNodeAux;
-    ret=ERROR;
-    if(this!=NULL && pNode!=NULL)
+    Node* pNodeReturn;
+    if(this!=NULL)
     {
-        for(i=0; i<this->size; i++)
-        {
-            pNodeAux=ll_get(this, i);
-            if(pNode==pNodeAux)
-            {
-                this->pIteratorNode=pNodeAux->pNextNode;
-                ret=TODOOK;
-                break;
-            }
-        }
+        this->pIteratorNode=this->pFirstNode;
+        pNodeReturn=this->pIteratorNode;
     }
-    return ret;
+    return pNodeReturn;
 }
 
-Node* ll_getNextNode(LinkedList* this, Node* pNode)
+void* ll_getNextNode(LinkedList* this)
 {
-    int i;
     Node* pNodeReturn;
-    if(this!=NULL && pNode!=NULL)
+    if(this!=NULL)
     {
-        pNodeReturn=pNode->pNextNode;
+        pNodeReturn=(this->pIteratorNode)->pNextNode;
     }
     return pNodeReturn;
 }
 
 
-void* ll_Mapper(LinkedList* this, int* func(void*))
+void ll_Mapper(LinkedList* this, int* func(void*))
 {
+    Node* pNodeAux;
     if(this!=NULL && func!=NULL)
     {
-        func()
+        pNodeAux=ll_startIteration(this);
+        if(pNodeAux!=NULL)
+        {
+            do{
+                if(func(pNodeAux->pElement))
+                {
+                    pNodeAux=ll_getNextNode(this);
+                }
+            }while(pNodeAux!=NULL);
+        }
     }
 }
-
-/*agregar a la estructura un puntero al primer nodo, nuevo puntero que apunta al proximo, funcion que lo inicializa
-*/
