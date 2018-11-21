@@ -637,3 +637,9 @@ void ll_Mapper(LinkedList* this, int* func(void*))
         }
     }
 }
+
+
+void prueba(void)
+{
+
+}
