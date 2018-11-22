@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1542241473 source:/home/alumno/Escritorio/fede/practica_parcial2/EjercicioPre2doParcialV2/Empleado.c
+	"Empleado.h"
+
+1542841271 /home/alumno/Escritorio/fede/practica_parcial2/EjercicioPre2doParcialV2/Empleado.h
+
+1542843548 source:/home/alumno/Escritorio/fede/practica_parcial2/EjercicioPre2doParcialV2/Employee.c
+	"Employee.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1542843546 /home/alumno/Escritorio/fede/practica_parcial2/EjercicioPre2doParcialV2/Employee.h
+

@@ -1,0 +1,103 @@
+# depslib dependency file v1.0
+1542883968 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcial/EjercicioPre2doParcialV2/Empleado.c
+	"Empleado.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1542884303 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcial/EjercicioPre2doParcialV2/Empleado.h
+
+1541040850 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcial/EjercicioPre2doParcialV2/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+
+1542884361 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcial/EjercicioPre2doParcialV2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"Parser.h"
+
+1542863502 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcial/EjercicioPre2doParcialV2/LinkedList.h
+
+1542884341 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcial/EjercicioPre2doParcialV2/Parser.h
+	"LinkedList.h"
+
+1542884596 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1542863502 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/LinkedList.h
+
+1542884582 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"Parser.h"
+
+1542884729 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/Empleado.h
+
+1542884341 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/Parser.h
+	"LinkedList.h"
+
+1542884366 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/Parser.c
+	"LinkedList.h"
+
+1542349704 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/utn.c
+	"utn.h"
+
+1541040850 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI 2/ultimoParcialPRACTICA/EjercicioPre2doParcialV2/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+
+1542918552 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\empleado.c
+	"Empleado.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1542916604 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\empleado.h
+	"Empleado.h"
+
+1542909775 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1542918704 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1542898064 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\linkedlist.h
+
+1542919285 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"Parser.h"
+	"utn.h"
+
+1542910596 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\parser.h
+	"LinkedList.h"
+	"utn.h"
+
+1542916592 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\parser.c
+	"LinkedList.h"
+	"utn.h"
+	"Empleado.h"
+
+1542909781 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\ultimoparcialpractica\ejerciciopre2doparcialv2\utn.c
+	"utn.h"
+
