@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1542925859 source:/home/alumno/Escritorio/Bravo/ParcialDos/utn.c
+	"utn.h"
+
+1542925853 /home/alumno/Escritorio/Bravo/ParcialDos/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1542931131 source:/home/alumno/Escritorio/Bravo/ParcialDos/Venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1542925949 /home/alumno/Escritorio/Bravo/ParcialDos/Venta.h
+	"utn.h"
+
+1542932009 source:/home/alumno/Escritorio/Bravo/ParcialDos/informes.c
+	"informes.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1542931939 /home/alumno/Escritorio/Bravo/ParcialDos/informes.h
+
+1542929863 source:/home/alumno/Escritorio/Bravo/ParcialDos/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Venta.h"
+
+1542929877 /home/alumno/Escritorio/Bravo/ParcialDos/LinkedList.h
+
+1542931987 source:/home/alumno/Escritorio/Bravo/ParcialDos/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"utn.h"
+	"Parser.h"
+	"informes.h"
+
+1542926952 /home/alumno/Escritorio/Bravo/ParcialDos/Parser.h
+	"LinkedList.h"
+	"utn.h"
+
+1542930443 source:/home/alumno/Escritorio/Bravo/ParcialDos/Parser.c
+	"LinkedList.h"
+	"utn.h"
+	"Venta.h"
+
