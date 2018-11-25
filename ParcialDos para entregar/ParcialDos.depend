@@ -1,0 +1,77 @@
+# depslib dependency file v1.0
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos\linkedlist.h
+
+1543132760 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Parser.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\utn.c
+	"utn.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543119603 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1543119563 c:\users\usuario\desktop\parcial 2 prog\parcialdos\venta.h
+
+1543131968 c:\users\usuario\desktop\parcial 2 prog\parcialdos\parser.h
+	"utn.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543131968 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\parser.c
+	"Parser.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.h
+
+1543132760 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Parser.h"
+
+1543131968 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\parser.h
+	"utn.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543119563 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\venta.h
+
+1543132780 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\parser.c
+	"Parser.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\utn.c
+	"utn.h"
+
+1543119603 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

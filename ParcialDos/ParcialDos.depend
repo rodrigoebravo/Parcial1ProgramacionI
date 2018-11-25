@@ -50,3 +50,54 @@
 	"utn.h"
 	"Venta.h"
 
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\informes.c
+	"informes.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\informes.h
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\venta.h
+	"utn.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\linkedlist.h
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Venta.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"utn.h"
+	"Parser.h"
+	"informes.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\parser.h
+	"LinkedList.h"
+	"utn.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\parser.c
+	"LinkedList.h"
+	"utn.h"
+	"Venta.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\utn.c
+	"utn.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\parcialdos\venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
