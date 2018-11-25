@@ -75,3 +75,41 @@
 	<string.h>
 	"utn.h"
 
+1543134015 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543134015 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/LinkedList.h
+
+1543134015 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Parser.h"
+
+1543134015 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Parser.h
+	"utn.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543134015 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543134015 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Venta.h
+
+1543136677 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Parser.c
+	"Parser.h"
+
+1543134015 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/utn.c
+	"utn.h"
+
+1543134015 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+

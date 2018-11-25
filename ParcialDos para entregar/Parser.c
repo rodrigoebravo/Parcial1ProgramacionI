@@ -1,5 +1,5 @@
 #include "Parser.h"
-static int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas);
+int parser_VentasFromText(FILE* pFile , LinkedList* listaEmpleados);
 int parser_parseVentas(char* fileName, LinkedList* listaVentas)
 {
     int retorno=ERROR;
@@ -13,19 +13,20 @@ int parser_parseVentas(char* fileName, LinkedList* listaVentas)
     return retorno;
 }
 
-static int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas)
+int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas)
 {
     char idAux[1024];
-    char fechaVentaAux[1024];
+    char fechaAux[1024];
     char codigoProductoAux[1024];
-    char cantidadVendidaAux[1024];
+    char cantidadAux[1024];
     char precioUnitarioAux[1024];
     char cuitClienteAux[1024];
 
+    //idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux
     int retorno=ERROR;
     int flagOnce=TRUE;
     Venta* pVenta;
-    char linea[1024];
+    //char linea[1024];
 
     if(pFile != NULL && listaVentas!=NULL)
     {
@@ -35,54 +36,21 @@ static int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas)
 
         while(!feof(pFile))
         {
-            fscanf(pFile, "%s", linea);
             if(flagOnce)
             {
                 flagOnce=FALSE;
-
-                strcpy(idAux,strtok(linea, ","));
-                strcpy(fechaVentaAux,strtok(NULL, ","));
-                strcpy(codigoProductoAux,strtok(NULL, ","));
-                strcpy(cantidadVendidaAux,strtok(NULL, ","));
-                strcpy(precioUnitarioAux,strtok(NULL, ","));
-                strcpy(cuitClienteAux,strtok(NULL, "\n"));
-
-                continue;
+                fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux);
             }
-            strcpy(idAux,strtok(linea, ","));
-            strcpy(fechaVentaAux,strtok(NULL, ","));
-            strcpy(codigoProductoAux,strtok(NULL, ","));
-            strcpy(cantidadVendidaAux,strtok(NULL, ","));
-            strcpy(precioUnitarioAux,strtok(NULL, ","));
-            strcpy(cuitClienteAux,strtok(NULL, "\n"));
+            fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux);
 
-
-            /*printf("%s,%s,%s,%s,%s,%s\n",
-            idAux,
-            fechaVentaAux,
-            codigoProductoAux,
-            cantidadVendidaAux,
-            precioUnitarioAux,
-            cuitClienteAux);
-            */
-
-
-            pVenta=Venta_newConParametros(idAux,
-                                        fechaVentaAux,
-                                        codigoProductoAux,
-                                        cantidadVendidaAux,
-                                        precioUnitarioAux,
-                                        cuitClienteAux);
-
+            pVenta=Venta_newConParametros(idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux);
             if(pVenta!=NULL)
             {
                 ll_add(listaVentas, pVenta);
                 Venta_print(pVenta);
             }
-
         }
         printf("Archivo cargado exitosamente\n");
-
     }
     return retorno;
 }
