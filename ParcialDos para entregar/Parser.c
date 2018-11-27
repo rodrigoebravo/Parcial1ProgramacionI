@@ -1,5 +1,5 @@
 #include "Parser.h"
-int parser_VentasFromText(FILE* pFile , LinkedList* listaEmpleados);
+static int parser_GuardarVentasDesdeArchivo(FILE* pFile , LinkedList* listaVentas);
 int parser_parseVentas(char* fileName, LinkedList* listaVentas)
 {
     int retorno=ERROR;
@@ -7,13 +7,13 @@ int parser_parseVentas(char* fileName, LinkedList* listaVentas)
 
     pFile=fopen(fileName, "r");
     if(pFile!=NULL)
-        retorno=parser_VentasFromText(pFile, listaVentas);
+        retorno=parser_GuardarVentasDesdeArchivo(pFile, listaVentas);
     fclose(pFile);
 
     return retorno;
 }
 
-int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas)
+static int parser_GuardarVentasDesdeArchivo(FILE* pFile , LinkedList* listaVentas)
 {
     char idAux[1024];
     char fechaAux[1024];
@@ -21,8 +21,6 @@ int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas)
     char cantidadAux[1024];
     char precioUnitarioAux[1024];
     char cuitClienteAux[1024];
-
-    //idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux
     int retorno=ERROR;
     int flagOnce=TRUE;
     Venta* pVenta;
@@ -31,9 +29,7 @@ int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas)
     if(pFile != NULL && listaVentas!=NULL)
     {
         retorno=TODOOK;
-
         printf("Procesando archivo...\n");
-
         while(!feof(pFile))
         {
             if(flagOnce)
@@ -42,15 +38,12 @@ int parser_VentasFromText(FILE* pFile , LinkedList* listaVentas)
                 fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux);
             }
             fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux);
-
             pVenta=Venta_newConParametros(idAux, fechaAux, codigoProductoAux, cantidadAux, precioUnitarioAux, cuitClienteAux);
             if(pVenta!=NULL)
-            {
                 ll_add(listaVentas, pVenta);
-                Venta_print(pVenta);
-            }
         }
-        printf("Archivo cargado exitosamente\n");
+
+        printf("Archivo cargado exitosamente.\nTotal de registros ingresados: %d\n", ll_len(listaVentas));
     }
     return retorno;
 }

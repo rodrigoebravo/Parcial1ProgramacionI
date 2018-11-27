@@ -37,18 +37,19 @@
 1543131968 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\parser.c
 	"Parser.h"
 
-1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.c
+1543155342 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 
-1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.h
+1543155342 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.h
 
-1543132760 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\main.c
+1543192276 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Parser.h"
+	"informes.h"
 
 1543131968 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\parser.h
 	"utn.h"
@@ -62,7 +63,7 @@
 
 1543119563 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\venta.h
 
-1543132780 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\parser.c
+1543137697 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\parser.c
 	"Parser.h"
 
 1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\utn.c
@@ -111,5 +112,15 @@
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	"utn.h"
+
+1543194413 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\informes.c
+	"informes.h"
+
+1543192174 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
 	"utn.h"
 

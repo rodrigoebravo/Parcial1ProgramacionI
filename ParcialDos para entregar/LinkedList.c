@@ -571,6 +571,11 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 }
 
+/** \brief Crea una lista nueva que contiene todos aquellos elementos que el criterio permitio
+ * \param this LinkedList* Puntero a la lista
+ * \param int* func(void*) Puntero a la funcion criterio
+ * \return LinkedList* NULL en caso de ERROR o ausencia de datos, o la lista con los elementos
+ */
 LinkedList* ll_filter(LinkedList* this, int* func(void*))
 {
     LinkedList* pThisReturn;
@@ -589,6 +594,10 @@ LinkedList* ll_filter(LinkedList* this, int* func(void*))
     return pThisReturn;
 }
 
+/**\brief Asigna a el nodo pIteratorNode, variable de la estructura LinkedList, el primer valor de la lista LinkedList a iterar.
+ * \param this LinkedList* Puntero a la lista
+ * \return void* el Node* pFirstNode de la lista.
+ */
 void* ll_startIteration(LinkedList* this)
 {
     Node* pNodeReturn;
@@ -627,4 +636,27 @@ void ll_Mapper(LinkedList* this, int func(void*))
             }while(pNodeAux!=NULL);
         }
     }
+}
+
+int ll_count(LinkedList* this, int func(void*, void*), void* valorCriterio)
+{
+    Node* pNodeAux;
+    int contadorSegunFunc=0;
+    int hayError=TRUE;
+
+    if(this!=NULL && func!=NULL)
+    {
+        hayError=FALSE;
+        pNodeAux=ll_startIteration(this);
+        if(pNodeAux!=NULL)
+        {
+            do{
+                contadorSegunFunc+=func(pNodeAux->pElement, valorCriterio);
+                pNodeAux=ll_getNextNode(this);
+            }while(pNodeAux!=NULL);
+        }
+    }
+    if(hayError)
+        return ERROR;
+    return contadorSegunFunc;
 }
