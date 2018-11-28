@@ -1,0 +1,182 @@
+# depslib dependency file v1.0
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos\linkedlist.h
+
+1543132760 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Parser.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\utn.c
+	"utn.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543119603 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1543119563 c:\users\usuario\desktop\parcial 2 prog\parcialdos\venta.h
+
+1543131968 c:\users\usuario\desktop\parcial 2 prog\parcialdos\parser.h
+	"utn.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543131968 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos\parser.c
+	"Parser.h"
+
+1543155342 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543155342 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\linkedlist.h
+
+1543192276 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Parser.h"
+	"informes.h"
+
+1543131968 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\parser.h
+	"utn.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543093305 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543119563 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\venta.h
+
+1543137697 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\parser.c
+	"Parser.h"
+
+1543093305 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\utn.c
+	"utn.h"
+
+1543119603 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1543389481 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543389504 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/LinkedList.h
+
+1543389821 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/main.c
+	"Parser.h"
+	"informes.h"
+
+1543134015 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Parser.h
+	"utn.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543392181 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543134015 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Venta.h
+
+1543363071 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Parser.c
+	"Parser.h"
+
+1543392181 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/utn.c
+	"utn.h"
+
+1543393810 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/Venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1543194413 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\informes.c
+	"informes.h"
+
+1543192174 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar\informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
+	"utn.h"
+
+1543389560 source:/home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/informes.c
+	"informes.h"
+
+1543389199 /home/romina/Descargas/Rodrigo/Repositorio/PracticaProgramacionI/ParcialDos para entregar/informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
+	"utn.h"
+
+1543438101 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\informes.c
+	"informes.h"
+
+1543437816 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Venta.h"
+	"utn.h"
+
+1543119563 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\venta.h
+
+1543436441 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543438260 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543438278 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\linkedlist.h
+
+1543437904 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\main.c
+	"Parser.h"
+	"informes.h"
+
+1543131968 c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\parser.h
+	"utn.h"
+	"Venta.h"
+	"LinkedList.h"
+
+1543439334 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\parser.c
+	"Parser.h"
+
+1543436441 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\utn.c
+	"utn.h"
+
+1543436441 source:c:\users\usuario\desktop\parcial 2 prog\parcialdos para entregar con 4 funciones\venta.c
+	"Venta.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
