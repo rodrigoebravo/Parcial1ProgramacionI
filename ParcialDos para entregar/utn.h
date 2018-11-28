@@ -50,4 +50,5 @@ void limpiarScreen(void);
 void limpiarBuffer(void);
 int esCuit(char* pBuffer, int len);
 int esNumero(char* pCadena);
+int esDecimal(char* pCadena);
 #endif // UTN_H_INCLUDED

@@ -1,16 +1,16 @@
-
 #include "Venta.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "utn.h"
+
 static int isValidId(char* id);
 static int isValidFecha(char* fecha);
 static int isValidCodigoProducto(char* codigoProducto);
 static int isValidCantidad(char* cantidad);
 static int isValidPrecioUnitario(char* precioUnitario);
 static int isValidCuitCliente(char* cuitCliente);
-
+/* */
 Venta* Venta_new()
 {
     Venta* this;
@@ -80,7 +80,9 @@ int Venta_getId(Venta* this,int* id)
 
 static int isValidId(char* id)
 {
-    int retorno=TRUE;
+    int retorno=FALSE;
+    if(esNumero(id) && atoi(id)>-1)
+        retorno=TRUE;
     return retorno;
 }
 
@@ -108,7 +110,23 @@ int Venta_getFecha(Venta* this,char* fecha)
 
 static int isValidFecha(char* fecha)
 {
-    int retorno=TRUE;
+    int retorno=FALSE;
+    char dia[2];
+    char mes[2];
+    char anio[2];
+    if(fecha!=NULL)
+    {
+        strcpy(dia, strtok(fecha, "/"));
+        strcpy(mes, strtok(NULL, "/"));
+        strcpy(anio, strtok(NULL, "\0"));
+        if( esNumero(dia) &&
+            esNumero(mes) &&
+            esNumero(anio)&&
+            atoi(dia)<32  &&
+            atoi(mes)<13  &&
+            atoi(anio)<2019)
+            retorno=TRUE;
+    }
     return retorno;
 }
 
@@ -136,7 +154,9 @@ int Venta_getCodigoProducto(Venta* this,char* codigoProducto)
 
 static int isValidCodigoProducto(char* codigoProducto)
 {
-    int retorno=TRUE;
+    int retorno=FALSE;
+    if(codigoProducto!=NULL)
+        retorno=TRUE;
     return retorno;
 }
 
@@ -164,7 +184,10 @@ int Venta_getCantidad(Venta* this,int* cantidad)
 
 static int isValidCantidad(char* cantidad)
 {
-    int retorno=TRUE;
+    int retorno=FALSE;
+    if(cantidad!=NULL && esNumero(cantidad) && atoi(cantidad)>0)
+        retorno=TRUE;
+
     return retorno;
 }
 
@@ -193,7 +216,9 @@ int Venta_getPrecioUnitario(Venta* this,float* precioUnitario)
 
 static int isValidPrecioUnitario(char* precioUnitario)
 {
-    int retorno=TRUE;
+    int retorno=FALSE;
+    if(precioUnitario!=NULL && esDecimal(precioUnitario) && atof(precioUnitario)>0)
+        retorno=TRUE;
     return retorno;
 }
 
@@ -221,20 +246,51 @@ int Venta_getCuitCliente(Venta* this,char* cuitCliente)
 
 static int isValidCuitCliente(char* cuitCliente)
 {
-    int retorno=TRUE;
+    int retorno=FALSE;
+    char auxPrefijo[3];
+    char auxSufijo[3];
+    char auxDocumento[12];
+    if(cuitCliente!=NULL)
+    {
+        strcpy(auxPrefijo,strtok(cuitCliente, "-"));
+        strcpy(auxDocumento,strtok(NULL, "-"));
+        strcpy(auxSufijo,strtok(NULL, "\r"));
+
+        if( esNumero(auxPrefijo) &&
+            esNumero(auxDocumento)&&
+            esNumero(auxSufijo)&&
+            atoi(auxPrefijo)>0 &&
+            atoi(auxDocumento)>0
+            )
+        {
+            retorno=TRUE;
+        }
+    }
     return retorno;
 }
 
 void Venta_print(Venta* this)
 {
-    if(this!=NULL)
+    int idAux;
+    char fechaAux[11];
+    char codigoProductoAux[20];
+    int cantidadAux;
+    float precioUnitarioAux;
+    char cuitClienteAux[20];
+    if( this!=NULL &&
+        Venta_getId(this, &idAux)==TODOOK &&
+        Venta_getFecha(this, fechaAux)==TODOOK &&
+        Venta_getCodigoProducto(this, codigoProductoAux)==TODOOK &&
+        Venta_getCantidad(this, &cantidadAux)==TODOOK &&
+        Venta_getPrecioUnitario(this, &precioUnitarioAux)==TODOOK &&
+        Venta_getCuitCliente(this, cuitClienteAux)==TODOOK)
     {
         printf("Id: %d, Fecha: %s, Codigo Producto: %s, Cantidad: %d Precio Unitario: %f, Cuit: %s\n",
-                    this->id,
-                    this->fecha,
-                    this->codigoProducto,
-                    this->cantidad,
-                    this->precioUnitario,
-                    this->cuitCliente);
+                    idAux,
+                    fechaAux,
+                    codigoProductoAux,
+                    cantidadAux,
+                    precioUnitarioAux,
+                    cuitClienteAux);
     }
 }

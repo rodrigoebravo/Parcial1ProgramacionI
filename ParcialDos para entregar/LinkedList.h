@@ -59,4 +59,5 @@ LinkedList* ll_filter(LinkedList* this, int* func(void*));
 void* ll_startIteration(LinkedList* this);
 void* ll_getNextNode(LinkedList* this);
 void ll_Mapper(LinkedList* this, int func(void*));
-int ll_count(LinkedList* this, int func(void*, void*), void* valorCriterio);
+//int ll_count(LinkedList* this, int func(void*, void*), void* valorCriterio);
+int ll_count(LinkedList* this, int func(void*));

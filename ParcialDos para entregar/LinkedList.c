@@ -638,7 +638,7 @@ void ll_Mapper(LinkedList* this, int func(void*))
     }
 }
 
-int ll_count(LinkedList* this, int func(void*, void*), void* valorCriterio)
+/*int ll_count(LinkedList* this, int func(void*, void*), void* valorCriterio)
 {
     Node* pNodeAux;
     int contadorSegunFunc=0;
@@ -652,6 +652,29 @@ int ll_count(LinkedList* this, int func(void*, void*), void* valorCriterio)
         {
             do{
                 contadorSegunFunc+=func(pNodeAux->pElement, valorCriterio);
+                pNodeAux=ll_getNextNode(this);
+            }while(pNodeAux!=NULL);
+        }
+    }
+    if(hayError)
+        return ERROR;
+    return contadorSegunFunc;
+}*/
+
+int ll_count(LinkedList* this, int func(void*))
+{
+    Node* pNodeAux;
+    int contadorSegunFunc=0;
+    int hayError=TRUE;
+
+    if(this!=NULL && func!=NULL)
+    {
+        hayError=FALSE;
+        pNodeAux=ll_startIteration(this);
+        if(pNodeAux!=NULL)
+        {
+            do{
+                contadorSegunFunc+=func(pNodeAux->pElement);
                 pNodeAux=ll_getNextNode(this);
             }while(pNodeAux!=NULL);
         }

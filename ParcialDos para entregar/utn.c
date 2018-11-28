@@ -1,7 +1,5 @@
 #include "utn.h"
 
-
-static int esDecimal(char* pCadena);
 static int getString(char* pBuffer, int limite);
 
 
@@ -136,7 +134,7 @@ int esNumero(char* pCadena)
     return retorno;
 }
 
-static int esDecimal(char* pCadena)
+int esDecimal(char* pCadena)
 {
     int retorno=FALSE;
     int i=0;
