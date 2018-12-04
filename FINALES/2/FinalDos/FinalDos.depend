@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1543963789 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\controller.c
+	"Controller.h"
+
+1543963759 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\controller.h
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+
+1543963102 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\linkedlist.h
+
+1543963102 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543963659 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"parser.h"
+	"LinkedList.h"
+	"utn.h"
+
+1543963102 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543963648 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"Parser.h"
+	"utn.h"
+	"LinkedList.h"
+
+1543963816 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\parser.c
+	"parser.h"
+
+1543963102 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\utn.c
+	"utn.h"
+
