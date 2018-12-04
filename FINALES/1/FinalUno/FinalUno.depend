@@ -1,0 +1,64 @@
+# depslib dependency file v1.0
+1543911173 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LogEntry.h"
+	"Service.h"
+	"Controller.h"
+
+1543909389 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1543909389 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\linkedlist.h
+
+1543442240 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\utn.c
+	"utn.h"
+
+1543442233 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1543805154 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\logentry.h
+
+1543805233 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\logentry.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LogEntry.h"
+	"utn.h"
+
+1543806748 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\service.h
+
+1543818451 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\service.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Service.h"
+	"utn.h"
+
+1543911305 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\controller.c
+	"Controller.h"
+
+1543807123 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\parser.c
+	"parser.h"
+
+1543911271 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\controller.h
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+
+1543804616 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\1\finaluno\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"parser.h"
+	"Service.h"
+	"LogEntry.h"
+	"LinkedList.h"
+	"utn.h"
+

@@ -1,0 +1,3 @@
+date;time;id;gravedad;msg
+09/07/2017;09:33;33;5;Disk faliure
+09/07/2017;09:38;44;3;Out of memory

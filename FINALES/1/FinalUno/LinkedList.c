@@ -668,3 +668,42 @@ int ll_count(LinkedList* this, int (*fn)(void*))
     }
     return contadorSegunFunc;
 }
+
+
+void* ll_BuscarValor(LinkedList* this, int func(void*, void*), void* valor)
+{
+    Node* pNodeAux;
+    if(this!=NULL && func!=NULL)
+    {
+        pNodeAux=ll_startIteration(this);
+        if(pNodeAux!=NULL)
+        {
+            do{
+                if(func(pNodeAux->pElement, valor))
+                    return pNodeAux->pElement;
+                pNodeAux=ll_getNextNode(this);
+            }while(pNodeAux!=NULL);
+        }
+    }
+    return NULL;
+}
+
+
+int ll_MapperConValor(LinkedList* this, int func(void*, void*), void* valor)
+{
+    Node* pNodeAux;
+    int retorno=ERROR;
+    if(this!=NULL && func!=NULL)
+    {
+        retorno=TODOOK;
+        pNodeAux=ll_startIteration(this);
+        if(pNodeAux!=NULL)
+        {
+            do{
+                func(pNodeAux->pElement, valor);
+                pNodeAux=ll_getNextNode(this);
+            }while(pNodeAux!=NULL);
+        }
+    }
+    return retorno;
+}
