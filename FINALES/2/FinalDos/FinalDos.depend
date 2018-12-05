@@ -1,34 +1,38 @@
 # depslib dependency file v1.0
-1543963789 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\controller.c
+1544043758 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\controller.c
 	"Controller.h"
+	"Feed.h"
 
-1543963759 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\controller.h
+1544043806 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\controller.h
 	"LinkedList.h"
 	"utn.h"
 	"parser.h"
+	"Usuario.h"
+	"Publicacion.h"
 
-1543963102 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\linkedlist.h
+1544042865 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\linkedlist.h
 
 1543963102 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\utn.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1543963659 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\parser.h
+1544015124 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\parser.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"parser.h"
 	"LinkedList.h"
 	"utn.h"
+	"Publicacion.h"
+	"Usuario.h"
 
-1543963102 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\linkedlist.c
+1544042825 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 
-1543963648 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\main.c
+1544042412 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Controller.h"
@@ -36,9 +40,31 @@
 	"utn.h"
 	"LinkedList.h"
 
-1543963816 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\parser.c
+1544039073 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\parser.c
 	"parser.h"
 
 1543963102 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\utn.c
 	"utn.h"
+
+1544039698 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\publicacion.c
+	"Publicacion.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1544039073 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\publicacion.h
+
+1544011358 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\usuario.h
+
+1544015124 source:d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\usuario.c
+	"Usuario.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1544042309 d:\users\rbravo\escritorio\programacion i\practicaprogramacioni\finales\2\finaldos\feed.h
+	"Publicacion.h"
+	"Usuario.h"
 

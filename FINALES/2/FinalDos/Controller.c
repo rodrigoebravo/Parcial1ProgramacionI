@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "Feed.h"
 //int escribirLog(char* pArchivo, LogEntry* pLog, Service* pService);
 /*int Controller_cargarLog(char* pNombreArchivo, LinkedList* listaLog)
 {
@@ -129,8 +130,8 @@ int criterioPorID(Service* pService, void* id)
     if(pService!=NULL && id!=NULL && Service_getId(pService, &idEncontrado)==TODOOK && idEncontrado==pId)
         retorno=TRUE;
     return retorno;
-}
-void printLog(LogEntry* pLog, Service* pService)
+}*/
+/*void printLog(LogEntry* pLog, Service* pService)
 {
     char dateAux[11];
     char timeAux[6];
@@ -148,8 +149,8 @@ void printLog(LogEntry* pLog, Service* pService)
        LogEntry_getMsg(pLog, msgAux)==TODOOK &&
        LogEntry_getGravedad(pLog, &gravedadAux)==TODOOK)
         printf("%s;%s;%s;%s;%d\n", dateAux, timeAux, nameAux, msgAux, gravedadAux);
-}
-int escribirLog(char* pArchivo, LogEntry* pLog, Service* pService)
+}*/
+/*int escribirLog(char* pArchivo, LogEntry* pLog, Service* pService)
 {
     char dateAux[11];
     char timeAux[6];
@@ -176,5 +177,108 @@ int escribirLog(char* pArchivo, LogEntry* pLog, Service* pService)
     retorno=TODOOK;
 
     return retorno;
+}*/
+
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
+
+int Controller_cargarUsuarios(char* nombreArchivo, LinkedList* pLista)
+{
+    int retorno=ERROR;
+    FILE* pFile;
+    if(nombreArchivo!=NULL &&  pLista!=NULL)
+    {
+        pFile=fopen(nombreArchivo, "r");
+        retorno=parser_GuardarUsuariosDesdeArchivo(pFile, pLista);
+        fclose(pFile);
+    }
+    return retorno;
 }
-*/
+
+int Controller_cargarPublicaciones(char* nombreArchivo, LinkedList* pLista)
+{
+    int retorno=ERROR;
+    FILE* pFile;
+    if(nombreArchivo!=NULL &&  pLista!=NULL)
+    {
+        pFile=fopen(nombreArchivo, "r");
+        retorno=parser_GuardarPublicacionesDesdeArchivo(pFile, pLista);
+        fclose(pFile);
+    }
+    return retorno;
+}
+
+int Controller_procesarListas(LinkedList* listaUsuarios, LinkedList*  listaPublicaciones)
+{
+    int retorno=ERROR;
+    LinkedList* listaFeed=ll_cargarListaConEntidades(listaPublicaciones, buscarUsuario, listaUsuarios);
+    ll_sort(listaFeed, criterioOrdenamiento, 1);
+    return retorno;
+}
+
+
+void* buscarUsuario(Publicacion* pEntidad, LinkedList* listaUsuarios)
+{
+    int retorno=ERROR;
+    int gravedadAux;
+    int idEntidad=0;
+    Usuario* pUsuario;
+    Feed* pFeed=malloc(sizeof(Feed));
+
+    if(pEntidad!=NULL && listaUsuarios!=NULL && Publicacion_getIdUsuario(pEntidad, &idEntidad)==TODOOK)
+    {
+
+        retorno=TODOOK;
+
+        pUsuario=ll_BuscarValor(listaUsuarios, criterioPorID, &idEntidad);
+
+        if(pUsuario!=NULL)
+        {
+            //HACER ALGO CON ESTE PUSUARIO
+            //POR AHORA IMPRIMO
+
+            pFeed->publicacion = pEntidad;
+            pFeed->usuario = pUsuario;
+            return pFeed;
+        }
+
+    }
+    return NULL;
+}
+
+int criterioPorID(Usuario* pEntidad, void* id)
+{
+
+    int idEncontrado=0;
+    int pId=*((int*)id);
+    int retorno=FALSE;
+
+    if(pEntidad!=NULL && id!=NULL && Usuario_getId(pEntidad, &idEncontrado)==TODOOK && idEncontrado==pId)
+        retorno=TRUE;
+    return retorno;
+}
+
+int criterioOrdenamiento(void* pEntidadA, void* pEntidadB)
+{
+    int popularidadAPublicacion;
+    int popularidadBPublicacion;
+    int popularidadAUsuario;
+    int popularidadBUsuario;
+
+
+    if(pEntidadA!=NULL && pEntidadB!=NULL &&
+        Publicacion_getPopularidad(pEntidadA, &popularidadAPublicacion)==TODOOK&&
+        Publicacion_getPopularidad(pEntidadB, &popularidadBPublicacion)==TODOOK&&
+        Usuario_getPopularidad(pEntidadA, &popularidadAUsuario)==TODOOK&&
+        Usuario_getPopularidad(pEntidadB, &popularidadBUsuario)==TODOOK
+        )
+    {
+        if(popularidadAUsuario>popularidadBUsuario)
+            return 1;
+        else if(popularidadAUsuario==popularidadBUsuario && popularidadAPublicacion>popularidadBPublicacion)
+            return 0;
+    }
+    return 0;
+}

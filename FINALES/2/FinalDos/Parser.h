@@ -3,9 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "parser.h"
 #include "LinkedList.h"
 #include "utn.h"
-int parser_GuardarServiceDesdeArchivo(FILE* pFile , LinkedList* listaService);
-int parser_GuardarLogDesdeArchivo(FILE* pFile , LinkedList* listaLog);
+#include "Publicacion.h"
+#include "Usuario.h"
+int parser_GuardarUsuariosDesdeArchivo(FILE* pFile , LinkedList* pLista);
+int parser_GuardarPublicacionesDesdeArchivo(FILE* pFile , LinkedList* pLista);
+int parser_GuardarFeed(FILE* pFile, Usuario* pUsuario, Publicacion* pPublicacion);
 #endif // PARSER_H_INCLUDED

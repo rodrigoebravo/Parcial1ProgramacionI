@@ -5,10 +5,12 @@ typedef struct{
     char nick[50];
     int popularidad;
 }Usuario;
+#endif // USUARIO_H_INCLUDED
+
 
 Usuario* Usuario_new();
 void Usuario_delete();
-Usuario* Usuario_newConParametros(char* id,char* nick,char* popularidad);
+Usuario* Usuario_newConParametros(int id,char* nick,int popularidad);
 
 int Usuario_setId(Usuario* this,int id);
 int Usuario_getId(Usuario* this,int* id);
@@ -18,7 +20,5 @@ int Usuario_getNick(Usuario* this,char* nick);
 
 int Usuario_setPopularidad(Usuario* this,int popularidad);
 int Usuario_getPopularidad(Usuario* this,int* popularidad);
-
-void Usuario_printUsuario(Usuario* pUsuario);
 
 #endif // USUARIO_H_INCLUDED

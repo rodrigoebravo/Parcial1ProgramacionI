@@ -707,3 +707,25 @@ int ll_MapperConValor(LinkedList* this, int func(void*, void*), void* valor)
     }
     return retorno;
 }
+
+LinkedList* ll_cargarListaConEntidades(LinkedList* this, void* func(void*, void*), void* valor)
+{
+    Node* pNodeAux;
+    int retorno=ERROR;
+    LinkedList* nuevaLista;
+    nuevaLista=ll_newLinkedList();
+    if(this!=NULL && func!=NULL)
+    {
+        retorno=TODOOK;
+        pNodeAux=ll_startIteration(this);
+        if(pNodeAux!=NULL)
+        {
+            do{
+                ll_add(nuevaLista, func(pNodeAux->pElement, valor));
+                pNodeAux=ll_getNextNode(this);
+            }while(pNodeAux!=NULL);
+        }
+    }
+    return retorno;
+}
+

@@ -35,6 +35,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Controller.h" />
+		<Unit filename="Feed.h" />
 		<Unit filename="LinkedList.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -43,7 +44,13 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Parser.h" />
+		<Unit filename="Publicacion.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Publicacion.h" />
+		<Unit filename="Usuario.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Usuario.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
