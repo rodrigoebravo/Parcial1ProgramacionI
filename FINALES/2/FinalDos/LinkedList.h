@@ -44,4 +44,4 @@ void ll_Mapper(LinkedList* this, int func(void*));
 int ll_count(LinkedList* this, int (*fn)(void*));
 void* ll_BuscarValor(LinkedList* this, int func(void*, void*), void* valor);
 int ll_MapperConValor(LinkedList* this, int func(void*, void*), void* valor);
-LinkedList* ll_cargarListaConEntidades(LinkedList* this, void* func(void*, void*), void* valor);
+int ll_filterConValor(LinkedList* this, void* func(void*, void*), void* valor, LinkedList* listaDestino);

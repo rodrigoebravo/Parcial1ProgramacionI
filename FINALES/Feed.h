@@ -3,7 +3,37 @@
 
 typedef struct
 {
-    ID_MENSAJE: El identificador del mensaje. • MENSAJE: El contenido de la publicación. • POPULARIDAD_MENSAJE :Refiere a la popularidad de la publicación (cantidad de Likes). • ID_USUARIO: El identificador del usuario que creó la publicación. • NICK : Apodo del usuario en la red social • POPULARIDAD_USUARIO :Refiere a la popularidad del usuario (cantidad de Followers).
+    int idPublicacion;
+    char msg[4092];
+    int likesPublicacion;
+    int idUsuario;
+    char nick[50];
+    int likesUsuario;
 }Feed;
+
+#endif // FEED_H_INCLUDED
+
+
+Feed* Feed_new();
+void Feed_delete();
+Feed* Feed_newConParametros(int idPublicacion,char* msg,int likesPublicacion,int idUsuario,char* nick,int likesUsuario);
+
+int Feed_setIdPublicacion(Feed* this,int idPublicacion);
+int Feed_getIdPublicacion(Feed* this,int* idPublicacion);
+
+int Feed_setMsg(Feed* this,char* msg);
+int Feed_getMsg(Feed* this,char* msg);
+
+int Feed_setLikesPublicacion(Feed* this,int likesPublicacion);
+int Feed_getLikesPublicacion(Feed* this,int* likesPublicacion);
+
+int Feed_setIdUsuario(Feed* this,int idUsuario);
+int Feed_getIdUsuario(Feed* this,int* idUsuario);
+
+int Feed_setNick(Feed* this,char* nick);
+int Feed_getNick(Feed* this,char* nick);
+
+int Feed_setLikesUsuario(Feed* this,int likesUsuario);
+int Feed_getLikesUsuario(Feed* this,int* likesUsuario);
 
 #endif // FEED_H_INCLUDED

@@ -68,3 +68,77 @@
 	"Publicacion.h"
 	"Usuario.h"
 
+1544073285 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\controller.c
+	"Controller.h"
+
+1544072429 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\controller.h
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+	"Usuario.h"
+	"Publicacion.h"
+	"Feed.h"
+
+1544067952 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\linkedlist.h
+
+1544052781 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1544052781 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"utn.h"
+	"Publicacion.h"
+	"Usuario.h"
+
+1544052781 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\publicacion.h
+
+1544052781 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\usuario.h
+
+1544070434 c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\feed.h
+	"utn.h"
+
+1544071285 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\feed.c
+	"Feed.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1544070779 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1544067372 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Controller.h"
+	"Parser.h"
+	"utn.h"
+	"LinkedList.h"
+
+1544052781 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\parser.c
+	"parser.h"
+
+1544052781 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\publicacion.c
+	"Publicacion.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1544052781 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\usuario.c
+	"Usuario.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1544052781 source:c:\users\usuario\desktop\parcial 2 prog\practicaprogramacioni\finales\2\finaldos\utn.c
+	"utn.h"
+

@@ -538,8 +538,10 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 
     returnAux=ERROR;
 
+
     if(this!=NULL && pFunc!= NULL && this->size>0 && (order==1 || order==0))
     {
+
         do{
             flagOrden=FALSE;
             pNode=this->pFirstNode;
@@ -547,11 +549,14 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
             if(pNode!=NULL)
             {
                 pNextNode=pNode->pNextNode;
+
                 for(i=0;i<(this->size-1);i++)
                 {
+
                     if((pFunc(pNode->pElement, pNextNode->pElement) ==1 && order==1) ||
                         (pFunc(pNode->pElement, pNextNode->pElement)==-1 && order==0))
                     {
+
                         pElementAux=pNode->pElement;
                         pNode->pElement=pNextNode->pElement;
                         pNextNode->pElement=pElementAux;
@@ -636,7 +641,9 @@ void ll_Mapper(LinkedList* this, int func(void*))
         pNodeAux=ll_startIteration(this);
         if(pNodeAux!=NULL)
         {
+
             do{
+
                 func(pNodeAux->pElement);
                 pNodeAux=ll_getNextNode(this);
             }while(pNodeAux!=NULL);
@@ -669,7 +676,9 @@ int ll_count(LinkedList* this, int (*fn)(void*))
     return contadorSegunFunc;
 }
 
-
+/**
+*   \brief Recorre this, pasando cada elemento y el valor a func, si la funcion devuelve TRUE ll_BuscarValor devuelve el elemento
+*/
 void* ll_BuscarValor(LinkedList* this, int func(void*, void*), void* valor)
 {
     Node* pNodeAux;
@@ -688,7 +697,9 @@ void* ll_BuscarValor(LinkedList* this, int func(void*, void*), void* valor)
     return NULL;
 }
 
-
+/**
+*   \brief Recorre this, pasando cada elemento y el valor a func
+*/
 int ll_MapperConValor(LinkedList* this, int func(void*, void*), void* valor)
 {
     Node* pNodeAux;
@@ -708,20 +719,24 @@ int ll_MapperConValor(LinkedList* this, int func(void*, void*), void* valor)
     return retorno;
 }
 
-LinkedList* ll_cargarListaConEntidades(LinkedList* this, void* func(void*, void*), void* valor)
+/**
+*   \brief Recorre this, pasando cada elemento y el valor a func. Crea una lista agregando el valor que devuelva func
+*/
+int ll_filterConValor(LinkedList* this, void* func(void*, void*), void* valor, LinkedList* listaDestino)
 {
-    Node* pNodeAux;
     int retorno=ERROR;
-    LinkedList* nuevaLista;
-    nuevaLista=ll_newLinkedList();
-    if(this!=NULL && func!=NULL)
+    Node* pNodeAux;
+    void* pElementAux;
+    if(this!=NULL && func!=NULL && listaDestino!=NULL)
     {
         retorno=TODOOK;
         pNodeAux=ll_startIteration(this);
         if(pNodeAux!=NULL)
         {
             do{
-                ll_add(nuevaLista, func(pNodeAux->pElement, valor));
+                pElementAux=func(pNodeAux->pElement, valor);
+                if(pElementAux!=NULL)
+                    ll_add(listaDestino, pElementAux);
                 pNodeAux=ll_getNextNode(this);
             }while(pNodeAux!=NULL);
         }

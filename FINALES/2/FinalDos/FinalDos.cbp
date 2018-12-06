@@ -35,6 +35,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Controller.h" />
+		<Unit filename="Feed.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Feed.h" />
 		<Unit filename="LinkedList.c">
 			<Option compilerVar="CC" />
