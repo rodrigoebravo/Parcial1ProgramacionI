@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1544141588 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1544141256 /home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/LinkedList.h
+
+1544141140 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Controller.c
+	"Controller.h"
+
+1544139883 /home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Controller.h
+	"LinkedList.h"
+	"utn.h"
+	"Parser.h"
+
+1544139922 /home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/utn.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio_ext.h>
+
+1544135415 /home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"utn.h"
+	"Vendedor.h"
+
+1544134244 /home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Operacion.h
+
+1544140983 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Parser.h"
+	"Operacion.h"
+
+1544134303 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Operacion.c
+	"utn.h"
+	"Operacion.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1544135581 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Parser.c
+	"Parser.h"
+
+1544140882 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/utn.c
+	"utn.h"
+
+1544135502 /home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Vendedor.h
+
+1544141436 source:/home/alumno/Escritorio/Bravo/PracticaProgramacionI/FINALES/Recuperatorio/Vendedor.c
+	"utn.h"
+	"Vendedor.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
